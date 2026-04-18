@@ -9,9 +9,11 @@ website:
       - href: index.qmd
         text: Home
       - href: about.qmd
-        text: about
+        text: About
       - href: projects/index.qmd
         text: Projects
+      - href: personal/personal.qmd
+        text: Beyond the Desk
 
 format:
   html:

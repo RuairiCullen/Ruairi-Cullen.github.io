@@ -7,20 +7,6 @@
     "text": "Here you will find my data analytics projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictive Inventory Optimisation Dashboard\n\n\nMachine learning dashboard to optimise stock replenishment using sales data and seasonal trends.\n\n\n\nRuairi Cullen\n\n\nApr 18, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "about.html#about-me",
-    "href": "about.html#about-me",
-    "title": "About",
-    "section": "About Me",
-    "text": "About Me\nI am building a professional portfolio website with Quarto.\n\n\nWelcome\n\n\nThis section is styled using HTML and inline CSS inside a Quarto page."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Ruairí Cullen",
@@ -33,6 +19,76 @@
     "title": "Ruairí Cullen",
     "section": "",
     "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "All About Me",
+    "section": "",
+    "text": "“Versatile business professional with a creative mindset, proven adaptability, and a drive to deliver results in fast-paced environments.”\nI am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile Group in Dublin. Over the past three years I have been building a career that bridges two worlds — financial accountability and data-driven decision making.\nI believe the most valuable professionals in modern business are those who can read the numbers and understand the story behind them. That is what I am working towards."
+  },
+  {
+    "objectID": "about.html#who-i-am",
+    "href": "about.html#who-i-am",
+    "title": "All About Me",
+    "section": "",
+    "text": "“Versatile business professional with a creative mindset, proven adaptability, and a drive to deliver results in fast-paced environments.”\nI am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile Group in Dublin. Over the past three years I have been building a career that bridges two worlds — financial accountability and data-driven decision making.\nI believe the most valuable professionals in modern business are those who can read the numbers and understand the story behind them. That is what I am working towards."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "All About Me",
+    "section": "🎓 Education",
+    "text": "🎓 Education\nQualification | Institution | Period |\nMSc Business Analytics | Dublin City University | Sept 2025 – Aug 2026 |\nBSc Business Studies | Dublin City University | 2019 – 2023 (2nd Class Honours Grade 1) |\nACCA | Association of Chartered Certified Accountants | Part-Qualified |\nPost-Primary | Castleknock Community College | 2013 – 2019 |\nRelevant BSc modules: Financial Theory, Business Strategy, Taxation, Risk Management, New Enterprise Development, Managing Change & Transformation."
+  },
+  {
+    "objectID": "about.html#professional-experience",
+    "href": "about.html#professional-experience",
+    "title": "All About Me",
+    "section": "💼 Professional Experience",
+    "text": "💼 Professional Experience\n\n\n\n\n\n\nTrainee Accountant — The Mercantile Group · September 2023 – Present\nRunning management accounts for Beatty Solid Fuels and handling Accounts Payable & Receivable for Stafford Fuels across three solid fuel companies including Shamrock Products Limited. Responsible for creditor dealings, invoicing, payment processing, bank/credit reconciliations, supplier relations, and inventory management — all while completing ACCA exams simultaneously.\n\n\n\n\n\n\n\n\n\nSupport Tax Accountant — Oracle (EMEA Tax Compliance Team) · July 2021 – May 2022\nINTRA placement assisting Oracle’s EMEA Tax Compliance Team with tax roll forwards, monthly tax payments, and administrative work across entities in the EMEA region. First experience in a large multinational professional environment."
+  },
+  {
+    "objectID": "about.html#accountancy-skills",
+    "href": "about.html#accountancy-skills",
+    "title": "All About Me",
+    "section": "🧮 Accountancy Skills",
+    "text": "🧮 Accountancy Skills\nArea | Detail |\nQualification | ACCA Part-Qualified (BT, MA, FA — all 80%+) |\nExperience | Trainee Accountant, 3 years |\nResponsibilities | Management accounts, AP/AR, reconciliations, creditor management |\nPrevious Experience | Oracle EMEA Tax Compliance (INTRA placement) |"
+  },
+  {
+    "objectID": "about.html#analytics-technical-skills",
+    "href": "about.html#analytics-technical-skills",
+    "title": "All About Me",
+    "section": "📊 Analytics & Technical Skills",
+    "text": "📊 Analytics & Technical Skills\nSkill | Level |\nPython | Beginner–Intermediate |\nSQL | Beginner–Intermediate |\nMachine Learning | Applied (scikit-learn, BERT, GPT) |\nData Visualisation | Plotly, Matplotlib, Streamlit |\nMicrosoft Excel | Certified |\nMicrosoft Word | Certified |\nMicrosoft PowerPoint | Certified |\nResearch Methods | CRISP-DM, PRISMA, Mixed Methods |"
+  },
+  {
+    "objectID": "about.html#goals",
+    "href": "about.html#goals",
+    "title": "All About Me",
+    "section": "🎯 Goals",
+    "text": "🎯 Goals\n\n\n\n\n\n\nTip\n\n\n\nMy goal is to complete my ACCA qualification while deepening my expertise in data analytics and machine learning. I want to work at the intersection of finance and technology — helping organisations make smarter decisions by combining rigorous financial thinking with modern analytical tools.\n\n\n\nComplete ACCA qualification and become a fully chartered accountant\nDeepen Python, SQL, and machine learning skills through real-world projects\nBuild a career combining financial expertise with business analytics\nWork in financial analytics, FP&A, or data-driven consulting"
+  },
+  {
+    "objectID": "about.html#achievements",
+    "href": "about.html#achievements",
+    "title": "All About Me",
+    "section": "🏆 Achievements",
+    "text": "🏆 Achievements\n\n🏅 Completed the Dublin Marathon 2024, raising €1,700 for the Child Health Foundation\n🥉 Bronze Gaisce Award for personal and community activities\n📜 Pathways to Success Certificate — DCU extra-curricular achievement\n🎹 Grade 3 Piano — Royal Irish Academy of Music\n🌍 Learning Italian as a second international language; fluent Irish speaker"
+  },
+  {
+    "objectID": "about.html#certifications",
+    "href": "about.html#certifications",
+    "title": "All About Me",
+    "section": "📜 Certifications",
+    "text": "📜 Certifications\n\n✅ Microsoft Excel — Certified\n✅ Microsoft Word — Certified\n✅ Microsoft PowerPoint — Certified\n\n\n\n\n\n\n\n\nNote\n\n\n\nWant to know more about my work? Head over to the Projects page or get in touch."
+  },
+  {
+    "objectID": "personal/personal.html",
+    "href": "personal/personal.html",
+    "title": "Ruairí Cullen",
+    "section": "",
+    "text": "Like to have fun!!!"
   },
   {
     "objectID": "projects/list/project1.html",

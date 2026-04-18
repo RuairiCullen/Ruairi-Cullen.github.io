@@ -1,16 +1,116 @@
 ---
-title: "About"
+title: "All About Me"
 ---
 
-About this site
 
-## About Me
+## Who I Am
 
-I am building a professional portfolio website with Quarto.
+*"Versatile business professional with a creative mindset, proven adaptability, and a 
+drive to deliver results in fast-paced environments."*
 
-<div style="background-color:#f8f9fa; padding:20px; border-radius:10px; margin-top:20px;">
-  <h3 style="color:#2c3e50; margin-top:0;">Welcome</h3>
-  <p style="font-size:1.1em;">
-    This section is styled using HTML and inline CSS inside a Quarto page.
-  </p>
-</div>
+I am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile 
+Group in Dublin. Over the past three years I have been building a career that bridges two 
+worlds — financial accountability and data-driven decision making.
+
+I believe the most valuable professionals in modern business are those who can read the 
+numbers *and* understand the story behind them. That is what I am working towards.
+
+---
+
+## 🎓 Education
+
+| Qualification | Institution | Period |
+| MSc Business Analytics | Dublin City University | Sept 2025 – Aug 2026 |
+| BSc Business Studies | Dublin City University | 2019 – 2023 (2nd Class Honours Grade 1) |
+| ACCA | Association of Chartered Certified Accountants | Part-Qualified |
+| Post-Primary | Castleknock Community College | 2013 – 2019 |
+
+**Relevant BSc modules:** Financial Theory, Business Strategy, Taxation, Risk Management, 
+New Enterprise Development, Managing Change & Transformation.
+
+---
+
+## 💼 Professional Experience
+
+::: {.callout-note appearance="minimal"}
+**Trainee Accountant — The Mercantile Group** · September 2023 – Present
+
+Running management accounts for Beatty Solid Fuels and handling Accounts Payable & 
+Receivable for Stafford Fuels across three solid fuel companies including Shamrock Products 
+Limited. Responsible for creditor dealings, invoicing, payment processing, bank/credit 
+reconciliations, supplier relations, and inventory management — all while completing ACCA 
+exams simultaneously.
+:::
+
+::: {.callout-note appearance="minimal"}
+**Support Tax Accountant — Oracle (EMEA Tax Compliance Team)** · July 2021 – May 2022
+
+INTRA placement assisting Oracle's EMEA Tax Compliance Team with tax roll forwards, monthly 
+tax payments, and administrative work across entities in the EMEA region. First experience 
+in a large multinational professional environment.
+:::
+
+---
+
+## 🧮 Accountancy Skills
+
+| Area | Detail |
+| Qualification | ACCA Part-Qualified (BT, MA, FA — all 80%+) |
+| Experience | Trainee Accountant, 3 years |
+| Responsibilities | Management accounts, AP/AR, reconciliations, creditor management |
+| Previous Experience | Oracle EMEA Tax Compliance (INTRA placement) |
+
+---
+
+## 📊 Analytics & Technical Skills
+
+| Skill | Level |
+| Python | Beginner–Intermediate |
+| SQL | Beginner–Intermediate |
+| Machine Learning | Applied (scikit-learn, BERT, GPT) |
+| Data Visualisation | Plotly, Matplotlib, Streamlit |
+| Microsoft Excel | Certified |
+| Microsoft Word | Certified |
+| Microsoft PowerPoint | Certified |
+| Research Methods | CRISP-DM, PRISMA, Mixed Methods |
+
+---
+
+## 🎯 Goals
+
+::: {.callout-tip}
+My goal is to complete my ACCA qualification while deepening my expertise in data analytics 
+and machine learning. I want to work at the intersection of finance and technology — helping 
+organisations make smarter decisions by combining rigorous financial thinking with modern 
+analytical tools.
+:::
+
+- Complete ACCA qualification and become a fully chartered accountant
+- Deepen Python, SQL, and machine learning skills through real-world projects
+- Build a career combining financial expertise with business analytics
+- Work in financial analytics, FP&A, or data-driven consulting
+
+---
+
+## 🏆 Achievements
+
+- 🏅 Completed the **Dublin Marathon 2024**, raising €1,700 for the Child Health Foundation
+- 🥉 **Bronze Gaisce Award** for personal and community activities
+- 📜 **Pathways to Success Certificate** — DCU extra-curricular achievement
+- 🎹 **Grade 3 Piano** — Royal Irish Academy of Music
+- 🌍 Learning **Italian** as a second international language; fluent Irish speaker
+
+---
+
+## 📜 Certifications
+
+- ✅ Microsoft Excel — Certified
+- ✅ Microsoft Word — Certified
+- ✅ Microsoft PowerPoint — Certified
+
+---
+
+::: {.callout-note}
+Want to know more about my work? Head over to the [Projects page](projects/index.qmd) 
+or [get in touch](contact.qmd).
+:::
