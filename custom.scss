@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+
+/* Change colours */
+$primary: #2c3e50;
+$body-bg: #f8f9fa;
+$body-color: #2c3e50;
+
+/* Change fonts */
+$font-family-sans-serif: "Arial", sans-serif;
+
+
+/*-- scss:rules --*/
+
+/* Custom styling */
+h1 {
+  color: #e74c3c;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  border-bottom: 2px solid #2c3e50;
+}

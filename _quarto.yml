@@ -3,18 +3,28 @@ project:
   output-dir: docs
 
 website:
-  title: "Ruairi Cullen"
+  title: "Ruairí Cullen"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: about
+      - href: projects/index.qmd
+        text: Projects
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      - lux
+      - custom.scss
+    fontsize: 1.1em
+    linestretch: 1.7
+    max-width: 900px
+    fontcolor: "#2c3e50"
+    linkcolor: "#007acc"
+    backgroundcolor: "#ffffff"
+      
     css: styles.css
     toc: true
 

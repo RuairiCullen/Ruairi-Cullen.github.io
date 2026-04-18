@@ -1,8 +1,37 @@
 ---
-title: "Ruairi Cullen"
+title: "Ruairí Cullen"
+image: images/ruairi_profile.JPG
+about:
+    template: trestles
+    links: 
+        - icon: linkedin
+          text: Linkedin
+          href: https://www.linkedin.com/in/ruairi-c-02b268130/
+          target: _blank
+        - icon: github
+          text: GitHub 
+          href: https://github.com/RuairiCullen
+          target: _blank
+        - icon: envelope
+          text: Email
+          href: mailto:ruairi.c12@gmail.com
 ---
 
-This is a Quarto website.
+## Hi, Ruairí here
 
-I am testing the website. :)
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am a part-qualified accountant with the Mercantile Group and a Business Analytics student 
+at DCU. I have a passion for understanding numbers and real-world data in order to improve 
+decision making.
+
+::: {.callout-note appearance="minimal"}
+🚀 In Work: Currently working as accounts payable and receivable between three companies: 
+Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!
+:::
+
+::: {.callout-note appearance="minimal"}
+🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory 
+dashboard as part of my Applied Consultancy Project at DCU.
+:::
+
+[View my projects](projects/index.qmd){.btn .btn-primary} 
+[About me](about.qmd){.btn .btn-outline-secondary}

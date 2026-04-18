@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ruairi Cullen",
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
     "section": "",
-    "text": "This is a Quarto website.\nI am testing the website. :) To learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Here you will find my data analytics projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictive Inventory Optimisation Dashboard\n\n\nMachine learning dashboard to optimise stock replenishment using sales data and seasonal trends.\n\n\n\nRuairi Cullen\n\n\nApr 18, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,61 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "About",
+    "section": "About Me",
+    "text": "About Me\nI am building a professional portfolio website with Quarto.\n\n\nWelcome\n\n\nThis section is styled using HTML and inline CSS inside a Quarto page."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ruairí Cullen",
+    "section": "",
+    "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
+  },
+  {
+    "objectID": "index.html#hi-ruairí-here",
+    "href": "index.html#hi-ruairí-here",
+    "title": "Ruairí Cullen",
+    "section": "",
+    "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
+  },
+  {
+    "objectID": "projects/list/project1.html",
+    "href": "projects/list/project1.html",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "",
+    "text": "Applied Consultancy Project · DCU\nClient: Agvance Ltd & Animal Farmacy\nStatus: In progress\nWorking with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs."
+  },
+  {
+    "objectID": "projects/list/project1.html#overview",
+    "href": "projects/list/project1.html#overview",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "",
+    "text": "Applied Consultancy Project · DCU\nClient: Agvance Ltd & Animal Farmacy\nStatus: In progress\nWorking with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs."
+  },
+  {
+    "objectID": "projects/list/project1.html#project-description",
+    "href": "projects/list/project1.html#project-description",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Project Description",
+    "text": "Project Description\nThis project involves building a machine learning-powered dashboard that uses historical sales data and seasonal patterns to automate stock replenishment decisions.\nThe solution integrates with the client’s live systems: - Shopify\n- Turbo\n- MINTsoft\nThe project applies a convergent mixed-methods research design, combining: - quantitative machine learning modelling\n- qualitative on-site observation\n- process mapping\n- semi-structured interviews with warehouse staff and the CEO"
+  },
+  {
+    "objectID": "projects/list/project1.html#skills-used",
+    "href": "projects/list/project1.html#skills-used",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Skills Used",
+    "text": "Skills Used\n\nCRISP-DM\n\nPRISMA\n\nDemand Forecasting\n\nBusiness Process Mapping\n\nMixed Methods Research"
+  },
+  {
+    "objectID": "projects/list/project1.html#example-python-code",
+    "href": "projects/list/project1.html#example-python-code",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Example Python Code",
+    "text": "Example Python Code\nimport pandas as pd"
   }
 ]

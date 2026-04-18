@@ -1,0 +1,58 @@
+
+---
+title: "Predictive Inventory Optimisation Dashboard"
+description: "Machine learning dashboard to optimise stock replenishment using sales data and seasonal trends."
+author: "Ruairi Cullen"
+date: 2026-04-18
+categories: [Machine Learning, Data Analytics, Consultancy]
+---
+
+## Overview
+
+Applied Consultancy Project · DCU  
+Client: Agvance Ltd & Animal Farmacy  
+Status: In progress  
+
+Working with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs.
+
+---
+
+## Project Description
+
+This project involves building a machine learning-powered dashboard that uses historical sales data and seasonal patterns to automate stock replenishment decisions.
+
+The solution integrates with the client’s live systems:
+- Shopify  
+- Turbo  
+- MINTsoft  
+
+The project applies a **convergent mixed-methods research design**, combining:
+- quantitative machine learning modelling  
+- qualitative on-site observation  
+- process mapping  
+- semi-structured interviews with warehouse staff and the CEO  
+
+---
+
+## Skills Used
+
+- CRISP-DM  
+- PRISMA  
+- Demand Forecasting  
+- Business Process Mapping  
+- Mixed Methods Research  
+
+---
+
+## Example Python Code
+
+```{python}
+import pandas as pd
+
+# Example dataset (placeholder for real client data)
+data = pd.DataFrame({
+    "Month": ["Jan", "Feb", "Mar"],
+    "Demand": [120, 150, 170]
+})
+
+data
