@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Ruairí Cullen"
+  favicon: images/favicon-32x32.png
   navbar:
     left:
       - href: index.qmd
@@ -12,8 +13,28 @@ website:
         text: About
       - href: projects/index.qmd
         text: Projects
+      - href: reflection.qmd
+        text: BAA1104 Reflections
       - href: personal/personal.qmd
-        text: Beyond the Desk
+        text: Beyond the Desk 
+    right:
+      - href: contact.qmd
+        text: Contact
+      - href: cv/cv.pdf
+        text: CV
+
+  page-footer:
+    left: "© 2026 Ruairí Cullen"
+    right:
+    - icon: github
+      href: https://github.com/RuairiCullen
+    - icon: linkedin
+      href: https://www.linkedin.com/in/ruairi-c-02b268130/
+    - icon: envelope
+      href: mailto:ruairi.c12@gmail.com
+    - icon: instagram
+      href: https://www.instagram.com/ruairi.cullenn/
+    center: "Built with [Quarto](https://quarto.org)"
 
 format:
   html:
@@ -23,8 +44,8 @@ format:
     fontsize: 1.1em
     linestretch: 1.7
     max-width: 900px
-    fontcolor: "#2c3e50"
-    linkcolor: "#007acc"
+    fontcolor: "#1a3a2a"
+    linkcolor: "#1a5c38"
     backgroundcolor: "#ffffff"
       
     css: styles.css

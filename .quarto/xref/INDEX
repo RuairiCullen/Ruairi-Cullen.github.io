@@ -19,5 +19,11 @@
   },
   "projects/list/project3.qmd": {
     "project3.html": "8965f002"
+  },
+  "reflection.qmd": {
+    "reflection.html": "1ce40aaf"
+  },
+  "contact.qmd": {
+    "contact.html": "ddb8311a"
   }
 }

@@ -1,25 +1,148 @@
 /*-- scss:defaults --*/
 
-/* Change colours */
-$primary: #2c3e50;
-$body-bg: #f8f9fa;
-$body-color: #2c3e50;
+// Google Font
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Change fonts */
-$font-family-sans-serif: "Arial", sans-serif;
+// Colours — Green Theme
+$body-bg:           #ffffff;
+$body-color:        #1a3a2a;
+$link-color:        #1a5c38;
+$navbar-bg:         #1a5c38;
+$navbar-fg:         #ffffff;
+$footer-bg:         #f8f9fa;
+$footer-fg:         #6c757d;
 
+// Fonts
+$font-family-sans-serif: 'Inter', sans-serif;
+$headings-font-weight:   600;
+$font-size-root:         16px;
+
+// Buttons
+$btn-border-radius:      6px;
 
 /*-- scss:rules --*/
 
-/* Custom styling */
-h1 {
-  color: #e74c3c;
+// Headings
+h1, h2, h3 {
+  color: #1a3a2a;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
-a {
-  text-decoration: none;
+h2 {
+  border-bottom: 2px solid #1a5c38;
+  padding-bottom: 0.3rem;
 }
 
+// Navbar
 .navbar {
-  border-bottom: 2px solid #2c3e50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  font-weight: 500;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.3px;
+  color: #ffffff !important;
+}
+
+// Cards / project listing
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+}
+
+// Callout blocks
+.callout {
+  border-radius: 8px;
+  border-left-width: 4px;
+}
+
+// Tables
+table {
+  font-size: 0.95rem;
+}
+
+thead {
+  background-color: #1a5c38;
+  color: #ffffff;
+}
+
+// Buttons
+.btn-primary {
+  background-color: #1a5c38;
+  border-color: #1a5c38;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #134a2c;
+  border-color: #134a2c;
+}
+
+// Footer
+.nav-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+}
+
+// Code blocks
+pre {
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+// Profile image on landing page
+.quarto-about-trestles .about-image img {
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  border: 4px solid #1a5c38;
+}
+
+// Smooth links
+a {
+  transition: color 0.2s ease;
+}
+
+// Max width for readability
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// Home grid cards
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.home-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  border-left: 4px solid #1a5c38;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.home-card h2 {
+  border-bottom: none;
+  color: #1a5c38;
+  font-size: 1.2rem;
 }

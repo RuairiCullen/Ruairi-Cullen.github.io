@@ -1,0 +1,114 @@
+---
+title: "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection"
+---
+
+## Looking Back on the Module
+
+This page reflects on my experience completing the ePortfolio module as part of my 
+MSc in Business Analytics at DCU. It covers the skills I developed, the challenges 
+I faced, and how this experience has shaped my thinking as an emerging data professional.
+
+---
+
+## 🧠 What I Learned
+
+When I first encountered the technical requirements of this module — Quarto, Git, 
+GitHub Pages, executable Python code — I found it genuinely difficult to follow. Not 
+just the syntax or the tools themselves, but understanding the *why* behind everything. 
+Why do we use version control? Why does the folder structure matter? Why does a 
+`.nojekyll` file need to exist at all?
+
+::: {.callout-note appearance="minimal"}
+It was only through repeated practice — breaking things, fixing them, and breaking 
+them again — that the logic behind each step began to make sense. That process of 
+trial and error turned out to be the most effective teacher.
+:::
+
+Over time, I went from struggling to preview a single page locally to building and 
+deploying a fully structured, multi-page portfolio site with live Python code. That 
+progression, however gradual, represents real technical growth.
+
+---
+
+## 💡 What Surprised Me
+
+The biggest surprise of this module was realising that I could build and own my own 
+professional website — one that I control completely, can update at any time, and 
+that genuinely represents who I am and what I can do.
+
+Before this module, a personal website felt like something only developers had. Now 
+I understand it as a professional tool — as important as a CV, and in many ways more 
+powerful. It is a living document that grows with me.
+
+::: {.callout-tip}
+The idea that this portfolio is not something I submit and forget, but something I 
+can continue to build on throughout my career, genuinely changed how I think about 
+professional development.
+:::
+
+---
+
+## 🏫 The Classes
+
+I found the classes throughout this module to be genuinely interactive and engaging. 
+Rather than passively receiving information, we were encouraged to try things, make 
+mistakes, and figure out solutions — which suited me well as an analytics beginner.
+
+There is something valuable about working through a problem in a classroom setting 
+where everyone is at a similar level. It made the technical challenges feel less 
+intimidating and more like puzzles to solve together.
+
+---
+
+## 🔄 What I Would Do Differently
+
+If I were starting this module again, I would invest time upfront in short online 
+courses to build foundational knowledge before the semester began. Understanding 
+the basics of Git, the command line, and how Python environments work would have 
+saved significant time and frustration in the early weeks.
+
+| Area | What I'd Do Differently |
+|---|---|
+| Git & Version Control | Complete a beginner Git course before week one |
+| Python Environment | Set up and test Jupyter/Quarto before the first class |
+| Project Structure | Plan the folder structure from day one rather than reorganising later |
+| Time Management | Commit smaller, more regularly rather than large end-of-session pushes |
+
+---
+
+## 🔗 Connecting to My Future
+
+I am building a career that sits at the intersection of accountancy and data analytics. 
+This module has shown me that technical skills like these are not just useful for 
+data scientists — they are increasingly expected of anyone working with data in a 
+professional context.
+
+::: {.callout-tip}
+As a part-qualified ACCA accountant, I now see this portfolio as a bridge between 
+my financial expertise and my growing analytics capability. It demonstrates not just 
+what I know, but how I think and how I work.
+:::
+
+Going forward, I intend to keep this portfolio updated as I complete my ACCA 
+qualification, develop new projects, and grow in my role at the Mercantile Group. 
+It is no longer just a college submission — it is the beginning of my professional 
+digital presence.
+
+---
+
+## 📊 Skills Developed in This Module
+
+| Skill | Before | After |
+|---|---|---|
+| Quarto | Never heard of it | Can build and deploy a full site |
+| Git & GitHub | Basic awareness | Regular commits, branching, GitHub Pages |
+| Python in documents | Code only in notebooks | Executable chunks in published pages |
+| Web publishing | No experience | Live site on GitHub Pages |
+| Professional portfolio | CV only | Multi-page portfolio with live projects |
+
+---
+
+::: {.callout-note}
+Thank you for reading. You can explore my projects on the [Projects page](projects/index.qmd) 
+or [get in touch](contact.qmd) if you'd like to connect.
+:::
