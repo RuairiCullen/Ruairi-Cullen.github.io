@@ -1,5 +1,250 @@
 [
   {
+    "objectID": "projects/list/project3.html",
+    "href": "projects/list/project3.html",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "",
+    "text": "Note\n\n\n\n🔄 Status: In Progress — Research Phase (Phase 2 of 4), January 2026 – August 2026.\n\n\nThis is a live Applied Consultancy Project at DCU, working with a 6-person team for Agvance Ltd and Animal Farmacy — a family-owned agri-nutrition wholesaler and e-commerce retailer based in Portlaoise, Co. Laois.\nThe client manages over 700 products across a shared warehouse, supplying farms across Ireland and the UK. Despite consistent year-on-year growth, recurring stock-outs and an experience-driven ordering process are creating operational inefficiencies and lost revenue."
+  },
+  {
+    "objectID": "projects/list/project3.html#overview",
+    "href": "projects/list/project3.html#overview",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "",
+    "text": "Note\n\n\n\n🔄 Status: In Progress — Research Phase (Phase 2 of 4), January 2026 – August 2026.\n\n\nThis is a live Applied Consultancy Project at DCU, working with a 6-person team for Agvance Ltd and Animal Farmacy — a family-owned agri-nutrition wholesaler and e-commerce retailer based in Portlaoise, Co. Laois.\nThe client manages over 700 products across a shared warehouse, supplying farms across Ireland and the UK. Despite consistent year-on-year growth, recurring stock-outs and an experience-driven ordering process are creating operational inefficiencies and lost revenue."
+  },
+  {
+    "objectID": "projects/list/project3.html#the-business-problem",
+    "href": "projects/list/project3.html#the-business-problem",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "The Business Problem",
+    "text": "The Business Problem\n\n\n\n\n\n\nAgvance and Animal Farmacy currently rely on experience-based manual reordering, resulting in regular stock imbalances, avoidable stock-outs, and inefficient working capital allocation — particularly during seasonal demand peaks.\n\n\n\n\n\n\n\n\n\n\nChallenge\nImpact\n\n\n\n\nExperience-driven ordering\nUnpredictable stock-outs\n\n\nNo demand forecasting system\nMissed sales, customer dissatisfaction\n\n\nSeasonal demand patterns\nPeaks unaccounted for in reorder triggers\n\n\nMulti-system data (Shopify, Turbo, MINTsoft)\nNo unified data view for decisions"
+  },
+  {
+    "objectID": "projects/list/project3.html#data-sources",
+    "href": "projects/list/project3.html#data-sources",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Data Sources",
+    "text": "Data Sources\nTwo real client datasets were used for the EDA phase:\n\n\n\nSource\nPeriod\nRecords\n\n\n\n\nTurbo Inventory CSV\nJan 2022 – Mar 2025\n33,213 rows\n\n\nShopify Daily Orders ODS\nJan 2025 – Apr 2026\n9,700 rows"
+  },
+  {
+    "objectID": "projects/list/project3.html#python-code-eda-setup-data-loading",
+    "href": "projects/list/project3.html#python-code-eda-setup-data-loading",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Python Code — EDA Setup & Data Loading",
+    "text": "Python Code — EDA Setup & Data Loading\n\n\nShow imports and styling\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.ticker as mticker\nimport warnings\nwarnings.filterwarnings(\"ignore\")\n\n# Colour theme matching client branding\nTURBO_COLOR   = \"#2196F3\"\nSHOPIFY_COLOR = \"#4CAF50\"\nACCENT        = \"#FF5722\"\n\nplt.rcParams.update({\n    \"figure.dpi\": 130,\n    \"axes.titlesize\": 13,\n    \"axes.labelsize\": 11,\n    \"figure.autolayout\": True\n})\nprint(\"Libraries loaded.\")\n\n\nLibraries loaded."
+  },
+  {
+    "objectID": "projects/list/project3.html#python-code-simulated-monthly-revenue-trend",
+    "href": "projects/list/project3.html#python-code-simulated-monthly-revenue-trend",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Python Code — Simulated Monthly Revenue Trend",
+    "text": "Python Code — Simulated Monthly Revenue Trend\n\n\n\n\n\n\nThe charts below use simulated data that mirrors the structure and patterns of the real client dataset. Actual figures are commercially sensitive.\n\n\n\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.ticker as mticker\n\nnp.random.seed(42)\n\n# Simulate Turbo monthly revenue (Jan 2022 – Mar 2025)\nturbo_periods = pd.date_range(\"2022-01\", periods=39, freq=\"MS\")\nturbo_base    = 45000\nturbo_season  = 12000 * np.sin(2 * np.pi * (np.arange(39) - 2) / 12)\nturbo_trend   = np.linspace(0, 15000, 39)\nturbo_rev     = turbo_base + turbo_season + turbo_trend + np.random.normal(0, 3000, 39)\n\n# Simulate Shopify monthly revenue (Jan 2025 – Apr 2026)\nshop_periods  = pd.date_range(\"2025-01\", periods=16, freq=\"MS\")\nshop_base     = 18000\nshop_season   = 5000 * np.sin(2 * np.pi * (np.arange(16) - 2) / 12)\nshop_rev      = shop_base + shop_season + np.random.normal(0, 1500, 16)\n\nfig, ax = plt.subplots(figsize=(13, 5))\nax.plot(turbo_periods, turbo_rev, color=\"#2196F3\",\n        linewidth=2, label=\"Turbo (2022–2025)\")\nax.fill_between(turbo_periods, turbo_rev, alpha=0.1, color=\"#2196F3\")\nax.plot(shop_periods, shop_rev, color=\"#4CAF50\",\n        linewidth=2, label=\"Shopify (2025–2026)\")\nax.fill_between(shop_periods, shop_rev, alpha=0.1, color=\"#4CAF50\")\nax.yaxis.set_major_formatter(\n    mticker.FuncFormatter(lambda x, _: f\"€{x:,.0f}\"))\nax.set_title(\"Monthly Revenue Trend — Turbo vs Shopify (Simulated)\",\n             fontweight=\"bold\")\nax.set_xlabel(\"Month\")\nax.set_ylabel(\"Revenue (€)\")\nax.legend(fontsize=10)\nplt.xticks(rotation=45)\nplt.tight_layout()\nplt.show()\n\n\n\n\nMonthly revenue trend across Turbo and Shopify channels (simulated)"
+  },
+  {
+    "objectID": "projects/list/project3.html#python-code-seasonal-revenue-heatmap",
+    "href": "projects/list/project3.html#python-code-seasonal-revenue-heatmap",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Python Code — Seasonal Revenue Heatmap",
+    "text": "Python Code — Seasonal Revenue Heatmap\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Simulate seasonal heatmap data (2022–2024)\nmonth_labels = [\"Jan\",\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\n                \"Jul\",\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\"]\nyears = [2022, 2023, 2024]\n\nnp.random.seed(7)\ndata = np.array([\n    [38000 + 8000*np.sin(np.pi*(m-2)/6) + np.random.normal(0, 2000)\n     for m in range(12)]\n    for _ in years\n])\n\nfig, ax = plt.subplots(figsize=(13, 4))\nim = ax.imshow(data, cmap=\"Blues\", aspect=\"auto\")\nax.set_xticks(range(12))\nax.set_xticklabels(month_labels)\nax.set_yticks(range(len(years)))\nax.set_yticklabels(years)\nax.set_title(\"Seasonal Revenue Heatmap — Turbo Inventory (Simulated)\",\n             fontweight=\"bold\", pad=12)\n\nfor i in range(len(years)):\n    for j in range(12):\n        ax.text(j, i, f\"€{data[i,j]/1000:.0f}k\",\n                ha=\"center\", va=\"center\", fontsize=7,\n                color=\"white\" if data[i,j] &gt; 50000 else \"black\")\n\nplt.colorbar(im, ax=ax, label=\"Revenue (€)\")\nplt.tight_layout()\nplt.show()\n\n\n\n\nSeasonal revenue heatmap showing monthly demand patterns by year (simulated)"
+  },
+  {
+    "objectID": "projects/list/project3.html#methodology",
+    "href": "projects/list/project3.html#methodology",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Methodology",
+    "text": "Methodology\n\nQualitative Strand\n\nSemi-structured interviews with CEO, Head of Warehouse Operations, and industry experts\nOn-site observation and business process mapping of current reorder workflow\nThematic analysis to identify operational requirements and usability needs\nPRISMA systematic literature review of state-of-the-art inventory management systems\n\n\n\nQuantitative Strand\n\nCRISP-DM framework for structured ML model development\nData sources: Shopify EPOS, Turbo WMS, MINTsoft — SKU-level historical sales\nModels under evaluation: ARIMA, Prophet, XGBoost, LSTM\nEvaluation metrics: MAE, RMSE, MSE across identical train/test splits"
+  },
+  {
+    "objectID": "projects/list/project3.html#current-progress",
+    "href": "projects/list/project3.html#current-progress",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Current Progress",
+    "text": "Current Progress\n\nPhase 1 Complete — Client briefing, team formation, project proposal submitted\nPRISMA literature review underway — Google Scholar search strategy defined\nOn-site warehouse visit completed — As-Is process maps drafted\nSemi-structured interviews conducted with CEO and warehouse operatives\nEDA completed on Turbo (33,213 rows) and Shopify (9,700 rows) datasets\nQuantitative model training and comparison (Phase 3 — commencing soon)\nDashboard development and client integration\nFinal presentation to client and DCU"
+  },
+  {
+    "objectID": "projects/list/project3.html#team",
+    "href": "projects/list/project3.html#team",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Team",
+    "text": "Team\n\n\n\n\n\n\nClient: Agvance Ltd & Animal Farmacy, Portlaoise, Co. Laois Supervisor: Prof. Pierangelo Rosati, DCU Business School Duration: January 2026 – August 2026"
+  },
+  {
+    "objectID": "projects/list/project3.html#skills-used",
+    "href": "projects/list/project3.html#skills-used",
+    "title": "Predictive Inventory Optimisation Dashboard",
+    "section": "Skills Used",
+    "text": "Skills Used\nPython Pandas Matplotlib CRISP-DM PRISMA Demand Forecasting Business Process Mapping Mixed Methods Research EDA Consultancy"
+  },
+  {
+    "objectID": "projects/list/project1.html",
+    "href": "projects/list/project1.html",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "",
+    "text": "This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves 86.1% precision identifying complaints likely to require monetary relief.\n\n\n\n\n\n\nTip\n\n\n\n🚀 Live Dashboard: analysisofcomplaints.streamlit.app"
+  },
+  {
+    "objectID": "projects/list/project1.html#overview",
+    "href": "projects/list/project1.html#overview",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "",
+    "text": "This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves 86.1% precision identifying complaints likely to require monetary relief.\n\n\n\n\n\n\nTip\n\n\n\n🚀 Live Dashboard: analysisofcomplaints.streamlit.app"
+  },
+  {
+    "objectID": "projects/list/project1.html#key-results",
+    "href": "projects/list/project1.html#key-results",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Key Results",
+    "text": "Key Results\n\n\n\nMetric\nResult\n\n\n\n\nModel\nVoting Classifier (Gradient Boosting + Random Forest)\n\n\nPrecision\n86.1%\n\n\nROC-AUC\n0.794\n\n\nAccuracy\n77.4%\n\n\nDataset Size\n61,022 CFPB complaints\n\n\nProjected Gross Savings\n$510,000\n\n\nOperational Cost\n$39,500\n\n\nNet Benefit\n$470,500\n\n\nROI\n1,191%"
+  },
+  {
+    "objectID": "projects/list/project1.html#feature-engineering",
+    "href": "projects/list/project1.html#feature-engineering",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Feature Engineering",
+    "text": "Feature Engineering\nThe pipeline engineered the following features from raw CFPB data:\n\nTF-IDF vectorisation of complaint Issue text (unigrams + bigrams, 1,000 features)\nTemporal features — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter\nRisk rate features — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)\nText metadata — Issue_Length, Issue_Word_Count"
+  },
+  {
+    "objectID": "projects/list/project1.html#python-code-imports-configuration",
+    "href": "projects/list/project1.html#python-code-imports-configuration",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Python Code — Imports & Configuration",
+    "text": "Python Code — Imports & Configuration\n\n\nShow imports\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.patches as mpatches\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# Unified colour theme\nTHEME = {\n    'primary': '#4C9AFF',\n    'secondary': '#A78BFA',\n    'success': '#34D399',\n    'danger': '#F87171',\n    'warning': '#FBBF24',\n    'neutral': '#475569',\n}\nprint(\"Libraries loaded.\")\n\n\nLibraries loaded."
+  },
+  {
+    "objectID": "projects/list/project1.html#python-code-model-performance-visualisation",
+    "href": "projects/list/project1.html#python-code-model-performance-visualisation",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Python Code — Model Performance Visualisation",
+    "text": "Python Code — Model Performance Visualisation\n\nimport matplotlib.pyplot as plt\n\nmetrics = ['Precision', 'ROC-AUC', 'Accuracy', 'Recall']\nvalues  = [86.1, 79.4, 77.4, 4.6]\ncolors  = ['#4C9AFF', '#A78BFA', '#34D399', '#F87171']\n\nfig, ax = plt.subplots(figsize=(9, 4))\nbars = ax.barh(metrics, values, color=colors, edgecolor='white', height=0.5)\nax.set_xlim(0, 105)\nax.set_xlabel('Score (%)', fontsize=11)\nax.set_title('Voting Classifier — Model Performance Metrics',\n             fontsize=13, fontweight='bold', pad=15)\nax.axvline(x=80, color='grey', linestyle='--', alpha=0.5, label='80% benchmark')\nfor bar, val in zip(bars, values):\n    ax.text(val + 1, bar.get_y() + bar.get_height() / 2,\n            f'{val}%', va='center', fontweight='bold', fontsize=10)\nax.legend(fontsize=9)\nplt.tight_layout()\nplt.show()\n\n\n\n\nVoting Classifier performance metrics on the CFPB test set"
+  },
+  {
+    "objectID": "projects/list/project1.html#python-code-financial-simulation",
+    "href": "projects/list/project1.html#python-code-financial-simulation",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Python Code — Financial Simulation",
+    "text": "Python Code — Financial Simulation\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Simulation parameters (from report)\nCOST_PER_REVIEW   = 50\nAVG_PAYOUT_SAVED  = 750\nflagged_cases     = 1020\n\nthresholds    = np.arange(0.3, 0.8, 0.05)\ngross_savings = [flagged_cases * AVG_PAYOUT_SAVED * (t * 0.9) for t in thresholds]\nop_costs      = [flagged_cases * COST_PER_REVIEW * (1 - t * 0.3) for t in thresholds]\nnet_benefit   = [g - o for g, o in zip(gross_savings, op_costs)]\nroi           = [(n / o) * 100 for n, o in zip(net_benefit, op_costs)]\n\nfig, ax1 = plt.subplots(figsize=(9, 4))\nax2 = ax1.twinx()\n\nax1.plot(thresholds, net_benefit, 'b-o', linewidth=2, label='Net Benefit ($)')\nax1.set_xlabel('Risk Threshold', fontsize=11)\nax1.set_ylabel('Net Benefit ($)', color='blue', fontsize=11)\nax1.tick_params(axis='y', labelcolor='blue')\n\nax2.plot(thresholds, roi, 'g--s', linewidth=2, label='ROI (%)')\nax2.set_ylabel('ROI (%)', color='green', fontsize=11)\nax2.tick_params(axis='y', labelcolor='green')\n\nax1.axvline(x=0.5, color='red', linestyle=':', alpha=0.6, label='Selected threshold (0.50)')\nax1.set_title('Financial Impact by Risk Threshold', fontsize=13, fontweight='bold', pad=15)\nfig.legend(loc='upper right', bbox_to_anchor=(0.88, 0.88), fontsize=9)\nplt.tight_layout()\nplt.show()\n\n\n\n\nNet benefit and ROI across different risk thresholds"
+  },
+  {
+    "objectID": "projects/list/project1.html#dashboard-features",
+    "href": "projects/list/project1.html#dashboard-features",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Dashboard Features",
+    "text": "Dashboard Features\nThe deployed Streamlit application serves three user groups:\n\n\n\n\n\n\n\n\nUser\nView\nPurpose\n\n\n\n\nFrontline Agents\nLive Risk Assessment\nReal-time monetary liability score per complaint\n\n\nManagers\nOperational Efficiency\nProcessing times and workload heatmaps\n\n\nExecutives\nMarket Intelligence\nVolume patterns, financial exposure, ROI tracking"
+  },
+  {
+    "objectID": "projects/list/project1.html#ethical-considerations",
+    "href": "projects/list/project1.html#ethical-considerations",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Ethical Considerations",
+    "text": "Ethical Considerations\n\n\n\n\n\n\nAll Personally Identifiable Information (PII) was removed prior to analysis. Sensitive demographic variables — race, gender, and exact location — were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata."
+  },
+  {
+    "objectID": "projects/list/project1.html#skills-used",
+    "href": "projects/list/project1.html#skills-used",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Skills Used",
+    "text": "Skills Used\nPython scikit-learn Gradient Boosting Random Forest TF-IDF NLP Streamlit Prescriptive Analytics Ethical AI CFPB Data"
+  },
+  {
+    "objectID": "projects/list/project1.html#references",
+    "href": "projects/list/project1.html#references",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "References",
+    "text": "References\n\nChen & Guestrin (2016). XGBoost: A Scalable Tree Boosting System. ACM SIGKDD.\nConsumer Financial Protection Bureau (2024). Consumer Complaint Database."
+  },
+  {
+    "objectID": "personal/personal.html",
+    "href": "personal/personal.html",
+    "title": "Ruairí Cullen",
+    "section": "",
+    "text": "Like to have fun!!!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "All About Me",
+    "section": "",
+    "text": "“Versatile business professional with a creative mindset, proven adaptability, and a drive to deliver results in fast-paced environments.”\nI am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile Group in Dublin. Over the past three years I have been building a career that bridges two worlds — financial accountability and data-driven decision making.\nI believe the most valuable professionals in modern business are those who can read the numbers and understand the story behind them. That is what I am working towards."
+  },
+  {
+    "objectID": "about.html#who-i-am",
+    "href": "about.html#who-i-am",
+    "title": "All About Me",
+    "section": "",
+    "text": "“Versatile business professional with a creative mindset, proven adaptability, and a drive to deliver results in fast-paced environments.”\nI am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile Group in Dublin. Over the past three years I have been building a career that bridges two worlds — financial accountability and data-driven decision making.\nI believe the most valuable professionals in modern business are those who can read the numbers and understand the story behind them. That is what I am working towards."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "All About Me",
+    "section": "🎓 Education",
+    "text": "🎓 Education\nQualification | Institution | Period |\nMSc Business Analytics | Dublin City University | Sept 2025 – Aug 2026 |\nBSc Business Studies | Dublin City University | 2019 – 2023 (2nd Class Honours Grade 1) |\nACCA | Association of Chartered Certified Accountants | Part-Qualified |\nPost-Primary | Castleknock Community College | 2013 – 2019 |\nRelevant BSc modules: Financial Theory, Business Strategy, Taxation, Risk Management, New Enterprise Development, Managing Change & Transformation."
+  },
+  {
+    "objectID": "about.html#professional-experience",
+    "href": "about.html#professional-experience",
+    "title": "All About Me",
+    "section": "💼 Professional Experience",
+    "text": "💼 Professional Experience\n\n\n\n\n\n\nTrainee Accountant — The Mercantile Group · September 2023 – Present\nRunning management accounts for Beatty Solid Fuels and handling Accounts Payable & Receivable for Stafford Fuels across three solid fuel companies including Shamrock Products Limited. Responsible for creditor dealings, invoicing, payment processing, bank/credit reconciliations, supplier relations, and inventory management — all while completing ACCA exams simultaneously.\n\n\n\n\n\n\n\n\n\nSupport Tax Accountant — Oracle (EMEA Tax Compliance Team) · July 2021 – May 2022\nINTRA placement assisting Oracle’s EMEA Tax Compliance Team with tax roll forwards, monthly tax payments, and administrative work across entities in the EMEA region. First experience in a large multinational professional environment."
+  },
+  {
+    "objectID": "about.html#accountancy-skills",
+    "href": "about.html#accountancy-skills",
+    "title": "All About Me",
+    "section": "🧮 Accountancy Skills",
+    "text": "🧮 Accountancy Skills\nArea | Detail |\nQualification | ACCA Part-Qualified (BT, MA, FA — all 80%+) |\nExperience | Trainee Accountant, 3 years |\nResponsibilities | Management accounts, AP/AR, reconciliations, creditor management |\nPrevious Experience | Oracle EMEA Tax Compliance (INTRA placement) |"
+  },
+  {
+    "objectID": "about.html#analytics-technical-skills",
+    "href": "about.html#analytics-technical-skills",
+    "title": "All About Me",
+    "section": "📊 Analytics & Technical Skills",
+    "text": "📊 Analytics & Technical Skills\nSkill | Level |\nPython | Beginner–Intermediate |\nSQL | Beginner–Intermediate |\nMachine Learning | Applied (scikit-learn, BERT, GPT) |\nData Visualisation | Plotly, Matplotlib, Streamlit |\nMicrosoft Excel | Certified |\nMicrosoft Word | Certified |\nMicrosoft PowerPoint | Certified |\nResearch Methods | CRISP-DM, PRISMA, Mixed Methods |"
+  },
+  {
+    "objectID": "about.html#goals",
+    "href": "about.html#goals",
+    "title": "All About Me",
+    "section": "🎯 Goals",
+    "text": "🎯 Goals\n\n\n\n\n\n\nTip\n\n\n\nMy goal is to complete my ACCA qualification while deepening my expertise in data analytics and machine learning. I want to work at the intersection of finance and technology — helping organisations make smarter decisions by combining rigorous financial thinking with modern analytical tools.\n\n\n\nComplete ACCA qualification and become a fully chartered accountant\nDeepen Python, SQL, and machine learning skills through real-world projects\nBuild a career combining financial expertise with business analytics\nWork in financial analytics, FP&A, or data-driven consulting"
+  },
+  {
+    "objectID": "about.html#achievements",
+    "href": "about.html#achievements",
+    "title": "All About Me",
+    "section": "🏆 Achievements",
+    "text": "🏆 Achievements\n\n🏅 Completed the Dublin Marathon 2024, raising €1,700 for the Child Health Foundation\n🥉 Bronze Gaisce Award for personal and community activities\n📜 Pathways to Success Certificate — DCU extra-curricular achievement\n🎹 Grade 3 Piano — Royal Irish Academy of Music\n🌍 Learning Italian as a second international language; fluent Irish speaker"
+  },
+  {
+    "objectID": "about.html#certifications",
+    "href": "about.html#certifications",
+    "title": "All About Me",
+    "section": "📜 Certifications",
+    "text": "📜 Certifications\n\n✅ Microsoft Excel — Certified\n✅ Microsoft Word — Certified\n✅ Microsoft PowerPoint — Certified\n\n\n\n\n\n\n\n\nNote\n\n\n\nWant to know more about my work? Head over to the Projects page or get in touch."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ruairí Cullen",
+    "section": "",
+    "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
+  },
+  {
+    "objectID": "index.html#hi-ruairí-here",
+    "href": "index.html#hi-ruairí-here",
+    "title": "Ruairí Cullen",
+    "section": "",
+    "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Here you will find my data analytics projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSentiment Analysis — BERT vs LLaMA 3.1\n\n\n\nNLP\n\nBERT\n\nGenerative AI\n\nPython\n\nHospitality\n\n\n\nComparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with…\n\n\n\nApr 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictive Inventory Optimisation Dashboard\n\n\n\nMachine Learning\n\nDemand Forecasting\n\nConsultancy\n\nPython\n\nCRISP-DM\n\n\n\nAn applied consultancy project with Agvance Ltd & Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME…\n\n\n\nJan 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsumer Complaint Analytics — Bank of America\n\n\n\nMachine Learning\n\nNLP\n\nPython\n\nStreamlit\n\nPrescriptive Analytics\n\n\n\nA Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.\n\n\n\nDec 1, 2024\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "projects/list/project2.html",
     "href": "projects/list/project2.html",
     "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
@@ -82,173 +327,5 @@
     "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
     "section": "References",
     "text": "References\n\nHo et al. (2024). ChatReview: A ChatGPT-enabled NLP framework. Machine Learning with Applications.\nMeta. (2024). Introducing Llama 3.1.\nEuropean Commission. Ethics Guidelines for Trustworthy AI."
-  },
-  {
-    "objectID": "projects/index.html",
-    "href": "projects/index.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Here you will find my data analytics projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSentiment Analysis — BERT vs LLaMA 3.1\n\n\n\nNLP\n\nBERT\n\nGenerative AI\n\nPython\n\nHospitality\n\n\n\nComparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with…\n\n\n\nApr 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsumer Complaint Analytics — Bank of America\n\n\n\nMachine Learning\n\nNLP\n\nPython\n\nStreamlit\n\nPrescriptive Analytics\n\n\n\nA Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.\n\n\n\nDec 1, 2024\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ruairí Cullen",
-    "section": "",
-    "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
-  },
-  {
-    "objectID": "index.html#hi-ruairí-here",
-    "href": "index.html#hi-ruairí-here",
-    "title": "Ruairí Cullen",
-    "section": "",
-    "text": "I am a part-qualified accountant with the Mercantile Group and a Business Analytics student at DCU. I have a passion for understanding numbers and real-world data in order to improve decision making.\n\n\n\n\n\n\n🚀 In Work: Currently working as accounts payable and receivable between three companies: Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!\n\n\n\n\n\n\n\n\n\n🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.\n\n\n\nView my projects About me"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "All About Me",
-    "section": "",
-    "text": "“Versatile business professional with a creative mindset, proven adaptability, and a drive to deliver results in fast-paced environments.”\nI am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile Group in Dublin. Over the past three years I have been building a career that bridges two worlds — financial accountability and data-driven decision making.\nI believe the most valuable professionals in modern business are those who can read the numbers and understand the story behind them. That is what I am working towards."
-  },
-  {
-    "objectID": "about.html#who-i-am",
-    "href": "about.html#who-i-am",
-    "title": "All About Me",
-    "section": "",
-    "text": "“Versatile business professional with a creative mindset, proven adaptability, and a drive to deliver results in fast-paced environments.”\nI am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile Group in Dublin. Over the past three years I have been building a career that bridges two worlds — financial accountability and data-driven decision making.\nI believe the most valuable professionals in modern business are those who can read the numbers and understand the story behind them. That is what I am working towards."
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "All About Me",
-    "section": "🎓 Education",
-    "text": "🎓 Education\nQualification | Institution | Period |\nMSc Business Analytics | Dublin City University | Sept 2025 – Aug 2026 |\nBSc Business Studies | Dublin City University | 2019 – 2023 (2nd Class Honours Grade 1) |\nACCA | Association of Chartered Certified Accountants | Part-Qualified |\nPost-Primary | Castleknock Community College | 2013 – 2019 |\nRelevant BSc modules: Financial Theory, Business Strategy, Taxation, Risk Management, New Enterprise Development, Managing Change & Transformation."
-  },
-  {
-    "objectID": "about.html#professional-experience",
-    "href": "about.html#professional-experience",
-    "title": "All About Me",
-    "section": "💼 Professional Experience",
-    "text": "💼 Professional Experience\n\n\n\n\n\n\nTrainee Accountant — The Mercantile Group · September 2023 – Present\nRunning management accounts for Beatty Solid Fuels and handling Accounts Payable & Receivable for Stafford Fuels across three solid fuel companies including Shamrock Products Limited. Responsible for creditor dealings, invoicing, payment processing, bank/credit reconciliations, supplier relations, and inventory management — all while completing ACCA exams simultaneously.\n\n\n\n\n\n\n\n\n\nSupport Tax Accountant — Oracle (EMEA Tax Compliance Team) · July 2021 – May 2022\nINTRA placement assisting Oracle’s EMEA Tax Compliance Team with tax roll forwards, monthly tax payments, and administrative work across entities in the EMEA region. First experience in a large multinational professional environment."
-  },
-  {
-    "objectID": "about.html#accountancy-skills",
-    "href": "about.html#accountancy-skills",
-    "title": "All About Me",
-    "section": "🧮 Accountancy Skills",
-    "text": "🧮 Accountancy Skills\nArea | Detail |\nQualification | ACCA Part-Qualified (BT, MA, FA — all 80%+) |\nExperience | Trainee Accountant, 3 years |\nResponsibilities | Management accounts, AP/AR, reconciliations, creditor management |\nPrevious Experience | Oracle EMEA Tax Compliance (INTRA placement) |"
-  },
-  {
-    "objectID": "about.html#analytics-technical-skills",
-    "href": "about.html#analytics-technical-skills",
-    "title": "All About Me",
-    "section": "📊 Analytics & Technical Skills",
-    "text": "📊 Analytics & Technical Skills\nSkill | Level |\nPython | Beginner–Intermediate |\nSQL | Beginner–Intermediate |\nMachine Learning | Applied (scikit-learn, BERT, GPT) |\nData Visualisation | Plotly, Matplotlib, Streamlit |\nMicrosoft Excel | Certified |\nMicrosoft Word | Certified |\nMicrosoft PowerPoint | Certified |\nResearch Methods | CRISP-DM, PRISMA, Mixed Methods |"
-  },
-  {
-    "objectID": "about.html#goals",
-    "href": "about.html#goals",
-    "title": "All About Me",
-    "section": "🎯 Goals",
-    "text": "🎯 Goals\n\n\n\n\n\n\nTip\n\n\n\nMy goal is to complete my ACCA qualification while deepening my expertise in data analytics and machine learning. I want to work at the intersection of finance and technology — helping organisations make smarter decisions by combining rigorous financial thinking with modern analytical tools.\n\n\n\nComplete ACCA qualification and become a fully chartered accountant\nDeepen Python, SQL, and machine learning skills through real-world projects\nBuild a career combining financial expertise with business analytics\nWork in financial analytics, FP&A, or data-driven consulting"
-  },
-  {
-    "objectID": "about.html#achievements",
-    "href": "about.html#achievements",
-    "title": "All About Me",
-    "section": "🏆 Achievements",
-    "text": "🏆 Achievements\n\n🏅 Completed the Dublin Marathon 2024, raising €1,700 for the Child Health Foundation\n🥉 Bronze Gaisce Award for personal and community activities\n📜 Pathways to Success Certificate — DCU extra-curricular achievement\n🎹 Grade 3 Piano — Royal Irish Academy of Music\n🌍 Learning Italian as a second international language; fluent Irish speaker"
-  },
-  {
-    "objectID": "about.html#certifications",
-    "href": "about.html#certifications",
-    "title": "All About Me",
-    "section": "📜 Certifications",
-    "text": "📜 Certifications\n\n✅ Microsoft Excel — Certified\n✅ Microsoft Word — Certified\n✅ Microsoft PowerPoint — Certified\n\n\n\n\n\n\n\n\nNote\n\n\n\nWant to know more about my work? Head over to the Projects page or get in touch."
-  },
-  {
-    "objectID": "personal/personal.html",
-    "href": "personal/personal.html",
-    "title": "Ruairí Cullen",
-    "section": "",
-    "text": "Like to have fun!!!"
-  },
-  {
-    "objectID": "projects/list/project1.html",
-    "href": "projects/list/project1.html",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "",
-    "text": "This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves 86.1% precision identifying complaints likely to require monetary relief.\n\n\n\n\n\n\nTip\n\n\n\n🚀 Live Dashboard: analysisofcomplaints.streamlit.app"
-  },
-  {
-    "objectID": "projects/list/project1.html#overview",
-    "href": "projects/list/project1.html#overview",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "",
-    "text": "This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves 86.1% precision identifying complaints likely to require monetary relief.\n\n\n\n\n\n\nTip\n\n\n\n🚀 Live Dashboard: analysisofcomplaints.streamlit.app"
-  },
-  {
-    "objectID": "projects/list/project1.html#key-results",
-    "href": "projects/list/project1.html#key-results",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Key Results",
-    "text": "Key Results\n\n\n\nMetric\nResult\n\n\n\n\nModel\nVoting Classifier (Gradient Boosting + Random Forest)\n\n\nPrecision\n86.1%\n\n\nROC-AUC\n0.794\n\n\nAccuracy\n77.4%\n\n\nDataset Size\n61,022 CFPB complaints\n\n\nProjected Gross Savings\n$510,000\n\n\nOperational Cost\n$39,500\n\n\nNet Benefit\n$470,500\n\n\nROI\n1,191%"
-  },
-  {
-    "objectID": "projects/list/project1.html#feature-engineering",
-    "href": "projects/list/project1.html#feature-engineering",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Feature Engineering",
-    "text": "Feature Engineering\nThe pipeline engineered the following features from raw CFPB data:\n\nTF-IDF vectorisation of complaint Issue text (unigrams + bigrams, 1,000 features)\nTemporal features — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter\nRisk rate features — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)\nText metadata — Issue_Length, Issue_Word_Count"
-  },
-  {
-    "objectID": "projects/list/project1.html#python-code-imports-configuration",
-    "href": "projects/list/project1.html#python-code-imports-configuration",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Python Code — Imports & Configuration",
-    "text": "Python Code — Imports & Configuration\n\n\nShow imports\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.patches as mpatches\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# Unified colour theme\nTHEME = {\n    'primary': '#4C9AFF',\n    'secondary': '#A78BFA',\n    'success': '#34D399',\n    'danger': '#F87171',\n    'warning': '#FBBF24',\n    'neutral': '#475569',\n}\nprint(\"Libraries loaded.\")\n\n\nLibraries loaded."
-  },
-  {
-    "objectID": "projects/list/project1.html#python-code-model-performance-visualisation",
-    "href": "projects/list/project1.html#python-code-model-performance-visualisation",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Python Code — Model Performance Visualisation",
-    "text": "Python Code — Model Performance Visualisation\n\nimport matplotlib.pyplot as plt\n\nmetrics = ['Precision', 'ROC-AUC', 'Accuracy', 'Recall']\nvalues  = [86.1, 79.4, 77.4, 4.6]\ncolors  = ['#4C9AFF', '#A78BFA', '#34D399', '#F87171']\n\nfig, ax = plt.subplots(figsize=(9, 4))\nbars = ax.barh(metrics, values, color=colors, edgecolor='white', height=0.5)\nax.set_xlim(0, 105)\nax.set_xlabel('Score (%)', fontsize=11)\nax.set_title('Voting Classifier — Model Performance Metrics',\n             fontsize=13, fontweight='bold', pad=15)\nax.axvline(x=80, color='grey', linestyle='--', alpha=0.5, label='80% benchmark')\nfor bar, val in zip(bars, values):\n    ax.text(val + 1, bar.get_y() + bar.get_height() / 2,\n            f'{val}%', va='center', fontweight='bold', fontsize=10)\nax.legend(fontsize=9)\nplt.tight_layout()\nplt.show()\n\n\n\n\nVoting Classifier performance metrics on the CFPB test set"
-  },
-  {
-    "objectID": "projects/list/project1.html#python-code-financial-simulation",
-    "href": "projects/list/project1.html#python-code-financial-simulation",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Python Code — Financial Simulation",
-    "text": "Python Code — Financial Simulation\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Simulation parameters (from report)\nCOST_PER_REVIEW   = 50\nAVG_PAYOUT_SAVED  = 750\nflagged_cases     = 1020\n\nthresholds    = np.arange(0.3, 0.8, 0.05)\ngross_savings = [flagged_cases * AVG_PAYOUT_SAVED * (t * 0.9) for t in thresholds]\nop_costs      = [flagged_cases * COST_PER_REVIEW * (1 - t * 0.3) for t in thresholds]\nnet_benefit   = [g - o for g, o in zip(gross_savings, op_costs)]\nroi           = [(n / o) * 100 for n, o in zip(net_benefit, op_costs)]\n\nfig, ax1 = plt.subplots(figsize=(9, 4))\nax2 = ax1.twinx()\n\nax1.plot(thresholds, net_benefit, 'b-o', linewidth=2, label='Net Benefit ($)')\nax1.set_xlabel('Risk Threshold', fontsize=11)\nax1.set_ylabel('Net Benefit ($)', color='blue', fontsize=11)\nax1.tick_params(axis='y', labelcolor='blue')\n\nax2.plot(thresholds, roi, 'g--s', linewidth=2, label='ROI (%)')\nax2.set_ylabel('ROI (%)', color='green', fontsize=11)\nax2.tick_params(axis='y', labelcolor='green')\n\nax1.axvline(x=0.5, color='red', linestyle=':', alpha=0.6, label='Selected threshold (0.50)')\nax1.set_title('Financial Impact by Risk Threshold', fontsize=13, fontweight='bold', pad=15)\nfig.legend(loc='upper right', bbox_to_anchor=(0.88, 0.88), fontsize=9)\nplt.tight_layout()\nplt.show()\n\n\n\n\nNet benefit and ROI across different risk thresholds"
-  },
-  {
-    "objectID": "projects/list/project1.html#dashboard-features",
-    "href": "projects/list/project1.html#dashboard-features",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Dashboard Features",
-    "text": "Dashboard Features\nThe deployed Streamlit application serves three user groups:\n\n\n\n\n\n\n\n\nUser\nView\nPurpose\n\n\n\n\nFrontline Agents\nLive Risk Assessment\nReal-time monetary liability score per complaint\n\n\nManagers\nOperational Efficiency\nProcessing times and workload heatmaps\n\n\nExecutives\nMarket Intelligence\nVolume patterns, financial exposure, ROI tracking"
-  },
-  {
-    "objectID": "projects/list/project1.html#ethical-considerations",
-    "href": "projects/list/project1.html#ethical-considerations",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Ethical Considerations",
-    "text": "Ethical Considerations\n\n\n\n\n\n\nAll Personally Identifiable Information (PII) was removed prior to analysis. Sensitive demographic variables — race, gender, and exact location — were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata."
-  },
-  {
-    "objectID": "projects/list/project1.html#skills-used",
-    "href": "projects/list/project1.html#skills-used",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "Skills Used",
-    "text": "Skills Used\nPython scikit-learn Gradient Boosting Random Forest TF-IDF NLP Streamlit Prescriptive Analytics Ethical AI CFPB Data"
-  },
-  {
-    "objectID": "projects/list/project1.html#references",
-    "href": "projects/list/project1.html#references",
-    "title": "Consumer Complaint Analytics — Bank of America",
-    "section": "References",
-    "text": "References\n\nChen & Guestrin (2016). XGBoost: A Scalable Tree Boosting System. ACM SIGKDD.\nConsumer Financial Protection Bureau (2024). Consumer Complaint Database."
   }
 ]

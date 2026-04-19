@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ruairí Cullen">
-<meta name="dcterms.date" content="2024-12-01">
-<meta name="description" content="A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.">
+<meta name="dcterms.date" content="2026-01-26">
+<meta name="description" content="An applied consultancy project with Agvance Ltd &amp; Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems.">
 
-<title>Consumer Complaint Analytics — Bank of America – Ruairí Cullen</title>
+<title>Predictive Inventory Optimisation Dashboard – Ruairí Cullen</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -163,15 +163,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">Key Results</a></li>
-  <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">Feature Engineering</a></li>
-  <li><a href="#python-code-imports-configuration" id="toc-python-code-imports-configuration" class="nav-link" data-scroll-target="#python-code-imports-configuration">Python Code — Imports &amp; Configuration</a></li>
-  <li><a href="#python-code-model-performance-visualisation" id="toc-python-code-model-performance-visualisation" class="nav-link" data-scroll-target="#python-code-model-performance-visualisation">Python Code — Model Performance Visualisation</a></li>
-  <li><a href="#python-code-financial-simulation" id="toc-python-code-financial-simulation" class="nav-link" data-scroll-target="#python-code-financial-simulation">Python Code — Financial Simulation</a></li>
-  <li><a href="#dashboard-features" id="toc-dashboard-features" class="nav-link" data-scroll-target="#dashboard-features">Dashboard Features</a></li>
-  <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
+  <li><a href="#the-business-problem" id="toc-the-business-problem" class="nav-link" data-scroll-target="#the-business-problem">The Business Problem</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
+  <li><a href="#python-code-eda-setup-data-loading" id="toc-python-code-eda-setup-data-loading" class="nav-link" data-scroll-target="#python-code-eda-setup-data-loading">Python Code — EDA Setup &amp; Data Loading</a></li>
+  <li><a href="#python-code-simulated-monthly-revenue-trend" id="toc-python-code-simulated-monthly-revenue-trend" class="nav-link" data-scroll-target="#python-code-simulated-monthly-revenue-trend">Python Code — Simulated Monthly Revenue Trend</a></li>
+  <li><a href="#python-code-seasonal-revenue-heatmap" id="toc-python-code-seasonal-revenue-heatmap" class="nav-link" data-scroll-target="#python-code-seasonal-revenue-heatmap">Python Code — Seasonal Revenue Heatmap</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#qualitative-strand" id="toc-qualitative-strand" class="nav-link" data-scroll-target="#qualitative-strand">Qualitative Strand</a></li>
+  <li><a href="#quantitative-strand" id="toc-quantitative-strand" class="nav-link" data-scroll-target="#quantitative-strand">Quantitative Strand</a></li>
+  </ul></li>
+  <li><a href="#current-progress" id="toc-current-progress" class="nav-link" data-scroll-target="#current-progress">Current Progress</a></li>
+  <li><a href="#team" id="toc-team" class="nav-link" data-scroll-target="#team">Team</a></li>
   <li><a href="#skills-used" id="toc-skills-used" class="nav-link" data-scroll-target="#skills-used">Skills Used</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -180,19 +184,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Consumer Complaint Analytics — Bank of America</h1>
+<h1 class="title">Predictive Inventory Optimisation Dashboard</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Machine Learning</div>
-    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">Demand Forecasting</div>
+    <div class="quarto-category">Consultancy</div>
     <div class="quarto-category">Python</div>
-    <div class="quarto-category">Streamlit</div>
-    <div class="quarto-category">Prescriptive Analytics</div>
+    <div class="quarto-category">CRISP-DM</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.
+    An applied consultancy project with Agvance Ltd &amp; Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems.
   </div>
 </div>
 
@@ -209,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2024</p>
+      <p class="date">January 26, 2026</p>
     </div>
   </div>
   
@@ -223,233 +227,275 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves <strong>86.1% precision</strong> identifying complaints likely to require monetary relief.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>🚀 <strong>Live Dashboard:</strong> <a href="https://analysisofcomplaints.streamlit.app">analysisofcomplaints.streamlit.app</a></p>
+<p>🔄 <strong>Status: In Progress</strong> — Research Phase (Phase 2 of 4), January 2026 – August 2026.</p>
 </div>
 </div>
+<p>This is a live Applied Consultancy Project at DCU, working with a 6-person team for <strong>Agvance Ltd</strong> and <strong>Animal Farmacy</strong> — a family-owned agri-nutrition wholesaler and e-commerce retailer based in Portlaoise, Co.&nbsp;Laois.</p>
+<p>The client manages over 700 products across a shared warehouse, supplying farms across Ireland and the UK. Despite consistent year-on-year growth, recurring <strong>stock-outs</strong> and an experience-driven ordering process are creating operational inefficiencies and lost revenue.</p>
 <hr>
 </section>
-<section id="key-results" class="level2">
-<h2 class="anchored" data-anchor-id="key-results">Key Results</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Metric</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Model</td>
-<td>Voting Classifier (Gradient Boosting + Random Forest)</td>
-</tr>
-<tr class="even">
-<td>Precision</td>
-<td>86.1%</td>
-</tr>
-<tr class="odd">
-<td>ROC-AUC</td>
-<td>0.794</td>
-</tr>
-<tr class="even">
-<td>Accuracy</td>
-<td>77.4%</td>
-</tr>
-<tr class="odd">
-<td>Dataset Size</td>
-<td>61,022 CFPB complaints</td>
-</tr>
-<tr class="even">
-<td>Projected Gross Savings</td>
-<td>$510,000</td>
-</tr>
-<tr class="odd">
-<td>Operational Cost</td>
-<td>$39,500</td>
-</tr>
-<tr class="even">
-<td><strong>Net Benefit</strong></td>
-<td><strong>$470,500</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>ROI</strong></td>
-<td><strong>1,191%</strong></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="feature-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
-<p>The pipeline engineered the following features from raw CFPB data:</p>
-<ul>
-<li><strong>TF-IDF vectorisation</strong> of complaint Issue text (unigrams + bigrams, 1,000 features)</li>
-<li><strong>Temporal features</strong> — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter</li>
-<li><strong>Risk rate features</strong> — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)</li>
-<li><strong>Text metadata</strong> — Issue_Length, Issue_Word_Count</li>
-</ul>
-<hr>
-</section>
-<section id="python-code-imports-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-imports-configuration">Python Code — Imports &amp; Configuration</h2>
-<div id="01af951f" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Show imports</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Unified colour theme</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>THEME <span class="op">=</span> {</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'primary'</span>: <span class="st">'#4C9AFF'</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'secondary'</span>: <span class="st">'#A78BFA'</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'success'</span>: <span class="st">'#34D399'</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'danger'</span>: <span class="st">'#F87171'</span>,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'warning'</span>: <span class="st">'#FBBF24'</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'neutral'</span>: <span class="st">'#475569'</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Libraries loaded."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Libraries loaded.</code></pre>
-</div>
-</div>
-</section>
-<section id="python-code-model-performance-visualisation" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-model-performance-visualisation">Python Code — Model Performance Visualisation</h2>
-<div id="7e5e66d8" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'Precision'</span>, <span class="st">'ROC-AUC'</span>, <span class="st">'Accuracy'</span>, <span class="st">'Recall'</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>values  <span class="op">=</span> [<span class="fl">86.1</span>, <span class="fl">79.4</span>, <span class="fl">77.4</span>, <span class="fl">4.6</span>]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>colors  <span class="op">=</span> [<span class="st">'#4C9AFF'</span>, <span class="st">'#A78BFA'</span>, <span class="st">'#34D399'</span>, <span class="st">'#F87171'</span>]</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(metrics, values, color<span class="op">=</span>colors, edgecolor<span class="op">=</span><span class="st">'white'</span>, height<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">105</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Score (%)'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Voting Classifier — Model Performance Metrics'</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, pad<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax.axvline(x<span class="op">=</span><span class="dv">80</span>, color<span class="op">=</span><span class="st">'grey'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'80% benchmark'</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, val <span class="kw">in</span> <span class="bu">zip</span>(bars, values):</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ax.text(val <span class="op">+</span> <span class="dv">1</span>, bar.get_y() <span class="op">+</span> bar.get_height() <span class="op">/</span> <span class="dv">2</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">%'</span>, va<span class="op">=</span><span class="st">'center'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">9</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="project1_files/figure-html/cell-3-output-1.png" width="855" height="373" class="figure-img"></p>
-<figcaption>Voting Classifier performance metrics on the CFPB test set</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="python-code-financial-simulation" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-financial-simulation">Python Code — Financial Simulation</h2>
-<div id="fbff6d28" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation parameters (from report)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>COST_PER_REVIEW   <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>AVG_PAYOUT_SAVED  <span class="op">=</span> <span class="dv">750</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>flagged_cases     <span class="op">=</span> <span class="dv">1020</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>thresholds    <span class="op">=</span> np.arange(<span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.05</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>gross_savings <span class="op">=</span> [flagged_cases <span class="op">*</span> AVG_PAYOUT_SAVED <span class="op">*</span> (t <span class="op">*</span> <span class="fl">0.9</span>) <span class="cf">for</span> t <span class="kw">in</span> thresholds]</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>op_costs      <span class="op">=</span> [flagged_cases <span class="op">*</span> COST_PER_REVIEW <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> t <span class="op">*</span> <span class="fl">0.3</span>) <span class="cf">for</span> t <span class="kw">in</span> thresholds]</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>net_benefit   <span class="op">=</span> [g <span class="op">-</span> o <span class="cf">for</span> g, o <span class="kw">in</span> <span class="bu">zip</span>(gross_savings, op_costs)]</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>roi           <span class="op">=</span> [(n <span class="op">/</span> o) <span class="op">*</span> <span class="dv">100</span> <span class="cf">for</span> n, o <span class="kw">in</span> <span class="bu">zip</span>(net_benefit, op_costs)]</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax1.plot(thresholds, net_benefit, <span class="st">'b-o'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Net Benefit ($)'</span>)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Risk Threshold'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Net Benefit ($)'</span>, color<span class="op">=</span><span class="st">'blue'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax2.plot(thresholds, roi, <span class="st">'g--s'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'ROI (%)'</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'ROI (%)'</span>, color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'green'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax1.axvline(x<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, label<span class="op">=</span><span class="st">'Selected threshold (0.50)'</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Financial Impact by Risk Threshold'</span>, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, pad<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>fig.legend(loc<span class="op">=</span><span class="st">'upper right'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.88</span>, <span class="fl">0.88</span>), fontsize<span class="op">=</span><span class="dv">9</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="project1_files/figure-html/cell-4-output-1.png" width="852" height="373" class="figure-img"></p>
-<figcaption>Net benefit and ROI across different risk thresholds</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-</section>
-<section id="dashboard-features" class="level2">
-<h2 class="anchored" data-anchor-id="dashboard-features">Dashboard Features</h2>
-<p>The deployed Streamlit application serves three user groups:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>User</th>
-<th>View</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Frontline Agents</td>
-<td>Live Risk Assessment</td>
-<td>Real-time monetary liability score per complaint</td>
-</tr>
-<tr class="even">
-<td>Managers</td>
-<td>Operational Efficiency</td>
-<td>Processing times and workload heatmaps</td>
-</tr>
-<tr class="odd">
-<td>Executives</td>
-<td>Market Intelligence</td>
-<td>Volume patterns, financial exposure, ROI tracking</td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="ethical-considerations" class="level2">
-<h2 class="anchored" data-anchor-id="ethical-considerations">Ethical Considerations</h2>
+<section id="the-business-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-business-problem">The Business Problem</h2>
 <div class="callout callout-style-simple callout-warning no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>All Personally Identifiable Information (PII) was removed prior to analysis. Sensitive demographic variables — race, gender, and exact location — were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata.</p>
+<p>Agvance and Animal Farmacy currently rely on experience-based manual reordering, resulting in regular stock imbalances, avoidable stock-outs, and inefficient working capital allocation — particularly during seasonal demand peaks.</p>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Challenge</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Experience-driven ordering</td>
+<td>Unpredictable stock-outs</td>
+</tr>
+<tr class="even">
+<td>No demand forecasting system</td>
+<td>Missed sales, customer dissatisfaction</td>
+</tr>
+<tr class="odd">
+<td>Seasonal demand patterns</td>
+<td>Peaks unaccounted for in reorder triggers</td>
+</tr>
+<tr class="even">
+<td>Multi-system data (Shopify, Turbo, MINTsoft)</td>
+<td>No unified data view for decisions</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
+<p>Two real client datasets were used for the EDA phase:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Period</th>
+<th>Records</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Turbo Inventory CSV</td>
+<td>Jan 2022 – Mar 2025</td>
+<td>33,213 rows</td>
+</tr>
+<tr class="even">
+<td>Shopify Daily Orders ODS</td>
+<td>Jan 2025 – Apr 2026</td>
+<td>9,700 rows</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="python-code-eda-setup-data-loading" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-eda-setup-data-loading">Python Code — EDA Setup &amp; Data Loading</h2>
+<div id="abceac0e" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show imports and styling</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> mticker</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Colour theme matching client branding</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>TURBO_COLOR   <span class="op">=</span> <span class="st">"#2196F3"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>SHOPIFY_COLOR <span class="op">=</span> <span class="st">"#4CAF50"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ACCENT        <span class="op">=</span> <span class="st">"#FF5722"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"figure.dpi"</span>: <span class="dv">130</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"axes.titlesize"</span>: <span class="dv">13</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"axes.labelsize"</span>: <span class="dv">11</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"figure.autolayout"</span>: <span class="va">True</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Libraries loaded."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Libraries loaded.</code></pre>
+</div>
+</div>
+</section>
+<section id="python-code-simulated-monthly-revenue-trend" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-simulated-monthly-revenue-trend">Python Code — Simulated Monthly Revenue Trend</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The charts below use simulated data that mirrors the structure and patterns of the real client dataset. Actual figures are commercially sensitive.</p>
+</div>
+</div>
+</div>
+<div id="55f9d663" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> mticker</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate Turbo monthly revenue (Jan 2022 – Mar 2025)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>turbo_periods <span class="op">=</span> pd.date_range(<span class="st">"2022-01"</span>, periods<span class="op">=</span><span class="dv">39</span>, freq<span class="op">=</span><span class="st">"MS"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>turbo_base    <span class="op">=</span> <span class="dv">45000</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>turbo_season  <span class="op">=</span> <span class="dv">12000</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (np.arange(<span class="dv">39</span>) <span class="op">-</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">12</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>turbo_trend   <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">15000</span>, <span class="dv">39</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>turbo_rev     <span class="op">=</span> turbo_base <span class="op">+</span> turbo_season <span class="op">+</span> turbo_trend <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">3000</span>, <span class="dv">39</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate Shopify monthly revenue (Jan 2025 – Apr 2026)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>shop_periods  <span class="op">=</span> pd.date_range(<span class="st">"2025-01"</span>, periods<span class="op">=</span><span class="dv">16</span>, freq<span class="op">=</span><span class="st">"MS"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>shop_base     <span class="op">=</span> <span class="dv">18000</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>shop_season   <span class="op">=</span> <span class="dv">5000</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> (np.arange(<span class="dv">16</span>) <span class="op">-</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">12</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>shop_rev      <span class="op">=</span> shop_base <span class="op">+</span> shop_season <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1500</span>, <span class="dv">16</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">5</span>))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>ax.plot(turbo_periods, turbo_rev, color<span class="op">=</span><span class="st">"#2196F3"</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Turbo (2022–2025)"</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>ax.fill_between(turbo_periods, turbo_rev, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span><span class="st">"#2196F3"</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>ax.plot(shop_periods, shop_rev, color<span class="op">=</span><span class="st">"#4CAF50"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Shopify (2025–2026)"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>ax.fill_between(shop_periods, shop_rev, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span><span class="st">"#4CAF50"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    mticker.FuncFormatter(<span class="kw">lambda</span> x, _: <span class="ss">f"€</span><span class="sc">{</span>x<span class="sc">:,.0f}</span><span class="ss">"</span>))</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Monthly Revenue Trend — Turbo vs Shopify (Simulated)"</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>             fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Month"</span>)</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Revenue (€)"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project3_files/figure-html/cell-3-output-1.png" width="1678" height="637" class="figure-img"></p>
+<figcaption>Monthly revenue trend across Turbo and Shopify channels (simulated)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="python-code-seasonal-revenue-heatmap" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-seasonal-revenue-heatmap">Python Code — Seasonal Revenue Heatmap</h2>
+<div id="13542965" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate seasonal heatmap data (2022–2024)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>month_labels <span class="op">=</span> [<span class="st">"Jan"</span>,<span class="st">"Feb"</span>,<span class="st">"Mar"</span>,<span class="st">"Apr"</span>,<span class="st">"May"</span>,<span class="st">"Jun"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Jul"</span>,<span class="st">"Aug"</span>,<span class="st">"Sep"</span>,<span class="st">"Oct"</span>,<span class="st">"Nov"</span>,<span class="st">"Dec"</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="dv">2022</span>, <span class="dv">2023</span>, <span class="dv">2024</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">7</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">38000</span> <span class="op">+</span> <span class="dv">8000</span><span class="op">*</span>np.sin(np.pi<span class="op">*</span>(m<span class="op">-</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">6</span>) <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2000</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> m <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>)]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> years</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">4</span>))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> ax.imshow(data, cmap<span class="op">=</span><span class="st">"Blues"</span>, aspect<span class="op">=</span><span class="st">"auto"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">range</span>(<span class="dv">12</span>))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(month_labels)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.set_yticks(<span class="bu">range</span>(<span class="bu">len</span>(years)))</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels(years)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Seasonal Revenue Heatmap — Turbo Inventory (Simulated)"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>             fontweight<span class="op">=</span><span class="st">"bold"</span>, pad<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(years)):</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">12</span>):</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        ax.text(j, i, <span class="ss">f"€</span><span class="sc">{</span>data[i,j]<span class="op">/</span><span class="dv">1000</span><span class="sc">:.0f}</span><span class="ss">k"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">7</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span><span class="st">"white"</span> <span class="cf">if</span> data[i,j] <span class="op">&gt;</span> <span class="dv">50000</span> <span class="cf">else</span> <span class="st">"black"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.colorbar(im, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Revenue (€)"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project3_files/figure-html/cell-4-output-1.png" width="1556" height="505" class="figure-img"></p>
+<figcaption>Seasonal revenue heatmap showing monthly demand patterns by year (simulated)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<section id="qualitative-strand" class="level3">
+<h3 class="anchored" data-anchor-id="qualitative-strand">Qualitative Strand</h3>
+<ul>
+<li><strong>Semi-structured interviews</strong> with CEO, Head of Warehouse Operations, and industry experts</li>
+<li><strong>On-site observation</strong> and business process mapping of current reorder workflow</li>
+<li><strong>Thematic analysis</strong> to identify operational requirements and usability needs</li>
+<li><strong>PRISMA systematic literature review</strong> of state-of-the-art inventory management systems</li>
+</ul>
+</section>
+<section id="quantitative-strand" class="level3">
+<h3 class="anchored" data-anchor-id="quantitative-strand">Quantitative Strand</h3>
+<ul>
+<li><strong>CRISP-DM framework</strong> for structured ML model development</li>
+<li><strong>Data sources:</strong> Shopify EPOS, Turbo WMS, MINTsoft — SKU-level historical sales</li>
+<li><strong>Models under evaluation:</strong> ARIMA, Prophet, XGBoost, LSTM</li>
+<li><strong>Evaluation metrics:</strong> MAE, RMSE, MSE across identical train/test splits</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="current-progress" class="level2">
+<h2 class="anchored" data-anchor-id="current-progress">Current Progress</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Phase 1 Complete — Client briefing, team formation, project proposal submitted</label></li>
+<li><label><input type="checkbox" checked="">PRISMA literature review underway — Google Scholar search strategy defined</label></li>
+<li><label><input type="checkbox" checked="">On-site warehouse visit completed — As-Is process maps drafted</label></li>
+<li><label><input type="checkbox" checked="">Semi-structured interviews conducted with CEO and warehouse operatives</label></li>
+<li><label><input type="checkbox" checked="">EDA completed on Turbo (33,213 rows) and Shopify (9,700 rows) datasets</label></li>
+<li><label><input type="checkbox">Quantitative model training and comparison (Phase 3 — commencing soon)</label></li>
+<li><label><input type="checkbox">Dashboard development and client integration</label></li>
+<li><label><input type="checkbox">Final presentation to client and DCU</label></li>
+</ul>
+<hr>
+</section>
+<section id="team" class="level2">
+<h2 class="anchored" data-anchor-id="team">Team</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Client:</strong> Agvance Ltd &amp; Animal Farmacy, Portlaoise, Co.&nbsp;Laois <strong>Supervisor:</strong> Prof.&nbsp;Pierangelo Rosati, DCU Business School <strong>Duration:</strong> January 2026 – August 2026</p>
 </div>
 </div>
 </div>
@@ -457,15 +503,7 @@ Tip
 </section>
 <section id="skills-used" class="level2">
 <h2 class="anchored" data-anchor-id="skills-used">Skills Used</h2>
-<p><code>Python</code> <code>scikit-learn</code> <code>Gradient Boosting</code> <code>Random Forest</code> <code>TF-IDF</code> <code>NLP</code> <code>Streamlit</code> <code>Prescriptive Analytics</code> <code>Ethical AI</code> <code>CFPB Data</code></p>
-<hr>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ul>
-<li>Chen &amp; Guestrin (2016). XGBoost: A Scalable Tree Boosting System. <em>ACM SIGKDD</em>.</li>
-<li>Consumer Financial Protection Bureau (2024). <a href="https://www.consumerfinance.gov/data-research/consumer-complaints/">Consumer Complaint Database</a>.</li>
-</ul>
+<p><code>Python</code> <code>Pandas</code> <code>Matplotlib</code> <code>CRISP-DM</code> <code>PRISMA</code> <code>Demand Forecasting</code> <code>Business Process Mapping</code> <code>Mixed Methods Research</code> <code>EDA</code> <code>Consultancy</code></p>
 
 
 </section>
