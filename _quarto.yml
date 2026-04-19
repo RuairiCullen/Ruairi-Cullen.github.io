@@ -45,13 +45,13 @@ format:
   html:
     theme:
       - lux
-      - custom.scss
+      - styles.scss
     fontsize: 1.1em
     linestretch: 1.7
     max-width: 900px
     fontcolor: "#1a3a2a"
     linkcolor: "#1a5c38"
-    backgroundcolor: "#ffffff"
+    backgroundcolor: "#f0f7f2"
       
     css: styles.css
     toc: true

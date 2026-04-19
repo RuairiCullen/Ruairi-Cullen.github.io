@@ -17,20 +17,18 @@ about:
           href: mailto:ruairi.c12@gmail.com
 ---
 
-## Hi, Ruairí here
+## Hi, Welcome to Ruairí's E-Home!
 
 I am a part-qualified accountant with the Mercantile Group and a Business Analytics student 
-at DCU. I have a passion for understanding numbers and real-world data in order to improve 
-decision making.
+at DCU. I have a passion for understanding numbers and real-world data in order to power  
+evidence-based decisions.
 
 ::: {.callout-note appearance="minimal"}
-🚀 In Work: Currently working as accounts payable and receivable between three companies: 
-Beatty Solid Fuels, Shamrock Products Ltd and Stafford Fuels. Learning to balance time and prioritisation!
+💼 **In Work:** Currently working as the management accountant for Beatty Solid Fuels. In addition, the AR & AP specialist for Stafford Fuels Ltd and Shamrock Products Ltd. Learning to balance time and prioritisation!
 :::
 
 ::: {.callout-note appearance="minimal"}
-🚀 In College : Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory 
-dashboard as part of my Applied Consultancy Project at DCU.
+🎓 **In College:** Currently working with Agvance Ltd & Animal Farmacy on a live ML inventory dashboard as part of my Applied Consultancy Project at DCU.
 :::
 
 [View my projects](projects/index.qmd){.btn .btn-primary} 

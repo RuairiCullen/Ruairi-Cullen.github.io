@@ -1,10 +1,9 @@
-/*-- scss:defaults --*/
 
-// Google Font
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-// Colours — Green Theme
-$body-bg:           #ffffff;
+/*-- scss:defaults --*/
+
+$body-bg:           #f0f7f2;
 $body-color:        #1a3a2a;
 $link-color:        #1a5c38;
 $navbar-bg:         #1a5c38;
@@ -56,6 +55,7 @@ h2 {
 }
 
 .card:hover {
+  border-left: 4px solid #1a5c38;
   transform: translateY(-4px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.14);
 }
@@ -64,6 +64,16 @@ h2 {
 .callout {
   border-radius: 8px;
   border-left-width: 4px;
+}
+
+// Green callout blocks
+.callout-note {
+  border-left-color: #1a5c38 !important;
+  background-color: #e8f5e9 !important;
+}
+
+.callout-note .callout-icon::before {
+  color: #1a5c38 !important;
 }
 
 // Tables
@@ -104,9 +114,29 @@ pre {
 
 // Profile image on landing page
 .quarto-about-trestles .about-image img {
-  border-radius: 50%;
+  border-radius:40% / 50%;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   border: 4px solid #1a5c38;
+}
+
+// Green trestles sidebar
+.quarto-about-trestles .about-entity {
+  border-right: 4px solid #1a5c38;
+  padding-right: 1.5rem;
+}
+
+.quarto-about-trestles .about-links .about-link {
+  color: #1a5c38 !important;
+  border: 1px solid #1a5c38;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 0.4rem;
+  transition: background-color 0.2s ease;
+}
+
+.quarto-about-trestles .about-links .about-link:hover {
+  background-color: #1a5c38;
+  color: #ffffff !important;
 }
 
 // Smooth links
