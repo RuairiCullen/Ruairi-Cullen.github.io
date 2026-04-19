@@ -1,0 +1,212 @@
+---
+title: "Sentiment Analysis — BERT vs LLaMA 3.1"
+description: "Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with no training data."
+author: "Ruairí Cullen"
+date: "2026-04-16"
+image: "../../images/sentiment.png"
+categories: [NLP, BERT, Generative AI, Python, Hospitality]
+---
+
+## Overview
+
+This project addresses the business problem of automated sentiment classification of 
+customer reviews across four Dublin venues within the Mercantile Group — **NoLIta, 
+Pichet, Café en Seine, and The Mercantile Hotel** — using reviews sourced from 
+OpenTable, TripAdvisor, Google, and Yelp.
+
+Two AI models were compared:
+
+- **BERT** (`bert-base-uncased`) — a discriminative transformer model, fine-tuned on 
+  labelled review data
+- **LLaMA 3.1** — a generative large language model, applied via zero-shot prompting 
+  with no training data
+
+::: {.callout-note}
+This project uses real customer review data from the Mercantile Group. Formal consent 
+was obtained from the General Manager. All personal identifiers were removed prior to 
+analysis.
+:::
+
+---
+
+## Key Results
+
+| Model | Accuracy | F1 Score |
+|---|---|---|
+| TF-IDF + Logistic Regression (Baseline) | 91.03% | 0.952 |
+| BERT (Fine-tuned) | 97.76% | 0.987 |
+| LLaMA 3.1 (Zero-shot) | 98.21% | 0.990 |
+
+::: {.callout-tip}
+**Key finding:** LLaMA 3.1 marginally outperformed fine-tuned BERT despite using 
+**zero training data** — highlighting the power of large language models for 
+domain-specific NLP tasks with limited labelled datasets.
+:::
+
+---
+
+## Dataset
+
+- **1,610 original records** across 4 venues; **1,188 retained** after cleaning
+- Binary sentiment labels: Positive (rating ≥ 4) and Negative (rating ≤ 2)
+- Rating 3 deliberately excluded as ambiguous
+- 80/20 stratified train/test split
+- Class imbalance: ~88% positive, ~12% negative
+
+---
+
+## Python Code — Model Comparison Visualisation
+
+```{python}
+#| fig-cap: "Accuracy and F1 Score comparison across three models"
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+models   = ['TF-IDF + LR\n(Baseline)', 'BERT\n(Fine-tuned)', 'LLaMA 3.1\n(Zero-shot)']
+accuracy = [91.03, 97.76, 98.21]
+f1       = [95.17, 98.73, 98.98]
+
+x      = np.arange(len(models))
+width  = 0.35
+colors = ['#475569', '#4C9AFF', '#A78BFA']
+
+fig, ax = plt.subplots(figsize=(9, 5))
+bars1 = ax.bar(x - width/2, accuracy, width, label='Accuracy (%)',
+               color=colors, edgecolor='white', alpha=0.9)
+bars2 = ax.bar(x + width/2, f1, width, label='F1 Score (%)',
+               color=colors, edgecolor='white', alpha=0.5)
+
+ax.set_ylabel('Score (%)', fontsize=11)
+ax.set_title('Model Comparison — Accuracy & F1 Score', fontsize=13,
+             fontweight='bold', pad=15)
+ax.set_xticks(x)
+ax.set_xticklabels(models, fontsize=10)
+ax.set_ylim(85, 102)
+ax.legend(fontsize=10)
+ax.axhline(y=97, color='grey', linestyle='--', alpha=0.4, label='97% benchmark')
+
+for bar in bars1:
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,
+            f'{bar.get_height():.1f}%', ha='center', fontsize=9, fontweight='bold')
+for bar in bars2:
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,
+            f'{bar.get_height():.1f}%', ha='center', fontsize=9, fontweight='bold')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Python Code — BERT Training Loss Curve
+
+```{python}
+#| fig-cap: "BERT training loss decreasing across three epochs"
+#| echo: true
+
+import matplotlib.pyplot as plt
+
+epochs = [1.0, 2.0, 3.0]
+losses = [0.2025, 0.048, 0.016]
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(epochs, losses, 'r-o', linewidth=2.5, markersize=8, label='Training Loss')
+ax.fill_between(epochs, losses, alpha=0.1, color='red')
+ax.set_xlabel('Epoch', fontsize=11)
+ax.set_ylabel('Loss', fontsize=11)
+ax.set_title('BERT Training Loss per Epoch', fontsize=13,
+             fontweight='bold', pad=15)
+ax.set_xticks([1, 2, 3])
+ax.legend(fontsize=10)
+
+for x, y in zip(epochs, losses):
+    ax.annotate(f'{y:.4f}', (x, y), textcoords="offset points",
+                xytext=(10, 5), fontsize=9, fontweight='bold')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Python Code — Sentiment Word Frequency
+
+```{python}
+#| fig-cap: "Most frequent words driving positive and negative sentiment"
+#| echo: true
+
+import matplotlib.pyplot as plt
+
+pos_words  = ['great', 'food', 'staff', 'atmosphere', 'hotel']
+pos_counts = [352, 341, 281, 103, 99]
+neg_words  = ['food', 'staff', 'experience', 'waited', 'service']
+neg_counts = [67, 35, 24, 22, 18]
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4))
+
+ax1.barh(pos_words[::-1], pos_counts[::-1], color='#34D399', edgecolor='white')
+ax1.set_title('Top Positive Words', fontsize=12, fontweight='bold')
+ax1.set_xlabel('Frequency')
+
+ax2.barh(neg_words[::-1], neg_counts[::-1], color='#F87171', edgecolor='white')
+ax2.set_title('Top Negative Words', fontsize=12, fontweight='bold')
+ax2.set_xlabel('Frequency')
+
+plt.suptitle('Key Sentiment Drivers — Mercantile Group Reviews',
+             fontsize=13, fontweight='bold', y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Methodology
+
+### BERT — Discriminative Fine-tuning
+- Tokeniser: `bert-base-uncased` WordPiece tokenizer
+- Max sequence length: 64 tokens (justified by EDA — majority of reviews under 64 words)
+- Batch size: 8 (optimised for standard laptop GPU constraints)
+- Optimiser: AdamW, learning rate 2e-5
+- Training: 3 epochs with forward pass, backpropagation, and weight updates
+
+### LLaMA 3.1 — Zero-shot Prompting
+- Run locally via Ollama API (no cloud dependency — reduced environmental impact)
+- Prompt engineering to constrain output to a single word: *Positive* or *Negative*
+- No training data required — leverages generalised pre-trained knowledge
+
+---
+
+## Ethical Considerations
+
+::: {.callout-warning appearance="minimal"}
+Following the **EU Ethics Guidelines for Trustworthy AI**, this project ensured:
+
+- **Human oversight** — model outputs are decision-support tools, not final decisions
+- **Privacy** — personal identifiers removed; formal consent obtained from Mercantile Group GM
+- **Fairness** — equal review counts taken per venue to avoid representation bias
+- **Environmental** — LLaMA run locally via Ollama to reduce cloud API carbon footprint
+:::
+
+---
+
+## Business Implications
+
+| Scenario | Recommended Model |
+|---|---|
+| Limited labelled data available | LLaMA 3.1 (zero-shot) |
+| Long-term domain-specific deployment | BERT (fine-tuned) |
+| Quick deployment, no data science team | LLaMA 3.1 |
+| Large dataset, high accuracy priority | BERT |
+
+---
+
+## Skills Used
+
+`Python` `BERT Fine-tuning` `LLaMA 3.1` `Zero-shot Prompting` `TF-IDF`
+`NLP` `PyTorch` `Sentiment Analysis` `Ethical AI`
+
+---
+
+## References
+
+- Ho et al. (2024). ChatReview: A ChatGPT-enabled NLP framework. *Machine Learning with Applications*.
+- Meta. (2024). [Introducing Llama 3.1](https://ai.meta.com/blog/meta-llama-3-1/).
+- European Commission. [Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai).

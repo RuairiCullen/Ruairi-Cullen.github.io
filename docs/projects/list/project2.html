@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ruairí Cullen">
+<meta name="dcterms.date" content="2026-04-16">
+<meta name="description" content="Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with no training data.">
 
-<title>project2 – Ruairí Cullen</title>
+<title>Sentiment Analysis — BERT vs LLaMA 3.1 – Ruairí Cullen</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -119,17 +157,356 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">Key Results</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#python-code-model-comparison-visualisation" id="toc-python-code-model-comparison-visualisation" class="nav-link" data-scroll-target="#python-code-model-comparison-visualisation">Python Code — Model Comparison Visualisation</a></li>
+  <li><a href="#python-code-bert-training-loss-curve" id="toc-python-code-bert-training-loss-curve" class="nav-link" data-scroll-target="#python-code-bert-training-loss-curve">Python Code — BERT Training Loss Curve</a></li>
+  <li><a href="#python-code-sentiment-word-frequency" id="toc-python-code-sentiment-word-frequency" class="nav-link" data-scroll-target="#python-code-sentiment-word-frequency">Python Code — Sentiment Word Frequency</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#bert-discriminative-fine-tuning" id="toc-bert-discriminative-fine-tuning" class="nav-link" data-scroll-target="#bert-discriminative-fine-tuning">BERT — Discriminative Fine-tuning</a></li>
+  <li><a href="#llama-3.1-zero-shot-prompting" id="toc-llama-3.1-zero-shot-prompting" class="nav-link" data-scroll-target="#llama-3.1-zero-shot-prompting">LLaMA 3.1 — Zero-shot Prompting</a></li>
+  </ul></li>
+  <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
+  <li><a href="#business-implications" id="toc-business-implications" class="nav-link" data-scroll-target="#business-implications">Business Implications</a></li>
+  <li><a href="#skills-used" id="toc-skills-used" class="nav-link" data-scroll-target="#skills-used">Skills Used</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sentiment Analysis — BERT vs LLaMA 3.1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">BERT</div>
+    <div class="quarto-category">Generative AI</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">Hospitality</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with no training data.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ruairí Cullen </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 16, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group — <strong>NoLIta, Pichet, Café en Seine, and The Mercantile Hotel</strong> — using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.</p>
+<p>Two AI models were compared:</p>
+<ul>
+<li><strong>BERT</strong> (<code>bert-base-uncased</code>) — a discriminative transformer model, fine-tuned on labelled review data</li>
+<li><strong>LLaMA 3.1</strong> — a generative large language model, applied via zero-shot prompting with no training data</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This project uses real customer review data from the Mercantile Group. Formal consent was obtained from the General Manager. All personal identifiers were removed prior to analysis.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="key-results" class="level2">
+<h2 class="anchored" data-anchor-id="key-results">Key Results</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Accuracy</th>
+<th>F1 Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TF-IDF + Logistic Regression (Baseline)</td>
+<td>91.03%</td>
+<td>0.952</td>
+</tr>
+<tr class="even">
+<td>BERT (Fine-tuned)</td>
+<td>97.76%</td>
+<td>0.987</td>
+</tr>
+<tr class="odd">
+<td>LLaMA 3.1 (Zero-shot)</td>
+<td>98.21%</td>
+<td>0.990</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Key finding:</strong> LLaMA 3.1 marginally outperformed fine-tuned BERT despite using <strong>zero training data</strong> — highlighting the power of large language models for domain-specific NLP tasks with limited labelled datasets.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<ul>
+<li><strong>1,610 original records</strong> across 4 venues; <strong>1,188 retained</strong> after cleaning</li>
+<li>Binary sentiment labels: Positive (rating ≥ 4) and Negative (rating ≤ 2)</li>
+<li>Rating 3 deliberately excluded as ambiguous</li>
+<li>80/20 stratified train/test split</li>
+<li>Class imbalance: ~88% positive, ~12% negative</li>
+</ul>
+<hr>
+</section>
+<section id="python-code-model-comparison-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-model-comparison-visualisation">Python Code — Model Comparison Visualisation</h2>
+<div id="4011ad53" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>models   <span class="op">=</span> [<span class="st">'TF-IDF + LR</span><span class="ch">\n</span><span class="st">(Baseline)'</span>, <span class="st">'BERT</span><span class="ch">\n</span><span class="st">(Fine-tuned)'</span>, <span class="st">'LLaMA 3.1</span><span class="ch">\n</span><span class="st">(Zero-shot)'</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> [<span class="fl">91.03</span>, <span class="fl">97.76</span>, <span class="fl">98.21</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>f1       <span class="op">=</span> [<span class="fl">95.17</span>, <span class="fl">98.73</span>, <span class="fl">98.98</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>x      <span class="op">=</span> np.arange(<span class="bu">len</span>(models))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>width  <span class="op">=</span> <span class="fl">0.35</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'#475569'</span>, <span class="st">'#4C9AFF'</span>, <span class="st">'#A78BFA'</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>bars1 <span class="op">=</span> ax.bar(x <span class="op">-</span> width<span class="op">/</span><span class="dv">2</span>, accuracy, width, label<span class="op">=</span><span class="st">'Accuracy (%)'</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>colors, edgecolor<span class="op">=</span><span class="st">'white'</span>, alpha<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>bars2 <span class="op">=</span> ax.bar(x <span class="op">+</span> width<span class="op">/</span><span class="dv">2</span>, f1, width, label<span class="op">=</span><span class="st">'F1 Score (%)'</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>colors, edgecolor<span class="op">=</span><span class="st">'white'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Score (%)'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Model Comparison — Accuracy &amp; F1 Score'</span>, fontsize<span class="op">=</span><span class="dv">13</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>             fontweight<span class="op">=</span><span class="st">'bold'</span>, pad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(x)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(models, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">85</span>, <span class="dv">102</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span><span class="dv">97</span>, color<span class="op">=</span><span class="st">'grey'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, label<span class="op">=</span><span class="st">'97% benchmark'</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars1:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    ax.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="dv">2</span>, bar.get_height() <span class="op">+</span> <span class="fl">0.2</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>bar<span class="sc">.</span>get_height()<span class="sc">:.1f}</span><span class="ss">%'</span>, ha<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">9</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars2:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    ax.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="dv">2</span>, bar.get_height() <span class="op">+</span> <span class="fl">0.2</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>bar<span class="sc">.</span>get_height()<span class="sc">:.1f}</span><span class="ss">%'</span>, ha<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">9</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project2_files/figure-html/cell-2-output-1.png" width="853" height="470" class="figure-img"></p>
+<figcaption>Accuracy and F1 Score comparison across three models</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="python-code-bert-training-loss-curve" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-bert-training-loss-curve">Python Code — BERT Training Loss Curve</h2>
+<div id="8773b7da" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>losses <span class="op">=</span> [<span class="fl">0.2025</span>, <span class="fl">0.048</span>, <span class="fl">0.016</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.plot(epochs, losses, <span class="st">'r-o'</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>, markersize<span class="op">=</span><span class="dv">8</span>, label<span class="op">=</span><span class="st">'Training Loss'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.fill_between(epochs, losses, alpha<span class="op">=</span><span class="fl">0.1</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Epoch'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Loss'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'BERT Training Loss per Epoch'</span>, fontsize<span class="op">=</span><span class="dv">13</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>             fontweight<span class="op">=</span><span class="st">'bold'</span>, pad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(epochs, losses):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    ax.annotate(<span class="ss">f'</span><span class="sc">{</span>y<span class="sc">:.4f}</span><span class="ss">'</span>, (x, y), textcoords<span class="op">=</span><span class="st">"offset points"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                xytext<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), fontsize<span class="op">=</span><span class="dv">9</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project2_files/figure-html/cell-3-output-1.png" width="755" height="373" class="figure-img"></p>
+<figcaption>BERT training loss decreasing across three epochs</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="python-code-sentiment-word-frequency" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-sentiment-word-frequency">Python Code — Sentiment Word Frequency</h2>
+<div id="f15459f2" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pos_words  <span class="op">=</span> [<span class="st">'great'</span>, <span class="st">'food'</span>, <span class="st">'staff'</span>, <span class="st">'atmosphere'</span>, <span class="st">'hotel'</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pos_counts <span class="op">=</span> [<span class="dv">352</span>, <span class="dv">341</span>, <span class="dv">281</span>, <span class="dv">103</span>, <span class="dv">99</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>neg_words  <span class="op">=</span> [<span class="st">'food'</span>, <span class="st">'staff'</span>, <span class="st">'experience'</span>, <span class="st">'waited'</span>, <span class="st">'service'</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>neg_counts <span class="op">=</span> [<span class="dv">67</span>, <span class="dv">35</span>, <span class="dv">24</span>, <span class="dv">22</span>, <span class="dv">18</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">4</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax1.barh(pos_words[::<span class="op">-</span><span class="dv">1</span>], pos_counts[::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'#34D399'</span>, edgecolor<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Top Positive Words'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax2.barh(neg_words[::<span class="op">-</span><span class="dv">1</span>], neg_counts[::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'#F87171'</span>, edgecolor<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Top Negative Words'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Key Sentiment Drivers — Mercantile Group Reviews'</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, y<span class="op">=</span><span class="fl">1.02</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project2_files/figure-html/cell-4-output-1.png" width="1045" height="396" class="figure-img"></p>
+<figcaption>Most frequent words driving positive and negative sentiment</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<section id="bert-discriminative-fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="bert-discriminative-fine-tuning">BERT — Discriminative Fine-tuning</h3>
+<ul>
+<li>Tokeniser: <code>bert-base-uncased</code> WordPiece tokenizer</li>
+<li>Max sequence length: 64 tokens (justified by EDA — majority of reviews under 64 words)</li>
+<li>Batch size: 8 (optimised for standard laptop GPU constraints)</li>
+<li>Optimiser: AdamW, learning rate 2e-5</li>
+<li>Training: 3 epochs with forward pass, backpropagation, and weight updates</li>
+</ul>
+</section>
+<section id="llama-3.1-zero-shot-prompting" class="level3">
+<h3 class="anchored" data-anchor-id="llama-3.1-zero-shot-prompting">LLaMA 3.1 — Zero-shot Prompting</h3>
+<ul>
+<li>Run locally via Ollama API (no cloud dependency — reduced environmental impact)</li>
+<li>Prompt engineering to constrain output to a single word: <em>Positive</em> or <em>Negative</em></li>
+<li>No training data required — leverages generalised pre-trained knowledge</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="ethical-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="ethical-considerations">Ethical Considerations</h2>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Following the <strong>EU Ethics Guidelines for Trustworthy AI</strong>, this project ensured:</p>
+<ul>
+<li><strong>Human oversight</strong> — model outputs are decision-support tools, not final decisions</li>
+<li><strong>Privacy</strong> — personal identifiers removed; formal consent obtained from Mercantile Group GM</li>
+<li><strong>Fairness</strong> — equal review counts taken per venue to avoid representation bias</li>
+<li><strong>Environmental</strong> — LLaMA run locally via Ollama to reduce cloud API carbon footprint</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="business-implications" class="level2">
+<h2 class="anchored" data-anchor-id="business-implications">Business Implications</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>Recommended Model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Limited labelled data available</td>
+<td>LLaMA 3.1 (zero-shot)</td>
+</tr>
+<tr class="even">
+<td>Long-term domain-specific deployment</td>
+<td>BERT (fine-tuned)</td>
+</tr>
+<tr class="odd">
+<td>Quick deployment, no data science team</td>
+<td>LLaMA 3.1</td>
+</tr>
+<tr class="even">
+<td>Large dataset, high accuracy priority</td>
+<td>BERT</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="skills-used" class="level2">
+<h2 class="anchored" data-anchor-id="skills-used">Skills Used</h2>
+<p><code>Python</code> <code>BERT Fine-tuning</code> <code>LLaMA 3.1</code> <code>Zero-shot Prompting</code> <code>TF-IDF</code> <code>NLP</code> <code>PyTorch</code> <code>Sentiment Analysis</code> <code>Ethical AI</code></p>
+<hr>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Ho et al.&nbsp;(2024). ChatReview: A ChatGPT-enabled NLP framework. <em>Machine Learning with Applications</em>.</li>
+<li>Meta. (2024). <a href="https://ai.meta.com/blog/meta-llama-3-1/">Introducing Llama 3.1</a>.</li>
+<li>European Commission. <a href="https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai">Ethics Guidelines for Trustworthy AI</a>.</li>
+</ul>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
