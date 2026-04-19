@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ruairi Cullen">
-<meta name="dcterms.date" content="2026-04-18">
-<meta name="description" content="Machine learning dashboard to optimise stock replenishment using sales data and seasonal trends.">
+<meta name="author" content="Ruairí Cullen">
+<meta name="dcterms.date" content="2024-12-01">
+<meta name="description" content="A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.">
 
-<title>Predictive Inventory Optimisation Dashboard – Ruairí Cullen</title>
+<title>Consumer Complaint Analytics — Bank of America – Ruairí Cullen</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -128,10 +163,15 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#project-description" id="toc-project-description" class="nav-link" data-scroll-target="#project-description">Project Description</a></li>
+  <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">Key Results</a></li>
+  <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">Feature Engineering</a></li>
+  <li><a href="#python-code-imports-configuration" id="toc-python-code-imports-configuration" class="nav-link" data-scroll-target="#python-code-imports-configuration">Python Code — Imports &amp; Configuration</a></li>
+  <li><a href="#python-code-model-performance-visualisation" id="toc-python-code-model-performance-visualisation" class="nav-link" data-scroll-target="#python-code-model-performance-visualisation">Python Code — Model Performance Visualisation</a></li>
+  <li><a href="#python-code-financial-simulation" id="toc-python-code-financial-simulation" class="nav-link" data-scroll-target="#python-code-financial-simulation">Python Code — Financial Simulation</a></li>
+  <li><a href="#dashboard-features" id="toc-dashboard-features" class="nav-link" data-scroll-target="#dashboard-features">Dashboard Features</a></li>
+  <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
   <li><a href="#skills-used" id="toc-skills-used" class="nav-link" data-scroll-target="#skills-used">Skills Used</a></li>
-  <li><a href="#example-python-code" id="toc-example-python-code" class="nav-link" data-scroll-target="#example-python-code">Example Python Code</a></li>
-  <li><a href="#example-dataset-placeholder-for-real-client-data" id="toc-example-dataset-placeholder-for-real-client-data" class="nav-link" data-scroll-target="#example-dataset-placeholder-for-real-client-data">Example dataset (placeholder for real client data)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -140,17 +180,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Predictive Inventory Optimisation Dashboard</h1>
+<h1 class="title">Consumer Complaint Analytics — Bank of America</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Machine Learning</div>
-    <div class="quarto-category">Data Analytics</div>
-    <div class="quarto-category">Consultancy</div>
+    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">Streamlit</div>
+    <div class="quarto-category">Prescriptive Analytics</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Machine learning dashboard to optimise stock replenishment using sales data and seasonal trends.
+    A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.
   </div>
 </div>
 
@@ -160,14 +202,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ruairi Cullen </p>
+             <p>Ruairí Cullen </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 18, 2026</p>
+      <p class="date">December 1, 2024</p>
     </div>
   </div>
   
@@ -181,47 +223,249 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Applied Consultancy Project · DCU<br>
-Client: Agvance Ltd &amp; Animal Farmacy<br>
-Status: In progress</p>
-<p>Working with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs.</p>
+<p>This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves <strong>86.1% precision</strong> identifying complaints likely to require monetary relief.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🚀 <strong>Live Dashboard:</strong> <a href="https://analysisofcomplaints.streamlit.app">analysisofcomplaints.streamlit.app</a></p>
+</div>
+</div>
 <hr>
 </section>
-<section id="project-description" class="level2">
-<h2 class="anchored" data-anchor-id="project-description">Project Description</h2>
-<p>This project involves building a machine learning-powered dashboard that uses historical sales data and seasonal patterns to automate stock replenishment decisions.</p>
-<p>The solution integrates with the client’s live systems: - Shopify<br>
-- Turbo<br>
-- MINTsoft</p>
-<p>The project applies a <strong>convergent mixed-methods research design</strong>, combining: - quantitative machine learning modelling<br>
-- qualitative on-site observation<br>
-- process mapping<br>
-- semi-structured interviews with warehouse staff and the CEO</p>
+<section id="key-results" class="level2">
+<h2 class="anchored" data-anchor-id="key-results">Key Results</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model</td>
+<td>Voting Classifier (Gradient Boosting + Random Forest)</td>
+</tr>
+<tr class="even">
+<td>Precision</td>
+<td>86.1%</td>
+</tr>
+<tr class="odd">
+<td>ROC-AUC</td>
+<td>0.794</td>
+</tr>
+<tr class="even">
+<td>Accuracy</td>
+<td>77.4%</td>
+</tr>
+<tr class="odd">
+<td>Dataset Size</td>
+<td>61,022 CFPB complaints</td>
+</tr>
+<tr class="even">
+<td>Projected Gross Savings</td>
+<td>$510,000</td>
+</tr>
+<tr class="odd">
+<td>Operational Cost</td>
+<td>$39,500</td>
+</tr>
+<tr class="even">
+<td><strong>Net Benefit</strong></td>
+<td><strong>$470,500</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>ROI</strong></td>
+<td><strong>1,191%</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="feature-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
+<p>The pipeline engineered the following features from raw CFPB data:</p>
+<ul>
+<li><strong>TF-IDF vectorisation</strong> of complaint Issue text (unigrams + bigrams, 1,000 features)</li>
+<li><strong>Temporal features</strong> — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter</li>
+<li><strong>Risk rate features</strong> — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)</li>
+<li><strong>Text metadata</strong> — Issue_Length, Issue_Word_Count</li>
+</ul>
+<hr>
+</section>
+<section id="python-code-imports-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-imports-configuration">Python Code — Imports &amp; Configuration</h2>
+<div id="877db7ae" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show imports</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Unified colour theme</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>THEME <span class="op">=</span> {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'primary'</span>: <span class="st">'#4C9AFF'</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'secondary'</span>: <span class="st">'#A78BFA'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'success'</span>: <span class="st">'#34D399'</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'danger'</span>: <span class="st">'#F87171'</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'warning'</span>: <span class="st">'#FBBF24'</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'neutral'</span>: <span class="st">'#475569'</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Libraries loaded."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Libraries loaded.</code></pre>
+</div>
+</div>
+</section>
+<section id="python-code-model-performance-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-model-performance-visualisation">Python Code — Model Performance Visualisation</h2>
+<div id="3448cd15" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'Precision'</span>, <span class="st">'ROC-AUC'</span>, <span class="st">'Accuracy'</span>, <span class="st">'Recall'</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>values  <span class="op">=</span> [<span class="fl">86.1</span>, <span class="fl">79.4</span>, <span class="fl">77.4</span>, <span class="fl">4.6</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>colors  <span class="op">=</span> [<span class="st">'#4C9AFF'</span>, <span class="st">'#A78BFA'</span>, <span class="st">'#34D399'</span>, <span class="st">'#F87171'</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(metrics, values, color<span class="op">=</span>colors, edgecolor<span class="op">=</span><span class="st">'white'</span>, height<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">105</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Score (%)'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Voting Classifier — Model Performance Metrics'</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, pad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax.axvline(x<span class="op">=</span><span class="dv">80</span>, color<span class="op">=</span><span class="st">'grey'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'80% benchmark'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, val <span class="kw">in</span> <span class="bu">zip</span>(bars, values):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ax.text(val <span class="op">+</span> <span class="dv">1</span>, bar.get_y() <span class="op">+</span> bar.get_height() <span class="op">/</span> <span class="dv">2</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>val<span class="sc">}</span><span class="ss">%'</span>, va<span class="op">=</span><span class="st">'center'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project1_files/figure-html/cell-3-output-1.png" width="855" height="373" class="figure-img"></p>
+<figcaption>Voting Classifier performance metrics on the CFPB test set</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="python-code-financial-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="python-code-financial-simulation">Python Code — Financial Simulation</h2>
+<div id="a282358b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation parameters (from report)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>COST_PER_REVIEW   <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>AVG_PAYOUT_SAVED  <span class="op">=</span> <span class="dv">750</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>flagged_cases     <span class="op">=</span> <span class="dv">1020</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>thresholds    <span class="op">=</span> np.arange(<span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="fl">0.05</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>gross_savings <span class="op">=</span> [flagged_cases <span class="op">*</span> AVG_PAYOUT_SAVED <span class="op">*</span> (t <span class="op">*</span> <span class="fl">0.9</span>) <span class="cf">for</span> t <span class="kw">in</span> thresholds]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>op_costs      <span class="op">=</span> [flagged_cases <span class="op">*</span> COST_PER_REVIEW <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> t <span class="op">*</span> <span class="fl">0.3</span>) <span class="cf">for</span> t <span class="kw">in</span> thresholds]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>net_benefit   <span class="op">=</span> [g <span class="op">-</span> o <span class="cf">for</span> g, o <span class="kw">in</span> <span class="bu">zip</span>(gross_savings, op_costs)]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>roi           <span class="op">=</span> [(n <span class="op">/</span> o) <span class="op">*</span> <span class="dv">100</span> <span class="cf">for</span> n, o <span class="kw">in</span> <span class="bu">zip</span>(net_benefit, op_costs)]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax1.plot(thresholds, net_benefit, <span class="st">'b-o'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Net Benefit ($)'</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Risk Threshold'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Net Benefit ($)'</span>, color<span class="op">=</span><span class="st">'blue'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax2.plot(thresholds, roi, <span class="st">'g--s'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'ROI (%)'</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'ROI (%)'</span>, color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax1.axvline(x<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, label<span class="op">=</span><span class="st">'Selected threshold (0.50)'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Financial Impact by Risk Threshold'</span>, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, pad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>fig.legend(loc<span class="op">=</span><span class="st">'upper right'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.88</span>, <span class="fl">0.88</span>), fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="project1_files/figure-html/cell-4-output-1.png" width="852" height="373" class="figure-img"></p>
+<figcaption>Net benefit and ROI across different risk thresholds</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="dashboard-features" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-features">Dashboard Features</h2>
+<p>The deployed Streamlit application serves three user groups:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>User</th>
+<th>View</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frontline Agents</td>
+<td>Live Risk Assessment</td>
+<td>Real-time monetary liability score per complaint</td>
+</tr>
+<tr class="even">
+<td>Managers</td>
+<td>Operational Efficiency</td>
+<td>Processing times and workload heatmaps</td>
+</tr>
+<tr class="odd">
+<td>Executives</td>
+<td>Market Intelligence</td>
+<td>Volume patterns, financial exposure, ROI tracking</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="ethical-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="ethical-considerations">Ethical Considerations</h2>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>All Personally Identifiable Information (PII) was removed prior to analysis. Sensitive demographic variables — race, gender, and exact location — were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata.</p>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="skills-used" class="level2">
 <h2 class="anchored" data-anchor-id="skills-used">Skills Used</h2>
-<ul>
-<li>CRISP-DM<br>
-</li>
-<li>PRISMA<br>
-</li>
-<li>Demand Forecasting<br>
-</li>
-<li>Business Process Mapping<br>
-</li>
-<li>Mixed Methods Research</li>
-</ul>
+<p><code>Python</code> <code>scikit-learn</code> <code>Gradient Boosting</code> <code>Random Forest</code> <code>TF-IDF</code> <code>NLP</code> <code>Streamlit</code> <code>Prescriptive Analytics</code> <code>Ethical AI</code> <code>CFPB Data</code></p>
 <hr>
 </section>
-<section id="example-python-code" class="level2">
-<h2 class="anchored" data-anchor-id="example-python-code">Example Python Code</h2>
-<p>import pandas as pd</p>
-</section>
-<section id="example-dataset-placeholder-for-real-client-data" class="level1">
-<h1>Example dataset (placeholder for real client data)</h1>
-<p>data = pd.DataFrame({ “Month”: [“Jan”, “Feb”, “Mar”], “Demand”: [120, 150, 170] })</p>
-<p>data</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Chen &amp; Guestrin (2016). XGBoost: A Scalable Tree Boosting System. <em>ACM SIGKDD</em>.</li>
+<li>Consumer Financial Protection Bureau (2024). <a href="https://www.consumerfinance.gov/data-research/consumer-complaints/">Consumer Complaint Database</a>.</li>
+</ul>
 
 
 </section>

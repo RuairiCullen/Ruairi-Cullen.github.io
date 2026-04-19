@@ -4,7 +4,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Here you will find my data analytics projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictive Inventory Optimisation Dashboard\n\n\nMachine learning dashboard to optimise stock replenishment using sales data and seasonal trends.\n\n\n\nRuairi Cullen\n\n\nApr 18, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Here you will find my data analytics projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsumer Complaint Analytics — Bank of America\n\n\n\nMachine Learning\n\nNLP\n\nPython\n\nStreamlit\n\nPrescriptive Analytics\n\n\n\nA Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.\n\n\n\nDec 1, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -93,36 +93,78 @@
   {
     "objectID": "projects/list/project1.html",
     "href": "projects/list/project1.html",
-    "title": "Predictive Inventory Optimisation Dashboard",
+    "title": "Consumer Complaint Analytics — Bank of America",
     "section": "",
-    "text": "Applied Consultancy Project · DCU\nClient: Agvance Ltd & Animal Farmacy\nStatus: In progress\nWorking with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs."
+    "text": "This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves 86.1% precision identifying complaints likely to require monetary relief.\n\n\n\n\n\n\nTip\n\n\n\n🚀 Live Dashboard: analysisofcomplaints.streamlit.app"
   },
   {
     "objectID": "projects/list/project1.html#overview",
     "href": "projects/list/project1.html#overview",
-    "title": "Predictive Inventory Optimisation Dashboard",
+    "title": "Consumer Complaint Analytics — Bank of America",
     "section": "",
-    "text": "Applied Consultancy Project · DCU\nClient: Agvance Ltd & Animal Farmacy\nStatus: In progress\nWorking with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs."
+    "text": "This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves 86.1% precision identifying complaints likely to require monetary relief.\n\n\n\n\n\n\nTip\n\n\n\n🚀 Live Dashboard: analysisofcomplaints.streamlit.app"
   },
   {
-    "objectID": "projects/list/project1.html#project-description",
-    "href": "projects/list/project1.html#project-description",
-    "title": "Predictive Inventory Optimisation Dashboard",
-    "section": "Project Description",
-    "text": "Project Description\nThis project involves building a machine learning-powered dashboard that uses historical sales data and seasonal patterns to automate stock replenishment decisions.\nThe solution integrates with the client’s live systems: - Shopify\n- Turbo\n- MINTsoft\nThe project applies a convergent mixed-methods research design, combining: - quantitative machine learning modelling\n- qualitative on-site observation\n- process mapping\n- semi-structured interviews with warehouse staff and the CEO"
+    "objectID": "projects/list/project1.html#key-results",
+    "href": "projects/list/project1.html#key-results",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Key Results",
+    "text": "Key Results\n\n\n\nMetric\nResult\n\n\n\n\nModel\nVoting Classifier (Gradient Boosting + Random Forest)\n\n\nPrecision\n86.1%\n\n\nROC-AUC\n0.794\n\n\nAccuracy\n77.4%\n\n\nDataset Size\n61,022 CFPB complaints\n\n\nProjected Gross Savings\n$510,000\n\n\nOperational Cost\n$39,500\n\n\nNet Benefit\n$470,500\n\n\nROI\n1,191%"
+  },
+  {
+    "objectID": "projects/list/project1.html#feature-engineering",
+    "href": "projects/list/project1.html#feature-engineering",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Feature Engineering",
+    "text": "Feature Engineering\nThe pipeline engineered the following features from raw CFPB data:\n\nTF-IDF vectorisation of complaint Issue text (unigrams + bigrams, 1,000 features)\nTemporal features — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter\nRisk rate features — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)\nText metadata — Issue_Length, Issue_Word_Count"
+  },
+  {
+    "objectID": "projects/list/project1.html#python-code-imports-configuration",
+    "href": "projects/list/project1.html#python-code-imports-configuration",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Python Code — Imports & Configuration",
+    "text": "Python Code — Imports & Configuration\n\n\nShow imports\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.patches as mpatches\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# Unified colour theme\nTHEME = {\n    'primary': '#4C9AFF',\n    'secondary': '#A78BFA',\n    'success': '#34D399',\n    'danger': '#F87171',\n    'warning': '#FBBF24',\n    'neutral': '#475569',\n}\nprint(\"Libraries loaded.\")\n\n\nLibraries loaded."
+  },
+  {
+    "objectID": "projects/list/project1.html#python-code-model-performance-visualisation",
+    "href": "projects/list/project1.html#python-code-model-performance-visualisation",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Python Code — Model Performance Visualisation",
+    "text": "Python Code — Model Performance Visualisation\n\nimport matplotlib.pyplot as plt\n\nmetrics = ['Precision', 'ROC-AUC', 'Accuracy', 'Recall']\nvalues  = [86.1, 79.4, 77.4, 4.6]\ncolors  = ['#4C9AFF', '#A78BFA', '#34D399', '#F87171']\n\nfig, ax = plt.subplots(figsize=(9, 4))\nbars = ax.barh(metrics, values, color=colors, edgecolor='white', height=0.5)\nax.set_xlim(0, 105)\nax.set_xlabel('Score (%)', fontsize=11)\nax.set_title('Voting Classifier — Model Performance Metrics',\n             fontsize=13, fontweight='bold', pad=15)\nax.axvline(x=80, color='grey', linestyle='--', alpha=0.5, label='80% benchmark')\nfor bar, val in zip(bars, values):\n    ax.text(val + 1, bar.get_y() + bar.get_height() / 2,\n            f'{val}%', va='center', fontweight='bold', fontsize=10)\nax.legend(fontsize=9)\nplt.tight_layout()\nplt.show()\n\n\n\n\nVoting Classifier performance metrics on the CFPB test set"
+  },
+  {
+    "objectID": "projects/list/project1.html#python-code-financial-simulation",
+    "href": "projects/list/project1.html#python-code-financial-simulation",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Python Code — Financial Simulation",
+    "text": "Python Code — Financial Simulation\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Simulation parameters (from report)\nCOST_PER_REVIEW   = 50\nAVG_PAYOUT_SAVED  = 750\nflagged_cases     = 1020\n\nthresholds    = np.arange(0.3, 0.8, 0.05)\ngross_savings = [flagged_cases * AVG_PAYOUT_SAVED * (t * 0.9) for t in thresholds]\nop_costs      = [flagged_cases * COST_PER_REVIEW * (1 - t * 0.3) for t in thresholds]\nnet_benefit   = [g - o for g, o in zip(gross_savings, op_costs)]\nroi           = [(n / o) * 100 for n, o in zip(net_benefit, op_costs)]\n\nfig, ax1 = plt.subplots(figsize=(9, 4))\nax2 = ax1.twinx()\n\nax1.plot(thresholds, net_benefit, 'b-o', linewidth=2, label='Net Benefit ($)')\nax1.set_xlabel('Risk Threshold', fontsize=11)\nax1.set_ylabel('Net Benefit ($)', color='blue', fontsize=11)\nax1.tick_params(axis='y', labelcolor='blue')\n\nax2.plot(thresholds, roi, 'g--s', linewidth=2, label='ROI (%)')\nax2.set_ylabel('ROI (%)', color='green', fontsize=11)\nax2.tick_params(axis='y', labelcolor='green')\n\nax1.axvline(x=0.5, color='red', linestyle=':', alpha=0.6, label='Selected threshold (0.50)')\nax1.set_title('Financial Impact by Risk Threshold', fontsize=13, fontweight='bold', pad=15)\nfig.legend(loc='upper right', bbox_to_anchor=(0.88, 0.88), fontsize=9)\nplt.tight_layout()\nplt.show()\n\n\n\n\nNet benefit and ROI across different risk thresholds"
+  },
+  {
+    "objectID": "projects/list/project1.html#dashboard-features",
+    "href": "projects/list/project1.html#dashboard-features",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Dashboard Features",
+    "text": "Dashboard Features\nThe deployed Streamlit application serves three user groups:\n\n\n\n\n\n\n\n\nUser\nView\nPurpose\n\n\n\n\nFrontline Agents\nLive Risk Assessment\nReal-time monetary liability score per complaint\n\n\nManagers\nOperational Efficiency\nProcessing times and workload heatmaps\n\n\nExecutives\nMarket Intelligence\nVolume patterns, financial exposure, ROI tracking"
+  },
+  {
+    "objectID": "projects/list/project1.html#ethical-considerations",
+    "href": "projects/list/project1.html#ethical-considerations",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "Ethical Considerations",
+    "text": "Ethical Considerations\n\n\n\n\n\n\nAll Personally Identifiable Information (PII) was removed prior to analysis. Sensitive demographic variables — race, gender, and exact location — were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata."
   },
   {
     "objectID": "projects/list/project1.html#skills-used",
     "href": "projects/list/project1.html#skills-used",
-    "title": "Predictive Inventory Optimisation Dashboard",
+    "title": "Consumer Complaint Analytics — Bank of America",
     "section": "Skills Used",
-    "text": "Skills Used\n\nCRISP-DM\n\nPRISMA\n\nDemand Forecasting\n\nBusiness Process Mapping\n\nMixed Methods Research"
+    "text": "Skills Used\nPython scikit-learn Gradient Boosting Random Forest TF-IDF NLP Streamlit Prescriptive Analytics Ethical AI CFPB Data"
   },
   {
-    "objectID": "projects/list/project1.html#example-python-code",
-    "href": "projects/list/project1.html#example-python-code",
-    "title": "Predictive Inventory Optimisation Dashboard",
-    "section": "Example Python Code",
-    "text": "Example Python Code\nimport pandas as pd"
+    "objectID": "projects/list/project1.html#references",
+    "href": "projects/list/project1.html#references",
+    "title": "Consumer Complaint Analytics — Bank of America",
+    "section": "References",
+    "text": "References\n\nChen & Guestrin (2016). XGBoost: A Scalable Tree Boosting System. ACM SIGKDD.\nConsumer Financial Protection Bureau (2024). Consumer Complaint Database."
   }
 ]

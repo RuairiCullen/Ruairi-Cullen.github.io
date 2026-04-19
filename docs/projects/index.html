@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -179,9 +179,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWFjaGluZSUyMExlYXJuaW5n">Machine Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TkxQ">NLP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJlc2NyaXB0aXZlJTIwQW5hbHl0aWNz">Prescriptive Analytics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RyZWFtbGl0">Streamlit <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -219,31 +219,38 @@ window.Quarto = {
 <div class="card-text listing-description delink">
 
 </div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDRGF0YSUyMEFuYWx5dGljcyUyQ0NvbnN1bHRhbmN5" data-listing-date-sort="1776466800000" data-listing-file-modified-sort="1776524183703" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="152">
+<div class="g-col-1" data-index="1" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDTkxQJTJDUHl0aG9uJTJDU3RyZWFtbGl0JTJDUHJlc2NyaXB0aXZlJTIwQW5hbHl0aWNz" data-listing-date-sort="1733011200000" data-listing-file-modified-sort="1776559791273" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="603">
 <a href="../projects/list/project1.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<p class="card-img-top">
+<img loading="lazy" src="../images/complaints.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Predictive Inventory Optimisation Dashboard
+Consumer Complaint Analytics — Bank of America
 </h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TkxQ'); return false;">NLP</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('U3RyZWFtbGl0'); return false;">Streamlit</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJlc2NyaXB0aXZlJTIwQW5hbHl0aWNz'); return false;">Prescriptive Analytics</div>
+
+</div>
 <div class="card-text listing-description delink">
-<p>Machine learning dashboard to optimise stock replenishment using sales data and seasonal trends.</p>
+<p>A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.</p>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Ruairi Cullen
-</div>
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
-Apr 18, 2026
+Dec 1, 2024
 </div>
 </div>
 </div>

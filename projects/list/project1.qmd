@@ -1,58 +1,175 @@
-
 ---
-title: "Predictive Inventory Optimisation Dashboard"
-description: "Machine learning dashboard to optimise stock replenishment using sales data and seasonal trends."
-author: "Ruairi Cullen"
-date: 2026-04-18
-categories: [Machine Learning, Data Analytics, Consultancy]
+title: "Consumer Complaint Analytics — Bank of America"
+description: "A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%."
+author: "Ruairí Cullen"
+date: "2024-12-01"
+image: "../../images/complaints.png"
+categories: [Machine Learning, NLP, Python, Streamlit, Prescriptive Analytics]
 ---
 
 ## Overview
 
-Applied Consultancy Project · DCU  
-Client: Agvance Ltd & Animal Farmacy  
-Status: In progress  
+This project transforms Bank of America's complaint management from a slow reactive 
+First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 
+real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier 
+combining Histogram-based Gradient Boosting and Random Forest achieves **86.1% precision** 
+identifying complaints likely to require monetary relief.
 
-Working with a 6-person team for a family-owned agri-nutrition wholesaler experiencing recurring stock-outs.
+::: {.callout-tip}
+🚀 **Live Dashboard:** [analysisofcomplaints.streamlit.app](https://analysisofcomplaints.streamlit.app)
+:::
 
 ---
 
-## Project Description
+## Key Results
 
-This project involves building a machine learning-powered dashboard that uses historical sales data and seasonal patterns to automate stock replenishment decisions.
+| Metric | Result |
+|---|---|
+| Model | Voting Classifier (Gradient Boosting + Random Forest) |
+| Precision | 86.1% |
+| ROC-AUC | 0.794 |
+| Accuracy | 77.4% |
+| Dataset Size | 61,022 CFPB complaints |
+| Projected Gross Savings | $510,000 |
+| Operational Cost | $39,500 |
+| **Net Benefit** | **$470,500** |
+| **ROI** | **1,191%** |
 
-The solution integrates with the client’s live systems:
-- Shopify  
-- Turbo  
-- MINTsoft  
+---
 
-The project applies a **convergent mixed-methods research design**, combining:
-- quantitative machine learning modelling  
-- qualitative on-site observation  
-- process mapping  
-- semi-structured interviews with warehouse staff and the CEO  
+## Feature Engineering
+
+The pipeline engineered the following features from raw CFPB data:
+
+- **TF-IDF vectorisation** of complaint Issue text (unigrams + bigrams, 1,000 features)
+- **Temporal features** — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter
+- **Risk rate features** — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)
+- **Text metadata** — Issue_Length, Issue_Word_Count
+
+---
+
+## Python Code — Imports & Configuration
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show imports"
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import warnings
+warnings.filterwarnings('ignore')
+
+# Unified colour theme
+THEME = {
+    'primary': '#4C9AFF',
+    'secondary': '#A78BFA',
+    'success': '#34D399',
+    'danger': '#F87171',
+    'warning': '#FBBF24',
+    'neutral': '#475569',
+}
+print("Libraries loaded.")
+```
+
+## Python Code — Model Performance Visualisation
+
+```{python}
+#| fig-cap: "Voting Classifier performance metrics on the CFPB test set"
+#| echo: true
+
+import matplotlib.pyplot as plt
+
+metrics = ['Precision', 'ROC-AUC', 'Accuracy', 'Recall']
+values  = [86.1, 79.4, 77.4, 4.6]
+colors  = ['#4C9AFF', '#A78BFA', '#34D399', '#F87171']
+
+fig, ax = plt.subplots(figsize=(9, 4))
+bars = ax.barh(metrics, values, color=colors, edgecolor='white', height=0.5)
+ax.set_xlim(0, 105)
+ax.set_xlabel('Score (%)', fontsize=11)
+ax.set_title('Voting Classifier — Model Performance Metrics',
+             fontsize=13, fontweight='bold', pad=15)
+ax.axvline(x=80, color='grey', linestyle='--', alpha=0.5, label='80% benchmark')
+for bar, val in zip(bars, values):
+    ax.text(val + 1, bar.get_y() + bar.get_height() / 2,
+            f'{val}%', va='center', fontweight='bold', fontsize=10)
+ax.legend(fontsize=9)
+plt.tight_layout()
+plt.show()
+```
+
+## Python Code — Financial Simulation
+
+```{python}
+#| fig-cap: "Net benefit and ROI across different risk thresholds"
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Simulation parameters (from report)
+COST_PER_REVIEW   = 50
+AVG_PAYOUT_SAVED  = 750
+flagged_cases     = 1020
+
+thresholds    = np.arange(0.3, 0.8, 0.05)
+gross_savings = [flagged_cases * AVG_PAYOUT_SAVED * (t * 0.9) for t in thresholds]
+op_costs      = [flagged_cases * COST_PER_REVIEW * (1 - t * 0.3) for t in thresholds]
+net_benefit   = [g - o for g, o in zip(gross_savings, op_costs)]
+roi           = [(n / o) * 100 for n, o in zip(net_benefit, op_costs)]
+
+fig, ax1 = plt.subplots(figsize=(9, 4))
+ax2 = ax1.twinx()
+
+ax1.plot(thresholds, net_benefit, 'b-o', linewidth=2, label='Net Benefit ($)')
+ax1.set_xlabel('Risk Threshold', fontsize=11)
+ax1.set_ylabel('Net Benefit ($)', color='blue', fontsize=11)
+ax1.tick_params(axis='y', labelcolor='blue')
+
+ax2.plot(thresholds, roi, 'g--s', linewidth=2, label='ROI (%)')
+ax2.set_ylabel('ROI (%)', color='green', fontsize=11)
+ax2.tick_params(axis='y', labelcolor='green')
+
+ax1.axvline(x=0.5, color='red', linestyle=':', alpha=0.6, label='Selected threshold (0.50)')
+ax1.set_title('Financial Impact by Risk Threshold', fontsize=13, fontweight='bold', pad=15)
+fig.legend(loc='upper right', bbox_to_anchor=(0.88, 0.88), fontsize=9)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Dashboard Features
+
+The deployed Streamlit application serves three user groups:
+
+| User | View | Purpose |
+|---|---|---|
+| Frontline Agents | Live Risk Assessment | Real-time monetary liability score per complaint |
+| Managers | Operational Efficiency | Processing times and workload heatmaps |
+| Executives | Market Intelligence | Volume patterns, financial exposure, ROI tracking |
+
+---
+
+## Ethical Considerations
+
+::: {.callout-warning appearance="minimal"}
+All Personally Identifiable Information (PII) was removed prior to analysis. Sensitive 
+demographic variables — race, gender, and exact location — were excluded to ensure 
+fair, bias-free predictions based solely on complaint content and product metadata.
+:::
 
 ---
 
 ## Skills Used
 
-- CRISP-DM  
-- PRISMA  
-- Demand Forecasting  
-- Business Process Mapping  
-- Mixed Methods Research  
+`Python` `scikit-learn` `Gradient Boosting` `Random Forest` `TF-IDF` `NLP`
+`Streamlit` `Prescriptive Analytics` `Ethical AI` `CFPB Data`
 
 ---
 
-## Example Python Code
+## References
 
-```{python}
-import pandas as pd
-
-# Example dataset (placeholder for real client data)
-data = pd.DataFrame({
-    "Month": ["Jan", "Feb", "Mar"],
-    "Demand": [120, 150, 170]
-})
-
-data
+- Chen & Guestrin (2016). XGBoost: A Scalable Tree Boosting System. *ACM SIGKDD*.
+- Consumer Financial Protection Bureau (2024). [Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/).

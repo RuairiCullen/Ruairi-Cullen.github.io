@@ -1,9 +1,11 @@
 ---
-title: Projects
+title: "Projects"
 listing:
   contents: list
   type: grid
   sort: "date desc"
+  categories: true
+  fields: [image, title, description, categories, date]
 ---
 
 Here you will find my data analytics projects.
