@@ -51,93 +51,93 @@
   {
     "objectID": "projects/list/project2.html",
     "href": "projects/list/project2.html",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "",
-    "text": "This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group — NoLIta, Pichet, Café en Seine, and The Mercantile Hotel — using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.\nTwo AI models were compared:\n\nBERT (bert-base-uncased) — a discriminative transformer model, fine-tuned on labelled review data\nLLaMA 3.1 — a generative large language model, applied via zero-shot prompting with no training data\n\n\n\n\n\n\n\nNote\n\n\n\nThis project uses real customer review data from the Mercantile Group. Formal consent was obtained from the General Manager. All personal identifiers were removed prior to analysis."
+    "text": "This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group - NoLIta, Pichet, Café en Seine, and The Mercantile Hotel - using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.\nTwo AI models were compared:\n\nBERT (bert-base-uncased) - a discriminative transformer model, fine-tuned on labelled review data\nLLaMA 3.1 - a generative large language model, applied via zero-shot prompting with no training data\n\n\n\n\n\n\n\nNote\n\n\n\nThis project uses real customer review data from the Mercantile Group. Formal consent was obtained from the General Manager. All personal identifiers were removed prior to analysis."
   },
   {
     "objectID": "projects/list/project2.html#overview",
     "href": "projects/list/project2.html#overview",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "",
-    "text": "This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group — NoLIta, Pichet, Café en Seine, and The Mercantile Hotel — using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.\nTwo AI models were compared:\n\nBERT (bert-base-uncased) — a discriminative transformer model, fine-tuned on labelled review data\nLLaMA 3.1 — a generative large language model, applied via zero-shot prompting with no training data\n\n\n\n\n\n\n\nNote\n\n\n\nThis project uses real customer review data from the Mercantile Group. Formal consent was obtained from the General Manager. All personal identifiers were removed prior to analysis."
+    "text": "This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group - NoLIta, Pichet, Café en Seine, and The Mercantile Hotel - using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.\nTwo AI models were compared:\n\nBERT (bert-base-uncased) - a discriminative transformer model, fine-tuned on labelled review data\nLLaMA 3.1 - a generative large language model, applied via zero-shot prompting with no training data\n\n\n\n\n\n\n\nNote\n\n\n\nThis project uses real customer review data from the Mercantile Group. Formal consent was obtained from the General Manager. All personal identifiers were removed prior to analysis."
   },
   {
     "objectID": "projects/list/project2.html#key-results",
     "href": "projects/list/project2.html#key-results",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "Key Results",
-    "text": "Key Results\n\n\n\nModel\nAccuracy\nF1 Score\n\n\n\n\nTF-IDF + Logistic Regression (Baseline)\n91.03%\n0.952\n\n\nBERT (Fine-tuned)\n97.76%\n0.987\n\n\nLLaMA 3.1 (Zero-shot)\n98.21%\n0.990\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nKey finding: LLaMA 3.1 marginally outperformed fine-tuned BERT despite using zero training data — highlighting the power of large language models for domain-specific NLP tasks with limited labelled datasets."
+    "text": "Key Results\n\n\n\nModel\nAccuracy\nF1 Score\n\n\n\n\nTF-IDF + Logistic Regression (Baseline)\n91.03%\n0.952\n\n\nBERT (Fine-tuned)\n97.76%\n0.987\n\n\nLLaMA 3.1 (Zero-shot)\n98.21%\n0.990\n\n\n\n\n\n\n\n\n\nKey finding: LLaMA 3.1 marginally outperformed fine-tuned BERT despite using zero training data - highlights the power of LLMs for domain-specific NLP tasks with limited labelled datasets."
   },
   {
     "objectID": "projects/list/project2.html#dataset",
     "href": "projects/list/project2.html#dataset",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "Dataset",
     "text": "Dataset\n\n1,610 original records across 4 venues; 1,188 retained after cleaning\nBinary sentiment labels: Positive (rating ≥ 4) and Negative (rating ≤ 2)\nRating 3 deliberately excluded as ambiguous\n80/20 stratified train/test split\nClass imbalance: ~88% positive, ~12% negative"
   },
   {
-    "objectID": "projects/list/project2.html#python-code-model-comparison-visualisation",
-    "href": "projects/list/project2.html#python-code-model-comparison-visualisation",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
-    "section": "Python Code — Model Comparison Visualisation",
-    "text": "Python Code — Model Comparison Visualisation\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nmodels   = ['TF-IDF + LR\\n(Baseline)', 'BERT\\n(Fine-tuned)', 'LLaMA 3.1\\n(Zero-shot)']\naccuracy = [91.03, 97.76, 98.21]\nf1       = [95.17, 98.73, 98.98]\n\nx      = np.arange(len(models))\nwidth  = 0.35\ncolors = ['#475569', '#4C9AFF', '#A78BFA']\n\nfig, ax = plt.subplots(figsize=(9, 5))\nbars1 = ax.bar(x - width/2, accuracy, width, label='Accuracy (%)',\n               color=colors, edgecolor='white', alpha=0.9)\nbars2 = ax.bar(x + width/2, f1, width, label='F1 Score (%)',\n               color=colors, edgecolor='white', alpha=0.5)\n\nax.set_ylabel('Score (%)', fontsize=11)\nax.set_title('Model Comparison — Accuracy & F1 Score', fontsize=13,\n             fontweight='bold', pad=15)\nax.set_xticks(x)\nax.set_xticklabels(models, fontsize=10)\nax.set_ylim(85, 102)\nax.legend(fontsize=10)\nax.axhline(y=97, color='grey', linestyle='--', alpha=0.4, label='97% benchmark')\n\nfor bar in bars1:\n    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,\n            f'{bar.get_height():.1f}%', ha='center', fontsize=9, fontweight='bold')\nfor bar in bars2:\n    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,\n            f'{bar.get_height():.1f}%', ha='center', fontsize=9, fontweight='bold')\n\nplt.tight_layout()\nplt.show()\n\n\n\n\nAccuracy and F1 Score comparison across three models"
+    "objectID": "projects/list/project2.html#python-code---model-comparison-visualisation",
+    "href": "projects/list/project2.html#python-code---model-comparison-visualisation",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
+    "section": "Python Code - Model Comparison Visualisation",
+    "text": "Python Code - Model Comparison Visualisation\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nmodels   = ['TF-IDF + LR\\n(Baseline)', 'BERT\\n(Fine-tuned)', 'LLaMA 3.1\\n(Zero-shot)']\naccuracy = [91.03, 97.76, 98.21]\nf1       = [95.17, 98.73, 98.98]\n\nx      = np.arange(len(models))\nwidth  = 0.35\ncolors = ['#475569', '#4C9AFF', '#A78BFA']\n\nfig, ax = plt.subplots(figsize=(9, 5))\nbars1 = ax.bar(x - width/2, accuracy, width, label='Accuracy (%)',\n               color=colors, edgecolor='white', alpha=0.9)\nbars2 = ax.bar(x + width/2, f1, width, label='F1 Score (%)',\n               color=colors, edgecolor='white', alpha=0.5)\n\nax.set_ylabel('Score (%)', fontsize=11)\nax.set_title('Model Comparison — Accuracy & F1 Score', fontsize=13,\n             fontweight='bold', pad=15)\nax.set_xticks(x)\nax.set_xticklabels(models, fontsize=10)\nax.set_ylim(85, 102)\nax.legend(fontsize=10)\nax.axhline(y=97, color='grey', linestyle='--', alpha=0.4, label='97% benchmark')\n\nfor bar in bars1:\n    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,\n            f'{bar.get_height():.1f}%', ha='center', fontsize=9, fontweight='bold')\nfor bar in bars2:\n    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,\n            f'{bar.get_height():.1f}%', ha='center', fontsize=9, fontweight='bold')\n\nplt.tight_layout()\nplt.show()\n\n\n\n\nAccuracy and F1 Score comparison across three models"
   },
   {
-    "objectID": "projects/list/project2.html#python-code-bert-training-loss-curve",
-    "href": "projects/list/project2.html#python-code-bert-training-loss-curve",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
-    "section": "Python Code — BERT Training Loss Curve",
-    "text": "Python Code — BERT Training Loss Curve\n\nimport matplotlib.pyplot as plt\n\nepochs = [1.0, 2.0, 3.0]\nlosses = [0.2025, 0.048, 0.016]\n\nfig, ax = plt.subplots(figsize=(8, 4))\nax.plot(epochs, losses, 'r-o', linewidth=2.5, markersize=8, label='Training Loss')\nax.fill_between(epochs, losses, alpha=0.1, color='red')\nax.set_xlabel('Epoch', fontsize=11)\nax.set_ylabel('Loss', fontsize=11)\nax.set_title('BERT Training Loss per Epoch', fontsize=13,\n             fontweight='bold', pad=15)\nax.set_xticks([1, 2, 3])\nax.legend(fontsize=10)\n\nfor x, y in zip(epochs, losses):\n    ax.annotate(f'{y:.4f}', (x, y), textcoords=\"offset points\",\n                xytext=(10, 5), fontsize=9, fontweight='bold')\n\nplt.tight_layout()\nplt.show()\n\n\n\n\nBERT training loss decreasing across three epochs"
+    "objectID": "projects/list/project2.html#python-code---bert-training-loss-curve",
+    "href": "projects/list/project2.html#python-code---bert-training-loss-curve",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
+    "section": "Python Code - BERT Training Loss Curve",
+    "text": "Python Code - BERT Training Loss Curve\n\nimport matplotlib.pyplot as plt\n\nepochs = [1.0, 2.0, 3.0]\nlosses = [0.2025, 0.048, 0.016]\n\nfig, ax = plt.subplots(figsize=(8, 4))\nax.plot(epochs, losses, 'r-o', linewidth=2.5, markersize=8, label='Training Loss')\nax.fill_between(epochs, losses, alpha=0.1, color='red')\nax.set_xlabel('Epoch', fontsize=11)\nax.set_ylabel('Loss', fontsize=11)\nax.set_title('BERT Training Loss per Epoch', fontsize=13,\n             fontweight='bold', pad=15)\nax.set_xticks([1, 2, 3])\nax.legend(fontsize=10)\n\nfor x, y in zip(epochs, losses):\n    ax.annotate(f'{y:.4f}', (x, y), textcoords=\"offset points\",\n                xytext=(10, 5), fontsize=9, fontweight='bold')\n\nplt.tight_layout()\nplt.show()\n\n\n\n\nBERT training loss decreasing across three epochs"
   },
   {
-    "objectID": "projects/list/project2.html#python-code-sentiment-word-frequency",
-    "href": "projects/list/project2.html#python-code-sentiment-word-frequency",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
-    "section": "Python Code — Sentiment Word Frequency",
-    "text": "Python Code — Sentiment Word Frequency\n\nimport matplotlib.pyplot as plt\n\npos_words  = ['great', 'food', 'staff', 'atmosphere', 'hotel']\npos_counts = [352, 341, 281, 103, 99]\nneg_words  = ['food', 'staff', 'experience', 'waited', 'service']\nneg_counts = [67, 35, 24, 22, 18]\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4))\n\nax1.barh(pos_words[::-1], pos_counts[::-1], color='#34D399', edgecolor='white')\nax1.set_title('Top Positive Words', fontsize=12, fontweight='bold')\nax1.set_xlabel('Frequency')\n\nax2.barh(neg_words[::-1], neg_counts[::-1], color='#F87171', edgecolor='white')\nax2.set_title('Top Negative Words', fontsize=12, fontweight='bold')\nax2.set_xlabel('Frequency')\n\nplt.suptitle('Key Sentiment Drivers — Mercantile Group Reviews',\n             fontsize=13, fontweight='bold', y=1.02)\nplt.tight_layout()\nplt.show()\n\n\n\n\nMost frequent words driving positive and negative sentiment"
+    "objectID": "projects/list/project2.html#python-code---sentiment-word-frequency",
+    "href": "projects/list/project2.html#python-code---sentiment-word-frequency",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
+    "section": "Python Code - Sentiment Word Frequency",
+    "text": "Python Code - Sentiment Word Frequency\n\nimport matplotlib.pyplot as plt\n\npos_words  = ['great', 'food', 'staff', 'atmosphere', 'hotel']\npos_counts = [352, 341, 281, 103, 99]\nneg_words  = ['food', 'staff', 'experience', 'waited', 'service']\nneg_counts = [67, 35, 24, 22, 18]\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4))\n\nax1.barh(pos_words[::-1], pos_counts[::-1], color='#34D399', edgecolor='white')\nax1.set_title('Top Positive Words', fontsize=12, fontweight='bold')\nax1.set_xlabel('Frequency')\n\nax2.barh(neg_words[::-1], neg_counts[::-1], color='#F87171', edgecolor='white')\nax2.set_title('Top Negative Words', fontsize=12, fontweight='bold')\nax2.set_xlabel('Frequency')\n\nplt.suptitle('Key Sentiment Drivers — Mercantile Group Reviews',\n             fontsize=13, fontweight='bold', y=1.02)\nplt.tight_layout()\nplt.show()\n\n\n\n\nMost frequent words driving positive and negative sentiment\n\n\n\n\n\n\n\n\n\n\nBeyond sentiment classification, both models provide key insights to business operations. This NLP analysis demonstrates the capabilities both models possess to assist management on decision-making, monitoring and identifying areas of improvement across venues"
   },
   {
     "objectID": "projects/list/project2.html#methodology",
     "href": "projects/list/project2.html#methodology",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "Methodology",
-    "text": "Methodology\n\nBERT — Discriminative Fine-tuning\n\nTokeniser: bert-base-uncased WordPiece tokenizer\nMax sequence length: 64 tokens (justified by EDA — majority of reviews under 64 words)\nBatch size: 8 (optimised for standard laptop GPU constraints)\nOptimiser: AdamW, learning rate 2e-5\nTraining: 3 epochs with forward pass, backpropagation, and weight updates\n\n\n\nLLaMA 3.1 — Zero-shot Prompting\n\nRun locally via Ollama API (no cloud dependency — reduced environmental impact)\nPrompt engineering to constrain output to a single word: Positive or Negative\nNo training data required — leverages generalised pre-trained knowledge"
+    "text": "Methodology\n\nBERT - Discriminative Fine-tuning\n\nTokeniser: bert-base-uncased WordPiece tokenizer\nMax sequence length: 64 tokens (justified by EDA - majority of reviews under 64 words)\nBatch size: 8 (optimised for standard laptop GPU constraints)\nOptimiser: AdamW, learning rate 2e-5\nTraining: 3 epochs with forward pass, backpropagation, and weight updates\n\n\n\nLLaMA 3.1 - Zero-shot Prompting\n\nRun locally via Ollama API (no cloud dependency - reduced environmental impact)\nPrompt engineering to constrain output to a single word: Positive or Negative\nNo training data required - leverages generalised pre-trained knowledge"
   },
   {
     "objectID": "projects/list/project2.html#ethical-considerations",
     "href": "projects/list/project2.html#ethical-considerations",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "Ethical Considerations",
-    "text": "Ethical Considerations\n\n\n\n\n\n\nFollowing the EU Ethics Guidelines for Trustworthy AI, this project ensured:\n\nHuman oversight — model outputs are decision-support tools, not final decisions\nPrivacy — personal identifiers removed; formal consent obtained from Mercantile Group GM\nFairness — equal review counts taken per venue to avoid representation bias\nEnvironmental — LLaMA run locally via Ollama to reduce cloud API carbon footprint"
+    "text": "Ethical Considerations\n\n\n\n\n\n\nFollowing the EU Ethics Guidelines for Trustworthy AI, this project ensured:\n\nHuman oversight - model outputs are decision-support tools, not final decisions\nPrivacy - personal identifiers removed; formal consent obtained from Mercantile Group GM\nFairness - equal review counts taken per venue to avoid representation bias\nEnvironmental - LLaMA run locally via Ollama to reduce cloud API carbon footprint"
   },
   {
     "objectID": "projects/list/project2.html#business-implications",
     "href": "projects/list/project2.html#business-implications",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "Business Implications",
     "text": "Business Implications\n\n\n\nScenario\nRecommended Model\n\n\n\n\nLimited labelled data available\nLLaMA 3.1 (zero-shot)\n\n\nLong-term domain-specific deployment\nBERT (fine-tuned)\n\n\nQuick deployment, no data science team\nLLaMA 3.1\n\n\nLarge dataset, high accuracy priority\nBERT"
   },
   {
     "objectID": "projects/list/project2.html#skills-used",
     "href": "projects/list/project2.html#skills-used",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "Skills Used",
     "text": "Skills Used\nPython BERT Fine-tuning LLaMA 3.1 Zero-shot Prompting TF-IDF NLP PyTorch Sentiment Analysis Ethical AI"
   },
   {
     "objectID": "projects/list/project2.html#references",
     "href": "projects/list/project2.html#references",
-    "title": "Sentiment Analysis — BERT vs LLaMA 3.1",
+    "title": "Sentiment Analysis - BERT vs LLaMA 3.1",
     "section": "References",
-    "text": "References\n\nHo et al. (2024). ChatReview: A ChatGPT-enabled NLP framework. Machine Learning with Applications.\nMeta. (2024). Introducing Llama 3.1.\nEuropean Commission. Ethics Guidelines for Trustworthy AI."
+    "text": "References\n\nHo et al. (2024). ChatReview: A ChatGPT-enabled NLP framework. Machine Learning with Applications.\nMollah et al. (2024). icACCESS.“Adapting Contextual Embedding to Identify Sentiment of E-commerce Consumer Reviews with Addressing Class Imbalance Issues”.\nSmith et al. (2026). Applied Economics. “BeigeSage: sentiment classification in economic texts utilizing LLMs and fine-tuned BERT models”.\nBasahel et al. (2026). MDPI. “A Resource-Efficient Approach to Fine-Tuning a BERT-Base Model for Sentiment Analysis”."
   },
   {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Use the category filters on the right hand side to browse projects by topic. Click any project card to explore the full analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSentiment Analysis — BERT vs LLaMA 3.1\n\n\n\nNLP\n\nBERT\n\nGenerative AI\n\nPython\n\nHospitality\n\n\n\nComparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with…\n\n\n\nApr 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictive Inventory Optimisation Dashboard\n\n\n\nMachine Learning\n\nDemand Forecasting\n\nConsultancy\n\nPython\n\nCRISP-DM\n\n\n\nAn applied consultancy project with Agvance Ltd & Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME…\n\n\n\nJan 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsumer Complaint Analytics — Bank of America\n\n\n\nMachine Learning\n\nNLP\n\nPython\n\nStreamlit\n\nPrescriptive Analytics\n\n\n\nA Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.\n\n\n\nDec 1, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Use the category filters on the right hand side to browse projects by topic. Click any project card to explore the full analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSentiment Analysis - BERT vs LLaMA 3.1\n\n\n\nNLP\n\nBERT\n\nGenerative AI\n\nPython\n\nHospitality\n\n\n\nComparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% - with…\n\n\n\nApr 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nPredictive Inventory Optimisation Dashboard\n\n\n\nMachine Learning\n\nDemand Forecasting\n\nConsultancy\n\nPython\n\nCRISP-DM\n\n\n\nAn applied consultancy project with Agvance Ltd & Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME…\n\n\n\nJan 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nConsumer Complaint Analytics — Bank of America\n\n\n\nMachine Learning\n\nNLP\n\nPython\n\nStreamlit\n\nPrescriptive Analytics\n\n\n\nA Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.\n\n\n\nDec 1, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

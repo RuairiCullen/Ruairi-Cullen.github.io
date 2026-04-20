@@ -8,9 +8,9 @@
 
 <meta name="author" content="Ruairí Cullen">
 <meta name="dcterms.date" content="2026-04-16">
-<meta name="description" content="Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with no training data.">
+<meta name="description" content="Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% - with no training data.">
 
-<title>Sentiment Analysis — BERT vs LLaMA 3.1 – Ruairí Cullen</title>
+<title>Sentiment Analysis - BERT vs LLaMA 3.1 – Ruairí Cullen</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -199,22 +199,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">Key Results</a></li>
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
-  <li><a href="#python-code-model-comparison-visualisation" id="toc-python-code-model-comparison-visualisation" class="nav-link" data-scroll-target="#python-code-model-comparison-visualisation">Python Code — Model Comparison Visualisation</a></li>
-  <li><a href="#python-code-bert-training-loss-curve" id="toc-python-code-bert-training-loss-curve" class="nav-link" data-scroll-target="#python-code-bert-training-loss-curve">Python Code — BERT Training Loss Curve</a></li>
-  <li><a href="#python-code-sentiment-word-frequency" id="toc-python-code-sentiment-word-frequency" class="nav-link" data-scroll-target="#python-code-sentiment-word-frequency">Python Code — Sentiment Word Frequency</a></li>
+  <li><a href="#python-code---model-comparison-visualisation" id="toc-python-code---model-comparison-visualisation" class="nav-link" data-scroll-target="#python-code---model-comparison-visualisation">Python Code - Model Comparison Visualisation</a></li>
+  <li><a href="#python-code---bert-training-loss-curve" id="toc-python-code---bert-training-loss-curve" class="nav-link" data-scroll-target="#python-code---bert-training-loss-curve">Python Code - BERT Training Loss Curve</a></li>
+  <li><a href="#python-code---sentiment-word-frequency" id="toc-python-code---sentiment-word-frequency" class="nav-link" data-scroll-target="#python-code---sentiment-word-frequency">Python Code - Sentiment Word Frequency</a></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
   <ul class="collapse">
-  <li><a href="#bert-discriminative-fine-tuning" id="toc-bert-discriminative-fine-tuning" class="nav-link" data-scroll-target="#bert-discriminative-fine-tuning">BERT — Discriminative Fine-tuning</a></li>
-  <li><a href="#llama-3.1-zero-shot-prompting" id="toc-llama-3.1-zero-shot-prompting" class="nav-link" data-scroll-target="#llama-3.1-zero-shot-prompting">LLaMA 3.1 — Zero-shot Prompting</a></li>
+  <li><a href="#bert---discriminative-fine-tuning" id="toc-bert---discriminative-fine-tuning" class="nav-link" data-scroll-target="#bert---discriminative-fine-tuning">BERT - Discriminative Fine-tuning</a></li>
+  <li><a href="#llama-3.1---zero-shot-prompting" id="toc-llama-3.1---zero-shot-prompting" class="nav-link" data-scroll-target="#llama-3.1---zero-shot-prompting">LLaMA 3.1 - Zero-shot Prompting</a></li>
   </ul></li>
   <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
   <li><a href="#business-implications" id="toc-business-implications" class="nav-link" data-scroll-target="#business-implications">Business Implications</a></li>
@@ -222,13 +221,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sentiment Analysis — BERT vs LLaMA 3.1</h1>
+<h1 class="title">Sentiment Analysis - BERT vs LLaMA 3.1</h1>
   <div class="quarto-categories">
     <div class="quarto-category">NLP</div>
     <div class="quarto-category">BERT</div>
@@ -240,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with no training data.
+    Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% - with no training data.
   </div>
 </div>
 
@@ -271,11 +274,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group — <strong>NoLIta, Pichet, Café en Seine, and The Mercantile Hotel</strong> — using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.</p>
+<p>This project addresses the business problem of automated sentiment classification of customer reviews across four Dublin venues within the Mercantile Group - <strong>NoLIta, Pichet, Café en Seine, and The Mercantile Hotel</strong> - using reviews sourced from OpenTable, TripAdvisor, Google, and Yelp.</p>
 <p>Two AI models were compared:</p>
 <ul>
-<li><strong>BERT</strong> (<code>bert-base-uncased</code>) — a discriminative transformer model, fine-tuned on labelled review data</li>
-<li><strong>LLaMA 3.1</strong> — a generative large language model, applied via zero-shot prompting with no training data</li>
+<li><strong>BERT</strong> (<code>bert-base-uncased</code>) - a discriminative transformer model, fine-tuned on labelled review data</li>
+<li><strong>LLaMA 3.1</strong> - a generative large language model, applied via zero-shot prompting with no training data</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -320,17 +323,14 @@ Note
 </tr>
 </tbody>
 </table>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
+<div class="callout-body-container">
+<p><strong>Key finding:</strong> LLaMA 3.1 marginally outperformed fine-tuned BERT despite using <strong>zero training data</strong> - highlights the power of LLMs for domain-specific NLP tasks with limited labelled datasets.</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Key finding:</strong> LLaMA 3.1 marginally outperformed fine-tuned BERT despite using <strong>zero training data</strong> — highlighting the power of large language models for domain-specific NLP tasks with limited labelled datasets.</p>
 </div>
 </div>
 <hr>
@@ -346,9 +346,9 @@ Tip
 </ul>
 <hr>
 </section>
-<section id="python-code-model-comparison-visualisation" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-model-comparison-visualisation">Python Code — Model Comparison Visualisation</h2>
-<div id="9384d5ae" class="cell" data-execution_count="1">
+<section id="python-code---model-comparison-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---model-comparison-visualisation">Python Code - Model Comparison Visualisation</h2>
+<div id="04d43017" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -394,9 +394,9 @@ Tip
 </div>
 </div>
 </section>
-<section id="python-code-bert-training-loss-curve" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-bert-training-loss-curve">Python Code — BERT Training Loss Curve</h2>
-<div id="018e6e5b" class="cell" data-execution_count="2">
+<section id="python-code---bert-training-loss-curve" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---bert-training-loss-curve">Python Code - BERT Training Loss Curve</h2>
+<div id="a95bb5a4" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]</span>
@@ -428,9 +428,9 @@ Tip
 </div>
 </div>
 </section>
-<section id="python-code-sentiment-word-frequency" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-sentiment-word-frequency">Python Code — Sentiment Word Frequency</h2>
-<div id="44baa40d" class="cell" data-execution_count="3">
+<section id="python-code---sentiment-word-frequency" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---sentiment-word-frequency">Python Code - Sentiment Word Frequency</h2>
+<div id="9c1da34b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pos_words  <span class="op">=</span> [<span class="st">'great'</span>, <span class="st">'food'</span>, <span class="st">'staff'</span>, <span class="st">'atmosphere'</span>, <span class="st">'hotel'</span>]</span>
@@ -461,26 +461,36 @@ Tip
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Beyond sentiment classification, both models provide key insights to business operations. This NLP analysis demonstrates the capabilities both models possess to assist management on decision-making, monitoring and identifying areas of improvement across venues</p>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
-<section id="bert-discriminative-fine-tuning" class="level3">
-<h3 class="anchored" data-anchor-id="bert-discriminative-fine-tuning">BERT — Discriminative Fine-tuning</h3>
+<section id="bert---discriminative-fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="bert---discriminative-fine-tuning">BERT - Discriminative Fine-tuning</h3>
 <ul>
 <li>Tokeniser: <code>bert-base-uncased</code> WordPiece tokenizer</li>
-<li>Max sequence length: 64 tokens (justified by EDA — majority of reviews under 64 words)</li>
+<li>Max sequence length: 64 tokens (justified by EDA - majority of reviews under 64 words)</li>
 <li>Batch size: 8 (optimised for standard laptop GPU constraints)</li>
 <li>Optimiser: AdamW, learning rate 2e-5</li>
 <li>Training: 3 epochs with forward pass, backpropagation, and weight updates</li>
 </ul>
 </section>
-<section id="llama-3.1-zero-shot-prompting" class="level3">
-<h3 class="anchored" data-anchor-id="llama-3.1-zero-shot-prompting">LLaMA 3.1 — Zero-shot Prompting</h3>
+<section id="llama-3.1---zero-shot-prompting" class="level3">
+<h3 class="anchored" data-anchor-id="llama-3.1---zero-shot-prompting">LLaMA 3.1 - Zero-shot Prompting</h3>
 <ul>
-<li>Run locally via Ollama API (no cloud dependency — reduced environmental impact)</li>
+<li>Run locally via Ollama API (no cloud dependency - reduced environmental impact)</li>
 <li>Prompt engineering to constrain output to a single word: <em>Positive</em> or <em>Negative</em></li>
-<li>No training data required — leverages generalised pre-trained knowledge</li>
+<li>No training data required - leverages generalised pre-trained knowledge</li>
 </ul>
 <hr>
 </section>
@@ -495,10 +505,10 @@ Tip
 <div class="callout-body-container">
 <p>Following the <strong>EU Ethics Guidelines for Trustworthy AI</strong>, this project ensured:</p>
 <ul>
-<li><strong>Human oversight</strong> — model outputs are decision-support tools, not final decisions</li>
-<li><strong>Privacy</strong> — personal identifiers removed; formal consent obtained from Mercantile Group GM</li>
-<li><strong>Fairness</strong> — equal review counts taken per venue to avoid representation bias</li>
-<li><strong>Environmental</strong> — LLaMA run locally via Ollama to reduce cloud API carbon footprint</li>
+<li><strong>Human oversight</strong> - model outputs are decision-support tools, not final decisions</li>
+<li><strong>Privacy</strong> - personal identifiers removed; formal consent obtained from Mercantile Group GM</li>
+<li><strong>Fairness</strong> - equal review counts taken per venue to avoid representation bias</li>
+<li><strong>Environmental</strong> - LLaMA run locally via Ollama to reduce cloud API carbon footprint</li>
 </ul>
 </div>
 </div>
@@ -544,8 +554,9 @@ Tip
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <ul>
 <li>Ho et al.&nbsp;(2024). ChatReview: A ChatGPT-enabled NLP framework. <em>Machine Learning with Applications</em>.</li>
-<li>Meta. (2024). <a href="https://ai.meta.com/blog/meta-llama-3-1/">Introducing Llama 3.1</a>.</li>
-<li>European Commission. <a href="https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai">Ethics Guidelines for Trustworthy AI</a>.</li>
+<li>Mollah et al.&nbsp;(2024). icACCESS.<em>“Adapting Contextual Embedding to Identify Sentiment of E-commerce Consumer Reviews with Addressing Class Imbalance Issues”</em>.</li>
+<li>Smith et al.&nbsp;(2026). Applied Economics. <em>“BeigeSage: sentiment classification in economic texts utilizing LLMs and fine-tuned BERT models”</em>.</li>
+<li>Basahel et al.&nbsp;(2026). MDPI. <em>“A Resource-Efficient Approach to Fine-Tuning a BERT-Base Model for Sentiment Analysis”</em>.</li>
 </ul>
 
 

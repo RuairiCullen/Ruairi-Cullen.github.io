@@ -1,24 +1,26 @@
 ---
-title: "Sentiment Analysis — BERT vs LLaMA 3.1"
-description: "Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% — with no training data."
+title: "Sentiment Analysis - BERT vs LLaMA 3.1"
+description: "Comparing a fine-tuned BERT model against zero-shot LLaMA 3.1 on 1,610 real hospitality reviews from four Dublin venues. BERT achieved 97.76% accuracy, LLaMA 98.21% - with no training data."
 author: "Ruairí Cullen"
 date: "2026-04-16"
 image: "../../images/sentiment.png"
 categories: [NLP, BERT, Generative AI, Python, Hospitality]
+toc: true
+toc-location: left
 ---
 
 ## Overview
 
 This project addresses the business problem of automated sentiment classification of 
-customer reviews across four Dublin venues within the Mercantile Group — **NoLIta, 
-Pichet, Café en Seine, and The Mercantile Hotel** — using reviews sourced from 
+customer reviews across four Dublin venues within the Mercantile Group - **NoLIta, 
+Pichet, Café en Seine, and The Mercantile Hotel** - using reviews sourced from 
 OpenTable, TripAdvisor, Google, and Yelp.
 
 Two AI models were compared:
 
-- **BERT** (`bert-base-uncased`) — a discriminative transformer model, fine-tuned on 
+- **BERT** (`bert-base-uncased`) - a discriminative transformer model, fine-tuned on 
   labelled review data
-- **LLaMA 3.1** — a generative large language model, applied via zero-shot prompting 
+- **LLaMA 3.1** - a generative large language model, applied via zero-shot prompting 
   with no training data
 
 ::: {.callout-note}
@@ -37,9 +39,9 @@ analysis.
 | BERT (Fine-tuned) | 97.76% | 0.987 |
 | LLaMA 3.1 (Zero-shot) | 98.21% | 0.990 |
 
-::: {.callout-tip}
+::: {.callout-note appearance="minimal"}
 **Key finding:** LLaMA 3.1 marginally outperformed fine-tuned BERT despite using 
-**zero training data** — highlighting the power of large language models for 
+**zero training data** - highlights the power of LLMs for 
 domain-specific NLP tasks with limited labelled datasets.
 :::
 
@@ -55,7 +57,7 @@ domain-specific NLP tasks with limited labelled datasets.
 
 ---
 
-## Python Code — Model Comparison Visualisation
+## Python Code - Model Comparison Visualisation
 
 ```{python}
 #| fig-cap: "Accuracy and F1 Score comparison across three models"
@@ -98,7 +100,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Python Code — BERT Training Loss Curve
+## Python Code - BERT Training Loss Curve
 
 ```{python}
 #| fig-cap: "BERT training loss decreasing across three epochs"
@@ -127,7 +129,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Python Code — Sentiment Word Frequency
+## Python Code - Sentiment Word Frequency
 
 ```{python}
 #| fig-cap: "Most frequent words driving positive and negative sentiment"
@@ -156,21 +158,26 @@ plt.tight_layout()
 plt.show()
 ```
 
+::: {.callout-note appearance="minimal"}
+Beyond sentiment classification, both models provide key insights to business operations. This
+NLP analysis demonstrates the capabilities both models possess to assist management on decision-making, monitoring and identifying areas of improvement
+across venues
+:::
 ---
 
 ## Methodology
 
-### BERT — Discriminative Fine-tuning
+### BERT - Discriminative Fine-tuning
 - Tokeniser: `bert-base-uncased` WordPiece tokenizer
-- Max sequence length: 64 tokens (justified by EDA — majority of reviews under 64 words)
+- Max sequence length: 64 tokens (justified by EDA - majority of reviews under 64 words)
 - Batch size: 8 (optimised for standard laptop GPU constraints)
 - Optimiser: AdamW, learning rate 2e-5
 - Training: 3 epochs with forward pass, backpropagation, and weight updates
 
-### LLaMA 3.1 — Zero-shot Prompting
-- Run locally via Ollama API (no cloud dependency — reduced environmental impact)
+### LLaMA 3.1 - Zero-shot Prompting
+- Run locally via Ollama API (no cloud dependency - reduced environmental impact)
 - Prompt engineering to constrain output to a single word: *Positive* or *Negative*
-- No training data required — leverages generalised pre-trained knowledge
+- No training data required - leverages generalised pre-trained knowledge
 
 ---
 
@@ -179,10 +186,10 @@ plt.show()
 ::: {.callout-warning appearance="minimal"}
 Following the **EU Ethics Guidelines for Trustworthy AI**, this project ensured:
 
-- **Human oversight** — model outputs are decision-support tools, not final decisions
-- **Privacy** — personal identifiers removed; formal consent obtained from Mercantile Group GM
-- **Fairness** — equal review counts taken per venue to avoid representation bias
-- **Environmental** — LLaMA run locally via Ollama to reduce cloud API carbon footprint
+- **Human oversight** - model outputs are decision-support tools, not final decisions
+- **Privacy** - personal identifiers removed; formal consent obtained from Mercantile Group GM
+- **Fairness** - equal review counts taken per venue to avoid representation bias
+- **Environmental** - LLaMA run locally via Ollama to reduce cloud API carbon footprint
 :::
 
 ---
@@ -208,5 +215,6 @@ Following the **EU Ethics Guidelines for Trustworthy AI**, this project ensured:
 ## References
 
 - Ho et al. (2024). ChatReview: A ChatGPT-enabled NLP framework. *Machine Learning with Applications*.
-- Meta. (2024). [Introducing Llama 3.1](https://ai.meta.com/blog/meta-llama-3-1/).
-- European Commission. [Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai).
+- Mollah et al. (2024). icACCESS.*"Adapting Contextual Embedding to Identify Sentiment of E-commerce Consumer Reviews with Addressing Class Imbalance Issues"*.
+- Smith et al. (2026). Applied Economics. *"BeigeSage: sentiment classification in economic texts utilizing LLMs and fine-tuned BERT models"*.
+- Basahel et al. (2026). MDPI. *"A Resource-Efficient Approach to Fine-Tuning a BERT-Base Model for Sentiment Analysis"*.
