@@ -4,33 +4,32 @@ title: "Contact & References"
 
 ## Get In Touch
 
-I am always open to connecting with fellow data professionals, potential employers, 
-or anyone interested in the intersection of analytics and finance. Feel free to reach 
-out through any of the channels below.
+Trainee Accountant by day job, data analytics student by night grind! Happy to connect 
+with anyone interested in finance, analytics or where the two meet. My inbox is always open through any of the channels below.
 
 ---
 
-## 📬 Contact Information
+## {{< fa address-card >}} Contact Information
 
 | | |
 |---|---|
-| 📧 **Email** | [ruairi.c12@gmail.com](mailto:ruairi.c12@gmail.com) |
-| 💼 **LinkedIn** | [linkedin.com/in/ruairi-c-02b268130](https://www.linkedin.com/in/ruairi-c-02b268130/) |
-| 🐙 **GitHub** | [github.com/RuairiCullen](https://github.com/RuairiCullen) |
-| 📍 **Location** | Castleknock, Dublin 15, Ireland |
+| {{< fa envelope >}} **Email** | [ruairi.c12@gmail.com](mailto:ruairi.c12@gmail.com) |
+| {{< fa brands linkedin >}} **LinkedIn** | [linkedin.com/in/ruairi-c-02b268130](https://www.linkedin.com/in/ruairi-c-02b268130/) |
+| {{< fa brands github >}} **GitHub** | [github.com/RuairiCullen](https://github.com/RuairiCullen) |
+| {{< fa location-dot >}} **Location** | Castleknock, Dublin 15, Ireland |
 
 ---
 
-## 👤 References
+## {{< fa user >}} References
 
 ::: {.callout-note appearance="minimal"}
 Professional and academic references are available on request. Please get in touch 
-via email and I will provide full details promptly.
+via email and I will provide full details.
 :::
 
 ---
 
-## 📄 CV
+## {{< fa file-pdf >}} CV
 
 You can download my full CV below:
 
@@ -39,7 +38,7 @@ You can download my full CV below:
 ---
 
 ::: {.callout-tip appearance="minimal"}
-Whether you are a recruiter, a fellow student, or just curious about my work — 
+A recruiter, fellow student, or just curious about my work? I am always open to conversations and 
 I would love to hear from you. Check out my [projects](projects/index.qmd) or 
 learn more [about me](about.qmd).
 :::
