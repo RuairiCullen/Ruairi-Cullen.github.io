@@ -1,7 +1,7 @@
 ---
 title: "Predictive Inventory Optimisation Dashboard"
-description: "An applied consultancy project with Agvance Ltd & Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems."
-author: "Ruairí Cullen"
+description: "An applied consultancy project with Agvance Ltd & Animal Farmacy - building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems."
+author: "Ruairí Cullen, Alex Meehan, Woo-Sung Hollenhorst et al"
 date: "2026-01-26"
 image: "../../images/inventory.png"
 categories: [Machine Learning, Demand Forecasting, Consultancy, Python, CRISP-DM]
@@ -12,11 +12,11 @@ toc-location: left
 ## Overview
 
 ::: {.callout-note}
-🔄 **Status: In Progress** — Research Phase (Phase 2 of 4), January 2026 – August 2026.
+🔄 **Status: In Progress** - Research Phase (Phase 2 of 4), January 2026 - August 2026.
 :::
 
 This is a live Applied Consultancy Project at DCU, working with a 6-person team for 
-**Agvance Ltd** and **Animal Farmacy** — a family-owned agri-nutrition wholesaler and 
+**Agvance Ltd** and **Animal Farmacy** - a family-owned agri-nutrition wholesaler and 
 e-commerce retailer based in Portlaoise, Co. Laois.
 
 The client manages over 700 products across a shared warehouse, supplying farms across 
@@ -53,7 +53,7 @@ Two real client datasets were used for the EDA phase:
 
 ---
 
-## Python Code — EDA Setup & Data Loading
+## Python Code - EDA Setup & Data Loading
 
 ```{python}
 #| code-fold: true
@@ -80,7 +80,7 @@ plt.rcParams.update({
 print("Libraries loaded.")
 ```
 
-## Python Code — Simulated Monthly Revenue Trend
+## Python Code - Simulated Monthly Revenue Trend
 
 ::: {.callout-note appearance="minimal"}
 The charts below use simulated data that mirrors the structure and patterns of the 
@@ -130,7 +130,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Python Code — Seasonal Revenue Heatmap
+## Python Code - Seasonal Revenue Heatmap
 
 ```{python}
 #| fig-cap: "Seasonal revenue heatmap showing monthly demand patterns by year (simulated)"
@@ -197,28 +197,31 @@ flowchart LR
   C --> D[Evaluation]
   D --> E[Dashboard]
 ```
+After model training, forecast accuracy will be evaluated using Mean Absolute Error:
+$$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
 
 ---
 
 ## Current Progress
 
-- [x] Phase 1 Complete — Client briefing, team formation, project proposal submitted
-- [x] PRISMA literature review underway — Google Scholar search strategy defined
-- [x] On-site warehouse visit completed — As-Is process maps drafted
+- [x] Phase 1 Complete - Client briefing, team formation, project proposal submitted
+- [x] PRISMA literature review underway - Google Scholar search strategy defined
+- [x] On-site warehouse visit completed - As-Is process maps drafted
 - [x] Semi-structured interviews conducted with CEO and warehouse operatives
 - [x] EDA completed on Turbo (33,213 rows) and Shopify (9,700 rows) datasets
-- [ ] Quantitative model training and comparison (Phase 3 — commencing soon)
+- [ ] Quantitative model training and comparison (Phase 3 - commencing soon)
 - [ ] Dashboard development and client integration
 - [ ] Final presentation to client and DCU
 
 ---
 
-## Team
+## Project Overview & Details
 
 ::: {.callout-note appearance="minimal"}
-**Client:** Agvance Ltd & Animal Farmacy, Portlaoise, Co. Laois
-**Supervisor:** Prof. Pierangelo Rosati, DCU Business School
-**Duration:** January 2026 – August 2026
+- **Client:** Agvance Ltd & Animal Farmacy, Portlaoise, Co. Laois
+- **Team:** Ruairí Cullen, Alexander Meehan, Woo-Sung Hollenhorst, Gleb Kurilenko, Raunit Budhiraja, Avinash Reddy Yakkanti
+- **Supervisor:** Prof. Pierangelo Rosati, DCU Business School
+- **Duration:** January 2026 - August 2026
 :::
 
 ---

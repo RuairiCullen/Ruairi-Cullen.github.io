@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ruairí Cullen">
+<meta name="author" content="Ruairí Cullen, Alex Meehan, Woo-Sung Hollenhorst et al">
 <meta name="dcterms.date" content="2026-01-26">
-<meta name="description" content="An applied consultancy project with Agvance Ltd &amp; Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems.">
+<meta name="description" content="An applied consultancy project with Agvance Ltd &amp; Animal Farmacy - building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems.">
 
 <title>Predictive Inventory Optimisation Dashboard – Ruairí Cullen</title>
 <style>
@@ -113,6 +113,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -210,16 +239,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#the-business-problem" id="toc-the-business-problem" class="nav-link" data-scroll-target="#the-business-problem">The Business Problem</a></li>
   <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
-  <li><a href="#python-code-eda-setup-data-loading" id="toc-python-code-eda-setup-data-loading" class="nav-link" data-scroll-target="#python-code-eda-setup-data-loading">Python Code — EDA Setup &amp; Data Loading</a></li>
-  <li><a href="#python-code-simulated-monthly-revenue-trend" id="toc-python-code-simulated-monthly-revenue-trend" class="nav-link" data-scroll-target="#python-code-simulated-monthly-revenue-trend">Python Code — Simulated Monthly Revenue Trend</a></li>
-  <li><a href="#python-code-seasonal-revenue-heatmap" id="toc-python-code-seasonal-revenue-heatmap" class="nav-link" data-scroll-target="#python-code-seasonal-revenue-heatmap">Python Code — Seasonal Revenue Heatmap</a></li>
+  <li><a href="#python-code---eda-setup-data-loading" id="toc-python-code---eda-setup-data-loading" class="nav-link" data-scroll-target="#python-code---eda-setup-data-loading">Python Code - EDA Setup &amp; Data Loading</a></li>
+  <li><a href="#python-code---simulated-monthly-revenue-trend" id="toc-python-code---simulated-monthly-revenue-trend" class="nav-link" data-scroll-target="#python-code---simulated-monthly-revenue-trend">Python Code - Simulated Monthly Revenue Trend</a></li>
+  <li><a href="#python-code---seasonal-revenue-heatmap" id="toc-python-code---seasonal-revenue-heatmap" class="nav-link" data-scroll-target="#python-code---seasonal-revenue-heatmap">Python Code - Seasonal Revenue Heatmap</a></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
   <ul class="collapse">
   <li><a href="#qualitative-strand" id="toc-qualitative-strand" class="nav-link" data-scroll-target="#qualitative-strand">Qualitative Strand</a></li>
   <li><a href="#quantitative-strand" id="toc-quantitative-strand" class="nav-link" data-scroll-target="#quantitative-strand">Quantitative Strand</a></li>
   </ul></li>
   <li><a href="#current-progress" id="toc-current-progress" class="nav-link" data-scroll-target="#current-progress">Current Progress</a></li>
-  <li><a href="#team" id="toc-team" class="nav-link" data-scroll-target="#team">Team</a></li>
+  <li><a href="#project-overview-details" id="toc-project-overview-details" class="nav-link" data-scroll-target="#project-overview-details">Project Overview &amp; Details</a></li>
   <li><a href="#skills-used" id="toc-skills-used" class="nav-link" data-scroll-target="#skills-used">Skills Used</a></li>
   </ul>
 </nav>
@@ -245,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    An applied consultancy project with Agvance Ltd &amp; Animal Farmacy — building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems.
+    An applied consultancy project with Agvance Ltd &amp; Animal Farmacy - building an ML-powered demand forecasting dashboard to eliminate stock-outs for an agri-nutrition SME, integrating with live Shopify, Turbo and MINTsoft systems.
   </div>
 </div>
 
@@ -255,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ruairí Cullen </p>
+             <p>Ruairí Cullen, Alex Meehan, Woo-Sung Hollenhorst et al </p>
           </div>
   </div>
     
@@ -286,10 +315,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>🔄 <strong>Status: In Progress</strong> — Research Phase (Phase 2 of 4), January 2026 – August 2026.</p>
+<p>🔄 <strong>Status: In Progress</strong> - Research Phase (Phase 2 of 4), January 2026 - August 2026.</p>
 </div>
 </div>
-<p>This is a live Applied Consultancy Project at DCU, working with a 6-person team for <strong>Agvance Ltd</strong> and <strong>Animal Farmacy</strong> — a family-owned agri-nutrition wholesaler and e-commerce retailer based in Portlaoise, Co.&nbsp;Laois.</p>
+<p>This is a live Applied Consultancy Project at DCU, working with a 6-person team for <strong>Agvance Ltd</strong> and <strong>Animal Farmacy</strong> - a family-owned agri-nutrition wholesaler and e-commerce retailer based in Portlaoise, Co.&nbsp;Laois.</p>
 <p>The client manages over 700 products across a shared warehouse, supplying farms across Ireland and the UK. Despite consistent year-on-year growth, recurring <strong>stock-outs</strong> and an experience-driven ordering process are creating operational inefficiencies and lost revenue.</p>
 <hr>
 </section>
@@ -363,9 +392,9 @@ Note
 </table>
 <hr>
 </section>
-<section id="python-code-eda-setup-data-loading" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-eda-setup-data-loading">Python Code — EDA Setup &amp; Data Loading</h2>
-<div id="5bfc37fc" class="cell" data-execution_count="1">
+<section id="python-code---eda-setup-data-loading" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---eda-setup-data-loading">Python Code - EDA Setup &amp; Data Loading</h2>
+<div id="ec047259" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show imports and styling</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -393,8 +422,8 @@ Note
 </div>
 </div>
 </section>
-<section id="python-code-simulated-monthly-revenue-trend" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-simulated-monthly-revenue-trend">Python Code — Simulated Monthly Revenue Trend</h2>
+<section id="python-code---simulated-monthly-revenue-trend" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---simulated-monthly-revenue-trend">Python Code - Simulated Monthly Revenue Trend</h2>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -405,7 +434,7 @@ Note
 </div>
 </div>
 </div>
-<div id="c4f9e19b" class="cell" data-execution_count="2">
+<div id="5ddf008d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -453,9 +482,9 @@ Note
 </div>
 </div>
 </section>
-<section id="python-code-seasonal-revenue-heatmap" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-seasonal-revenue-heatmap">Python Code — Seasonal Revenue Heatmap</h2>
-<div id="c4a352b0" class="cell" data-execution_count="3">
+<section id="python-code---seasonal-revenue-heatmap" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---seasonal-revenue-heatmap">Python Code - Seasonal Revenue Heatmap</h2>
+<div id="e6764d09" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -537,32 +566,38 @@ flowchart LR
 </div>
 </div>
 </div>
+<p>After model training, forecast accuracy will be evaluated using Mean Absolute Error: <span class="math display">\[MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|\]</span></p>
 <hr>
 </section>
 </section>
 <section id="current-progress" class="level2">
 <h2 class="anchored" data-anchor-id="current-progress">Current Progress</h2>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Phase 1 Complete — Client briefing, team formation, project proposal submitted</label></li>
-<li><label><input type="checkbox" checked="">PRISMA literature review underway — Google Scholar search strategy defined</label></li>
-<li><label><input type="checkbox" checked="">On-site warehouse visit completed — As-Is process maps drafted</label></li>
+<li><label><input type="checkbox" checked="">Phase 1 Complete - Client briefing, team formation, project proposal submitted</label></li>
+<li><label><input type="checkbox" checked="">PRISMA literature review underway - Google Scholar search strategy defined</label></li>
+<li><label><input type="checkbox" checked="">On-site warehouse visit completed - As-Is process maps drafted</label></li>
 <li><label><input type="checkbox" checked="">Semi-structured interviews conducted with CEO and warehouse operatives</label></li>
 <li><label><input type="checkbox" checked="">EDA completed on Turbo (33,213 rows) and Shopify (9,700 rows) datasets</label></li>
-<li><label><input type="checkbox">Quantitative model training and comparison (Phase 3 — commencing soon)</label></li>
+<li><label><input type="checkbox">Quantitative model training and comparison (Phase 3 - commencing soon)</label></li>
 <li><label><input type="checkbox">Dashboard development and client integration</label></li>
 <li><label><input type="checkbox">Final presentation to client and DCU</label></li>
 </ul>
 <hr>
 </section>
-<section id="team" class="level2">
-<h2 class="anchored" data-anchor-id="team">Team</h2>
+<section id="project-overview-details" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview-details">Project Overview &amp; Details</h2>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Client:</strong> Agvance Ltd &amp; Animal Farmacy, Portlaoise, Co.&nbsp;Laois <strong>Supervisor:</strong> Prof.&nbsp;Pierangelo Rosati, DCU Business School <strong>Duration:</strong> January 2026 – August 2026</p>
+<ul>
+<li><strong>Client:</strong> Agvance Ltd &amp; Animal Farmacy, Portlaoise, Co.&nbsp;Laois</li>
+<li><strong>Team:</strong> Ruairí Cullen, Alexander Meehan, Woo-Sung Hollenhorst, Gleb Kurilenko, Raunit Budhiraja, Avinash Reddy Yakkanti</li>
+<li><strong>Supervisor:</strong> Prof.&nbsp;Pierangelo Rosati, DCU Business School</li>
+<li><strong>Duration:</strong> January 2026 - August 2026</li>
+</ul>
 </div>
 </div>
 </div>
