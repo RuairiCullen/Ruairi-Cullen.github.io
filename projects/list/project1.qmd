@@ -1,21 +1,27 @@
 ---
 title: "Consumer Complaint Analytics — Bank of America"
 description: "A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%."
-author: "Ruairí Cullen"
-date: "2024-12-01"
+author: "Ruairí Cullen, Lilian Cordova, Punith Prabhakar Reddy et al "
+date: "2025-12-01"
 image: "../../images/complaints.png"
 categories: [Machine Learning, NLP, Python, Streamlit, Prescriptive Analytics]
+toc: true
+toc-location: left
 ---
 
 ## Overview
 
-This project transforms Bank of America's complaint management from a slow reactive 
-First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 
+Bank of America processes thousands of customer complaints every year, and the traditional
+First-In-First-Out triage system treats every single one the same. The problem with that
+approach is that not all complaints are equal - some will require financial compensation,
+others won't.
+
+This BAA1108 group project replaces Bank of America's slow reactive FIFO system into an AI-powered fast-track routing system. Using 61,022 
 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier 
 combining Histogram-based Gradient Boosting and Random Forest achieves **86.1% precision** 
-identifying complaints likely to require monetary relief.
+identifying complaints likely to require monetary relief, to be flagged to senior management before the situation escalates
 
-::: {.callout-tip}
+::: {.callout-tip appearance="minimal"}
 🚀 **Live Dashboard:** [analysisofcomplaints.streamlit.app](https://analysisofcomplaints.streamlit.app)
 :::
 
@@ -42,13 +48,17 @@ identifying complaints likely to require monetary relief.
 The pipeline engineered the following features from raw CFPB data:
 
 - **TF-IDF vectorisation** of complaint Issue text (unigrams + bigrams, 1,000 features)
-- **Temporal features** — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter
-- **Risk rate features** — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)
-- **Text metadata** — Issue_Length, Issue_Word_Count
+- **Temporal features** - Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter
+- **Risk rate features** - Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)
+- **Text metadata** - Issue_Length, Issue_Word_Count
 
+A few of these deserve more explanation. The cyclical sine/cosine encoding of the submission
+month is there to make sure the model understands that December and January are temporally
+close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving
+it a baseline risk signal rooted in past performance rather than just the text of a single complaint.
 ---
 
-## Python Code — Imports & Configuration
+## Python Code - Imports & Configuration
 
 ```{python}
 #| code-fold: true
@@ -72,7 +82,7 @@ THEME = {
 print("Libraries loaded.")
 ```
 
-## Python Code — Model Performance Visualisation
+## Python Code - Model Performance Visualisation
 
 ```{python}
 #| fig-cap: "Voting Classifier performance metrics on the CFPB test set"
@@ -99,7 +109,14 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Python Code — Financial Simulation
+::: {.callout-tip appearance="minimal"}
+Precision is the standout metric here. A recall of 4.6% looks low on paper, but in the context
+of this system that's intentional — the goal isn't to catch every possible payout case, it's to
+make sure that when the model *does* flag a complaint, it's almost certainly a genuine
+financial liability. 
+:::
+
+## Python Code - Financial Simulation
 
 ```{python}
 #| fig-cap: "Net benefit and ROI across different risk thresholds"
@@ -155,9 +172,8 @@ The deployed Streamlit application serves three user groups:
 ## Ethical Considerations
 
 ::: {.callout-warning appearance="minimal"}
-All Personally Identifiable Information (PII) was removed prior to analysis. Sensitive 
-demographic variables — race, gender, and exact location — were excluded to ensure 
-fair, bias-free predictions based solely on complaint content and product metadata.
+- All Personally Identifiable Information (PII) was removed prior to analysis. 
+- Sensitive demographic variables  were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location ).
 :::
 
 ---

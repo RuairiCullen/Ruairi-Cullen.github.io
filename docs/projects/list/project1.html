@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ruairí Cullen">
-<meta name="dcterms.date" content="2024-12-01">
+<meta name="author" content="Ruairí Cullen, Lilian Cordova, Punith Prabhakar Reddy et al">
+<meta name="dcterms.date" content="2025-12-01">
 <meta name="description" content="A Voting Classifier achieving 86.1% precision on 61,022 CFPB complaints, deployed as a live Streamlit dashboard with projected net savings of $470,500 and an ROI of 1,191%.">
 
 <title>Consumer Complaint Analytics — Bank of America – Ruairí Cullen</title>
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -180,24 +180,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#key-results" id="toc-key-results" class="nav-link" data-scroll-target="#key-results">Key Results</a></li>
   <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">Feature Engineering</a></li>
-  <li><a href="#python-code-imports-configuration" id="toc-python-code-imports-configuration" class="nav-link" data-scroll-target="#python-code-imports-configuration">Python Code — Imports &amp; Configuration</a></li>
-  <li><a href="#python-code-model-performance-visualisation" id="toc-python-code-model-performance-visualisation" class="nav-link" data-scroll-target="#python-code-model-performance-visualisation">Python Code — Model Performance Visualisation</a></li>
-  <li><a href="#python-code-financial-simulation" id="toc-python-code-financial-simulation" class="nav-link" data-scroll-target="#python-code-financial-simulation">Python Code — Financial Simulation</a></li>
+  <li><a href="#python-code---imports-configuration" id="toc-python-code---imports-configuration" class="nav-link" data-scroll-target="#python-code---imports-configuration">Python Code - Imports &amp; Configuration</a></li>
+  <li><a href="#python-code---model-performance-visualisation" id="toc-python-code---model-performance-visualisation" class="nav-link" data-scroll-target="#python-code---model-performance-visualisation">Python Code - Model Performance Visualisation</a></li>
+  <li><a href="#python-code---financial-simulation" id="toc-python-code---financial-simulation" class="nav-link" data-scroll-target="#python-code---financial-simulation">Python Code - Financial Simulation</a></li>
   <li><a href="#dashboard-features" id="toc-dashboard-features" class="nav-link" data-scroll-target="#dashboard-features">Dashboard Features</a></li>
   <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
   <li><a href="#skills-used" id="toc-skills-used" class="nav-link" data-scroll-target="#skills-used">Skills Used</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -226,14 +229,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ruairí Cullen </p>
+             <p>Ruairí Cullen, Lilian Cordova, Punith Prabhakar Reddy et al </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2024</p>
+      <p class="date">December 1, 2025</p>
     </div>
   </div>
   
@@ -247,18 +250,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This project transforms Bank of America’s complaint management from a slow reactive First-In-First-Out system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves <strong>86.1% precision</strong> identifying complaints likely to require monetary relief.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<p>Bank of America processes thousands of customer complaints every year, and the traditional First-In-First-Out triage system treats every single one the same. The problem with that approach is that not all complaints are equal - some will require financial compensation, others won’t.</p>
+<p>This BAA1108 group project replaces Bank of America’s slow reactive FIFO system into an AI-powered fast-track routing system. Using 61,022 real complaints from the Consumer Financial Protection Bureau (CFPB), a Voting Classifier combining Histogram-based Gradient Boosting and Random Forest achieves <strong>86.1% precision</strong> identifying complaints likely to require monetary relief, to be flagged to senior management before the situation escalates</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>🚀 <strong>Live Dashboard:</strong> <a href="https://analysisofcomplaints.streamlit.app">analysisofcomplaints.streamlit.app</a></p>
+</div>
 </div>
 </div>
 <hr>
@@ -318,15 +319,15 @@ Tip
 <p>The pipeline engineered the following features from raw CFPB data:</p>
 <ul>
 <li><strong>TF-IDF vectorisation</strong> of complaint Issue text (unigrams + bigrams, 1,000 features)</li>
-<li><strong>Temporal features</strong> — Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter</li>
-<li><strong>Risk rate features</strong> — Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)</li>
-<li><strong>Text metadata</strong> — Issue_Length, Issue_Word_Count</li>
+<li><strong>Temporal features</strong> - Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter</li>
+<li><strong>Risk rate features</strong> - Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)</li>
+<li><strong>Text metadata</strong> - Issue_Length, Issue_Word_Count</li>
 </ul>
-<hr>
+<p>A few of these deserve more explanation. The cyclical sine/cosine encoding of the submission month is there to make sure the model understands that December and January are temporally close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving it a baseline risk signal rooted in past performance rather than just the text of a single complaint. —</p>
 </section>
-<section id="python-code-imports-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-imports-configuration">Python Code — Imports &amp; Configuration</h2>
-<div id="0308d062" class="cell" data-execution_count="1">
+<section id="python-code---imports-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---imports-configuration">Python Code - Imports &amp; Configuration</h2>
+<div id="2b92680e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show imports</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -352,9 +353,9 @@ Tip
 </div>
 </div>
 </section>
-<section id="python-code-model-performance-visualisation" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-model-performance-visualisation">Python Code — Model Performance Visualisation</h2>
-<div id="5d7271f3" class="cell" data-execution_count="2">
+<section id="python-code---model-performance-visualisation" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---model-performance-visualisation">Python Code - Model Performance Visualisation</h2>
+<div id="57bb6267" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'Precision'</span>, <span class="st">'ROC-AUC'</span>, <span class="st">'Accuracy'</span>, <span class="st">'Recall'</span>]</span>
@@ -383,10 +384,20 @@ Tip
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Precision is the standout metric here. A recall of 4.6% looks low on paper, but in the context of this system that’s intentional — the goal isn’t to catch every possible payout case, it’s to make sure that when the model <em>does</em> flag a complaint, it’s almost certainly a genuine financial liability.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="python-code-financial-simulation" class="level2">
-<h2 class="anchored" data-anchor-id="python-code-financial-simulation">Python Code — Financial Simulation</h2>
-<div id="c4237c36" class="cell" data-execution_count="3">
+<section id="python-code---financial-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="python-code---financial-simulation">Python Code - Financial Simulation</h2>
+<div id="41040cd3" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -473,7 +484,10 @@ Tip
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>All Personally Identifiable Information (PII) was removed prior to analysis. Sensitive demographic variables — race, gender, and exact location — were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata.</p>
+<ul>
+<li>All Personally Identifiable Information (PII) was removed prior to analysis.</li>
+<li>Sensitive demographic variables were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location ).</li>
+</ul>
 </div>
 </div>
 </div>
