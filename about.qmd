@@ -9,31 +9,18 @@ title: "All About Me"
 drive to deliver results in fast-paced environments."*
 
 I am an MSc Business Analytics student at DCU and a Trainee Accountant at the Mercantile 
-Group in Dublin. Over the past three years I have been building a career that bridges two 
-worlds — financial accountability and data-driven decision making.
+Group in Dublin. Over the past three years, I have been building experience understanding the meaning within numbers. Now, it is time to bridges two 
+worlds - financial accountability and data-driven decision making.
 
-I believe the most valuable professionals in modern business are those who can read the 
+I believe the most valuable professionals in modern business are those who can read 
 numbers *and* understand the story behind them. That is what I am working towards.
-
----
-
-## 🎓 Education
-
-| Qualification | Institution | Period |
-| MSc Business Analytics | Dublin City University | Sept 2025 – Aug 2026 |
-| BSc Business Studies | Dublin City University | 2019 – 2023 (2nd Class Honours Grade 1) |
-| ACCA | Association of Chartered Certified Accountants | Part-Qualified |
-| Post-Primary | Castleknock Community College | 2013 – 2019 |
-
-**Relevant BSc modules:** Financial Theory, Business Strategy, Taxation, Risk Management, 
-New Enterprise Development, Managing Change & Transformation.
 
 ---
 
 ## 💼 Professional Experience
 
 ::: {.callout-note appearance="minimal"}
-**Trainee Accountant — The Mercantile Group** · September 2023 – Present
+**Trainee Accountant - The Mercantile Group** · September 2023 - Present
 
 Running management accounts for Beatty Solid Fuels and handling Accounts Payable & 
 Receivable for Stafford Fuels across three solid fuel companies including Shamrock Products 
@@ -43,7 +30,7 @@ exams simultaneously.
 :::
 
 ::: {.callout-note appearance="minimal"}
-**Support Tax Accountant — Oracle (EMEA Tax Compliance Team)** · July 2021 – May 2022
+**Support Tax Accountant - Oracle (EMEA Tax Compliance Team)** · July 2021 - May 2022
 
 INTRA placement assisting Oracle's EMEA Tax Compliance Team with tax roll forwards, monthly 
 tax payments, and administrative work across entities in the EMEA region. First experience 
@@ -52,10 +39,24 @@ in a large multinational professional environment.
 
 ---
 
+## 🎓 Education
+
+| Qualification | Institution | Period |
+|---|---|---|
+| MSc Business Analytics | Dublin City University | Sept 2025 - Aug 2026 |
+| BSc Business Studies | Dublin City University | 2019 - 2023 (2nd Class Honours Grade 1) |
+| ACCA | Association of Chartered Certified Accountants | Part-Qualified : *In Progress* [^1] |
+| Post-Primary | Castleknock Community College | 2013 - 2019 |
+
+[^1]: Completing the ACCA qualification alongside working at the Mercantile Group
+
+---
+
 ## 🧮 Accountancy Skills
 
 | Area | Detail |
-| Qualification | ACCA Part-Qualified (BT, MA, FA — all 80%+) |
+|---|---|
+| Qualification | ACCA Part-Qualified (BT, MA, FA - all 80%+) |
 | Experience | Trainee Accountant, 3 years |
 | Responsibilities | Management accounts, AP/AR, reconciliations, creditor management |
 | Previous Experience | Oracle EMEA Tax Compliance (INTRA placement) |
@@ -65,8 +66,9 @@ in a large multinational professional environment.
 ## 📊 Analytics & Technical Skills
 
 | Skill | Level |
-| Python | Beginner–Intermediate |
-| SQL | Beginner–Intermediate |
+|---|---|
+| Python | Beginner-Intermediate |
+| SQL | Beginner-Intermediate |
 | Machine Learning | Applied (scikit-learn, BERT, GPT) |
 | Data Visualisation | Plotly, Matplotlib, Streamlit |
 | Microsoft Excel | Certified |
@@ -78,10 +80,10 @@ in a large multinational professional environment.
 
 ## 🎯 Goals
 
-::: {.callout-tip}
+::: {.callout-note}
 My goal is to complete my ACCA qualification while deepening my expertise in data analytics 
-and machine learning. I want to work at the intersection of finance and technology — helping 
-organisations make smarter decisions by combining rigorous financial thinking with modern 
+and machine learning. I want to work at the intersection of finance and technology - helping 
+organisations make smarter decisions by combining financial thinking with modern 
 analytical tools.
 :::
 
@@ -92,25 +94,28 @@ analytical tools.
 
 ---
 
-## 🏆 Achievements
-
-- 🏅 Completed the **Dublin Marathon 2024**, raising €1,700 for the Child Health Foundation
-- 🥉 **Bronze Gaisce Award** for personal and community activities
-- 📜 **Pathways to Success Certificate** — DCU extra-curricular achievement
-- 🎹 **Grade 3 Piano** — Royal Irish Academy of Music
-- 🌍 Learning **Italian** as a second international language; fluent Irish speaker
-
----
-
 ## 📜 Certifications
 
-- ✅ Microsoft Excel — Certified
-- ✅ Microsoft Word — Certified
-- ✅ Microsoft PowerPoint — Certified
+- ✅ Microsoft Excel - Certified
+- ✅ Microsoft Word - Certified
+- ✅ Microsoft PowerPoint - Certified
+- ✅ Data Ethics & Risk - Kubicle Certifications [^2]
+- ✅ Data Security - Kubicle Certifications [^3]
+- ✅ Data Presentation Skills - Kubicle Certifications [^4]
+- ✅ AI Fundamentals - Kubicle Certifications [^5]
+
+[^2]: *"Applying Ethical Thinking in Data Ethics & Risk"* & *"Intro to Data Ethics in Data Ethics & Risk"*
+[^3]: *"Keeping Your Information Safe in Data Security"* & *"Handling Data Securely & Responsibly in Data Security"*
+[^4]: *"Presenting Your Data"* , *"Telling Stories with Data"* & *"Communicating Data Effectively"*
+[^5]: *"Exploring CHATGPT"* , *"Prompt Engineering"* , *"Large Language Models"* & *"Intro to Gen AI"*
 
 ---
 
 ::: {.callout-note}
 Want to know more about my work? Head over to the [Projects page](projects/index.qmd) 
 or [get in touch](contact.qmd).
+:::
+
+::: {.callout-note}
+Want to know more about my life outside work and college? Head over to the [Beyond the Desk page](personal/personal.qmd).
 :::
