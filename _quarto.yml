@@ -15,7 +15,7 @@ website:
       - href: projects/index.qmd
         text: Projects
       - href: reflection.qmd
-        text: BAA1104 Reflections
+        text: Reflections
       - href: personal/personal.qmd
         text: Beyond the Desk 
     right:

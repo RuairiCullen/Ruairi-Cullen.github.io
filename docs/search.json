@@ -4,56 +4,49 @@
     "href": "reflection.html",
     "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
     "section": "",
-    "text": "This page reflects on my experience completing the ePortfolio module as part of my MSc in Business Analytics at DCU. It covers the skills I developed, the challenges I faced, and how this experience has shaped my thinking as an emerging data professional."
+    "text": "Prior to this module, I had never heard of Quarto and had no idea what Git or GitHub was. To be completely honest - the first couple of weeks were tough. I found myself constantly breaking things, discovering the error and then breaking again. This process was frustrating and unrewarding at times however, I believe this is how it all clicked for me.\n\n\n\n\n\n\nMy best learning in this module occured when things went wrong, not when they worked first time. This trial and error approach allowed me to find the reasons why errors happen and how I could apply this going forward."
   },
   {
-    "objectID": "reflection.html#looking-back-on-the-module",
-    "href": "reflection.html#looking-back-on-the-module",
+    "objectID": "reflection.html#looking-back",
+    "href": "reflection.html#looking-back",
     "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
     "section": "",
-    "text": "This page reflects on my experience completing the ePortfolio module as part of my MSc in Business Analytics at DCU. It covers the skills I developed, the challenges I faced, and how this experience has shaped my thinking as an emerging data professional."
+    "text": "Prior to this module, I had never heard of Quarto and had no idea what Git or GitHub was. To be completely honest - the first couple of weeks were tough. I found myself constantly breaking things, discovering the error and then breaking again. This process was frustrating and unrewarding at times however, I believe this is how it all clicked for me.\n\n\n\n\n\n\nMy best learning in this module occured when things went wrong, not when they worked first time. This trial and error approach allowed me to find the reasons why errors happen and how I could apply this going forward."
   },
   {
-    "objectID": "reflection.html#what-i-learned",
-    "href": "reflection.html#what-i-learned",
+    "objectID": "reflection.html#my-biggest-surprise",
+    "href": "reflection.html#my-biggest-surprise",
     "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
-    "section": "🧠 What I Learned",
-    "text": "🧠 What I Learned\nWhen I first encountered the technical requirements of this module — Quarto, Git, GitHub Pages, executable Python code — I found it genuinely difficult to follow. Not just the syntax or the tools themselves, but understanding the why behind everything. Why do we use version control? Why does the folder structure matter? Why does a .nojekyll file need to exist at all?\n\n\n\n\n\n\nIt was only through repeated practice — breaking things, fixing them, and breaking them again — that the logic behind each step began to make sense. That process of trial and error turned out to be the most effective teacher.\n\n\n\nOver time, I went from struggling to preview a single page locally to building and deploying a fully structured, multi-page portfolio site with live Python code. That progression, however gradual, represents real technical growth."
-  },
-  {
-    "objectID": "reflection.html#what-surprised-me",
-    "href": "reflection.html#what-surprised-me",
-    "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
-    "section": "💡 What Surprised Me",
-    "text": "💡 What Surprised Me\nThe biggest surprise of this module was realising that I could build and own my own professional website — one that I control completely, can update at any time, and that genuinely represents who I am and what I can do.\nBefore this module, a personal website felt like something only developers had. Now I understand it as a professional tool — as important as a CV, and in many ways more powerful. It is a living document that grows with me.\n\n\n\n\n\n\nTip\n\n\n\nThe idea that this portfolio is not something I submit and forget, but something I can continue to build on throughout my career, genuinely changed how I think about professional development."
+    "section": "My Biggest Surprise",
+    "text": "My Biggest Surprise\nRealising that I could build my own personal portfolio and one that I am genuinely proud of was somewhat unexpected. Having the ability to own, control and keep building on websites was something I thought only strong developers had. Despite only beginning my path in this journey, I now feel I have something valuable that represents me as an overall individual - something regular college assignments struggle to provide."
   },
   {
     "objectID": "reflection.html#the-classes",
     "href": "reflection.html#the-classes",
     "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
-    "section": "🏫 The Classes",
-    "text": "🏫 The Classes\nI found the classes throughout this module to be genuinely interactive and engaging. Rather than passively receiving information, we were encouraged to try things, make mistakes, and figure out solutions — which suited me well as an analytics beginner.\nThere is something valuable about working through a problem in a classroom setting where everyone is at a similar level. It made the technical challenges feel less intimidating and more like puzzles to solve together."
+    "section": "The Classes",
+    "text": "The Classes\nThe interactive and engaging manner of classes really suited me as an analytics beginner. Trying things, making mistakes and figuring out solutions was the overall process throughout this project and I believe this was rooted in the dynamic lecture style promoting encouragement and acceptance of first-time failure. Being surrounded by students of a similar level enabled teamwork and collaborative gain within the classroom setting and made technical challenges feel less intimidating than facing them alone."
   },
   {
     "objectID": "reflection.html#what-i-would-do-differently",
     "href": "reflection.html#what-i-would-do-differently",
     "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
     "section": "🔄 What I Would Do Differently",
-    "text": "🔄 What I Would Do Differently\nIf I were starting this module again, I would invest time upfront in short online courses to build foundational knowledge before the semester began. Understanding the basics of Git, the command line, and how Python environments work would have saved significant time and frustration in the early weeks.\n\n\n\n\n\n\n\nArea\nWhat I’d Do Differently\n\n\n\n\nGit & Version Control\nComplete a beginner Git course before week one\n\n\nPython Environment\nSet up and test Jupyter/Quarto before the first class\n\n\nProject Structure\nPlan the folder structure from day one rather than reorganising later\n\n\nTime Management\nCommit smaller, more regularly rather than large end-of-session pushes"
-  },
-  {
-    "objectID": "reflection.html#connecting-to-my-future",
-    "href": "reflection.html#connecting-to-my-future",
-    "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
-    "section": "🔗 Connecting to My Future",
-    "text": "🔗 Connecting to My Future\nI am building a career that sits at the intersection of accountancy and data analytics. This module has shown me that technical skills like these are not just useful for data scientists — they are increasingly expected of anyone working with data in a professional context.\n\n\n\n\n\n\nTip\n\n\n\nAs a part-qualified ACCA accountant, I now see this portfolio as a bridge between my financial expertise and my growing analytics capability. It demonstrates not just what I know, but how I think and how I work.\n\n\nGoing forward, I intend to keep this portfolio updated as I complete my ACCA qualification, develop new projects, and grow in my role at the Mercantile Group. It is no longer just a college submission — it is the beginning of my professional digital presence."
+    "text": "🔄 What I Would Do Differently\n\n\n\n\n\n\n\nArea\nWhat I’d Do Differently\n\n\n\n\nGit\nStart using it properly from day one, completing a beginner course before week one\n\n\nPython Setup\nSet up Jupyter and environments before the semester and not during classes\n\n\nProject Structure\nPlan the folder layout upfront -reorganising later leads to lost time and confusion\n\n\nCommits\nMake them smaller and more regularly rather than large pushes, allows visible website development\n\n\n\n\n\n\n\n\n\nTip\n\n\n\n💡 For anyone starting out — this video was a great starting point for understanding Git:"
   },
   {
     "objectID": "reflection.html#skills-developed-in-this-module",
     "href": "reflection.html#skills-developed-in-this-module",
     "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
     "section": "📊 Skills Developed in This Module",
-    "text": "📊 Skills Developed in This Module\n\n\n\n\n\n\n\n\nSkill\nBefore\nAfter\n\n\n\n\nQuarto\nNever heard of it\nCan build and deploy a full site\n\n\nGit & GitHub\nBasic awareness\nRegular commits, branching, GitHub Pages\n\n\nPython in documents\nCode only in notebooks\nExecutable chunks in published pages\n\n\nWeb publishing\nNo experience\nLive site on GitHub Pages\n\n\nProfessional portfolio\nCV only\nMulti-page portfolio with live projects\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThank you for reading. You can explore my projects on the Projects page or get in touch if you’d like to connect."
+    "text": "📊 Skills Developed in This Module\n\n\n\n\n\n\n\n\nSkill\nBefore\nAfter\n\n\n\n\nQuarto\nNever heard of it\nCan build and deploy a full site\n\n\nGit & GitHub\nUnused\nRegular commits and GitHub Pages\n\n\nPython in documents\nCoding only in notebooks\nExecutable chunks on a published website\n\n\nWeb publishing\nNo experience\nLive site on GitHub Pages\n\n\nProfessional portfolio\nCV only\nMulti-page portfolio with live projects and personal aspect"
+  },
+  {
+    "objectID": "reflection.html#where-this-leaves-me",
+    "href": "reflection.html#where-this-leaves-me",
+    "title": "BAA1104: E-Portfolio and Business Analytics Challenges - Reflection",
+    "section": "Where This Leaves Me",
+    "text": "Where This Leaves Me\nI’m a trainee accountant who can now build and deploy live data portfolios. This combination of financial knowledge and technical capabilities is exactly where I want to be heading. This module has pushed me further along this desired path. Continuing into the future, my portfolio presents clearly who I am, what I know and how I contribute value to others.\n\n\n\n\n\n\nGoing forward, I intend to keep this portfolio updated as I complete my ACCA qualification, develop new projects, and grow in my role at the Mercantile Group. Along with my LinkedIn, this will further increase my digital presence.\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThank you for reading. You can explore my projects on the Projects page or get in touch if you’d like to connect."
   },
   {
     "objectID": "projects/list/project2.html",
