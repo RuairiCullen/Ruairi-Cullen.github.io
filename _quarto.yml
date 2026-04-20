@@ -12,8 +12,16 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: projects/index.qmd
-        text: Projects
+      - text: Projects
+        menu:
+          - href: projects/index.qmd
+            text: All Projects
+          - href: projects/list/project1.qmd
+            text: Consumer Complaint Analytics
+          - href: projects/list/project2.qmd
+            text: Sentiment Analysis
+          - href: projects/list/project3.qmd
+            text: Inventory Dashboard
       - href: reflection.qmd
         text: Reflections
       - href: personal/personal.qmd

@@ -79,7 +79,7 @@ in a large multinational professional environment.
 
 ## 🎯 Goals
 
-::: {.callout-note}
+::: {.callout-note appearance="minimal"}
 My goal is to complete my ACCA qualification while deepening my expertise in data analytics 
 and machine learning. I want to work at the intersection of finance and technology - helping 
 organisations make smarter decisions by combining financial thinking with modern 
