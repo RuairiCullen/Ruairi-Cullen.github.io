@@ -1,12 +1,17 @@
 ---
 title: "Projects"
+subtitle: "A collection of my data analytic projects throughout this year - conducted individually and collectively"
 listing:
   contents: list
   type: grid
   sort: "date desc"
   categories: true
   fields: [image, title, description, categories, date]
+  grid-columns: 3
+  image-height: 200px
 ---
 
-Here you will find my data analytics projects.
+::: {.callout-tip appearance="minimal"}
+Use the **category filters** on the right hand side to browse projects by topic. Click any project card to explore the full analysis.
+:::
 
