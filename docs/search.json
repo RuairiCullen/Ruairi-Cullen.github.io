@@ -263,14 +263,35 @@
     "href": "personal/personal.html",
     "title": "Life Beyond the Desk",
     "section": "",
-    "text": "Completed the Dublin Marathon 2024, raising €1,700 for the Child Health Foundation\nBronze Gaisce Award for personal and community activities\nPathways to Success Certificate — DCU extra-curricular achievement\nGrade 3 Piano — Royal Irish Academy of Music\nLearning Italian as a second international language; fluent Irish speaker"
+    "text": "Some small things about me that don’t quite fit on a CV - but matter just as much."
   },
   {
-    "objectID": "personal/personal.html#achievements",
-    "href": "personal/personal.html#achievements",
+    "objectID": "personal/personal.html#sport-fitness",
+    "href": "personal/personal.html#sport-fitness",
     "title": "Life Beyond the Desk",
-    "section": "",
-    "text": "Completed the Dublin Marathon 2024, raising €1,700 for the Child Health Foundation\nBronze Gaisce Award for personal and community activities\nPathways to Success Certificate — DCU extra-curricular achievement\nGrade 3 Piano — Royal Irish Academy of Music\nLearning Italian as a second international language; fluent Irish speaker"
+    "section": "🏃 Sport & Fitness",
+    "text": "🏃 Sport & Fitness\nSport has always been a cornerstone of my life - whether it’s pushing through the final miles of a marathon or enjoying football with friends.\n\n\n\nDublin Marathon 2024 - raising €1,700 for the Child Health Foundation\n\n\n\n\n\n\n\nAlways more enjoyable with good company\n\n\n\n\n\n\nCannot leave out my beloved Liverpool F.C"
+  },
+  {
+    "objectID": "personal/personal.html#travel",
+    "href": "personal/personal.html#travel",
+    "title": "Life Beyond the Desk",
+    "section": "🌍 Travel",
+    "text": "🌍 Travel\nI love to broaden my perspective by getting out there and seeing the world. Every trip teaches me something new!\n\n\n\n\n\n\nWalking the Island of Sardinia\n\n\n\n\n\n\n\n\nBrushing up on my Italiano!"
+  },
+  {
+    "objectID": "personal/personal.html#as-gaeilge",
+    "href": "personal/personal.html#as-gaeilge",
+    "title": "Life Beyond the Desk",
+    "section": "🇮🇪 As Gaeilge",
+    "text": "🇮🇪 As Gaeilge\n\n\n\n\n\n\nIs cainteoir díograiseach Gaeilge mé atá tar éis freastal ar an nGaeltacht ceithre huaire agus labhraím go líofa í. Tá an teanga ina cuid thábhachtach de mo chéannacht agus de mo chultúr.\nI am a dedicated Irish speaker who has attending the Gaeltacht four times and speak Irish fluently. The language is an important part of my identity and culture."
+  },
+  {
+    "objectID": "personal/personal.html#even-some-modelling",
+    "href": "personal/personal.html#even-some-modelling",
+    "title": "Life Beyond the Desk",
+    "section": "🎥 Even Some Modelling…",
+    "text": "🎥 Even Some Modelling…\nNot something that makes it onto the CV - but here we are! Featured in an ad for WillowWarm, a Shamrock Products Ltd product.\n▶ Watch the Ad on Instagram"
   },
   {
     "objectID": "projects/list/project1.html",
@@ -298,7 +319,7 @@
     "href": "projects/list/project1.html#feature-engineering",
     "title": "Consumer Complaint Analytics — Bank of America",
     "section": "Feature Engineering",
-    "text": "Feature Engineering\nThe pipeline engineered the following features from raw CFPB data:\n\nTF-IDF vectorisation of complaint Issue text (unigrams + bigrams, 1,000 features)\nTemporal features - Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter\nRisk rate features - Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)\nText metadata - Issue_Length, Issue_Word_Count\n\nA few of these deserve more explanation. The cyclical sine/cosine encoding of the submission month is there to make sure the model understands that December and January are temporally close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving it a baseline risk signal rooted in past performance rather than just the text of a single complaint. —"
+    "text": "Feature Engineering\nThe pipeline engineered the following features from raw CFPB data:\n\nTF-IDF vectorisation of complaint Issue text (unigrams + bigrams, 1,000 features)\nTemporal features - Days_to_Forward, Month_Sin, Month_Cos, Day_of_Week, Quarter\nRisk rate features - Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)\nText metadata - Issue_Length, Issue_Word_Count\n\nA few of these deserve more explanation. The cyclical sine/cosine encoding of the submission month is there to make sure the model understands that December and January are temporally close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving it a baseline risk signal rooted in past performance rather than just the text of a single complaint."
   },
   {
     "objectID": "projects/list/project1.html#python-code---imports-configuration",
@@ -333,7 +354,7 @@
     "href": "projects/list/project1.html#ethical-considerations",
     "title": "Consumer Complaint Analytics — Bank of America",
     "section": "Ethical Considerations",
-    "text": "Ethical Considerations\n\n\n\n\n\n\n\nAll Personally Identifiable Information (PII) was removed prior to analysis.\nSensitive demographic variables were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location )."
+    "text": "Ethical Considerations\n\n\n\n\n\n\n\nAll Personally Identifiable Information (PII) was removed prior to analysis.\nSensitive demographic variables were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location)."
   },
   {
     "objectID": "projects/list/project1.html#skills-used",
@@ -403,7 +424,7 @@
     "href": "projects/list/project3.html#methodology",
     "title": "Predictive Inventory Optimisation Dashboard",
     "section": "Methodology",
-    "text": "Methodology\n\nQualitative Strand\n\nSemi-structured interviews with CEO, Head of Warehouse Operations, and industry experts\nOn-site observation and business process mapping of current reorder workflow\nThematic analysis to identify operational requirements and usability needs\nPRISMA systematic literature review of state-of-the-art inventory management systems\n\n\n\nQuantitative Strand\n\nCRISP-DM framework for structured ML model development\nData sources: Shopify EPOS, Turbo WMS, MINTsoft — SKU-level historical sales\nModels under evaluation: ARIMA, Prophet, XGBoost, LSTM\nEvaluation metrics: MAE, RMSE, MSE across identical train/test splits"
+    "text": "Methodology\n\nQualitative Strand\n\nSemi-structured interviews with CEO, Head of Warehouse Operations, and industry experts\nOn-site observation and business process mapping of current reorder workflow\nThematic analysis to identify operational requirements and usability needs\nPRISMA systematic literature review of state-of-the-art inventory management systems\n\n\n\nQuantitative Strand\n\nCRISP-DM framework for structured ML model development\nData sources: Shopify EPOS, Turbo WMS, MINTsoft — SKU-level historical sales\nModels under evaluation: ARIMA, Prophet, XGBoost, LSTM\nEvaluation metrics: MAE, RMSE, MSE across identical train/test splits\n\n\n\n\n\n\n\n%%{init: {'theme': 'base', 'themeVariables': {'edgeLabelBackground':'#ffffff', 'lineColor':'#1a3a2a', 'arrowheadColor':'#1a3a2a'}}}%%\nflowchart LR\n  A[Data Collection] --&gt; B[EDA]\n  B --&gt; C[Model Training]\n  C --&gt; D[Evaluation]\n  D --&gt; E[Dashboard]"
   },
   {
     "objectID": "projects/list/project3.html#current-progress",

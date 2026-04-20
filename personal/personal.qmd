@@ -1,13 +1,60 @@
 ---
 title: "Life Beyond the Desk"
----
-
-## 🏆 Achievements
-
-- Completed the **Dublin Marathon 2024**, raising €1,700 for the Child Health Foundation
-- **Bronze Gaisce Award** for personal and community activities
-- **Pathways to Success Certificate** — DCU extra-curricular achievement
-- **Grade 3 Piano** — Royal Irish Academy of Music
-- Learning **Italian** as a second international language; fluent Irish speaker
+subtitle: "Ruairí Cullen : Behind the Scenes"
 
 ---
+
+*Some small things about me that don't quite fit on a CV - but matter just as much.*
+
+---
+
+## 🏃 Sport & Fitness
+
+Sport has always been a cornerstone of my life - whether it's pushing through the final 
+miles of a marathon or enjoying football with friends. 
+
+![Dublin Marathon 2024 - raising €1,700 for the Child Health Foundation](../images/sport1.jpg){fig-alt="Dublin Marathon" width="400px"}
+
+:::: {.columns}
+::: {.column width="50%"}
+![Always more enjoyable with good company](../images/sport2.png){fig-alt="Sport with friends" width="280px"}
+:::
+::: {.column width="50%"}
+![Cannot leave out my beloved Liverpool F.C](../images/sport3.png){fig-alt="Liverpool FC" width="280px"}
+:::
+::::
+
+---
+
+## 🌍 Travel
+
+I love to broaden my perspective by getting out there and seeing the world. Every trip teaches me something new!
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.travel-photo}
+![Walking the Island of Sardinia](../images/travel1.jpg)
+:::
+:::
+::: {.column width="50%"}
+::: {.travel-photo}
+![Brushing up on my Italiano!](../images/travel2.jpg)
+:::
+:::
+::::
+
+---
+
+## 🇮🇪 As Gaeilge
+
+::: {.callout-note appearance="minimal"}
+Is cainteoir díograiseach Gaeilge mé atá tar éis freastal ar an nGaeltacht ceithre huaire agus labhraím go líofa í. Tá an teanga ina cuid thábhachtach de mo chéannacht agus de mo chultúr.
+
+*I am a dedicated Irish speaker who has attending the Gaeltacht four times and speak Irish fluently. The language is an important part of my identity and culture.*
+:::
+
+## 🎥 Even Some Modelling...
+
+Not something that makes it onto the CV - but here we are! Featured in an ad for WillowWarm, a Shamrock Products Ltd product.
+
+[▶ Watch the Ad on Instagram](https://www.instagram.com/willowwarmirl/reel/DTNws2yjNCv/){target="_blank" .btn .btn-primary}

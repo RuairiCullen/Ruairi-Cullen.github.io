@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-879de3691368f61e9e903fd7f11bc46d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bb962a7c458d599e2e5000f3ffbf1eec.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -323,11 +323,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Risk rate features</strong> - Product_Risk_Rate, State_Risk_Rate (historical payout probabilities)</li>
 <li><strong>Text metadata</strong> - Issue_Length, Issue_Word_Count</li>
 </ul>
-<p>A few of these deserve more explanation. The cyclical sine/cosine encoding of the submission month is there to make sure the model understands that December and January are temporally close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving it a baseline risk signal rooted in past performance rather than just the text of a single complaint. —</p>
+<p>A few of these deserve more explanation. The cyclical sine/cosine encoding of the submission month is there to make sure the model understands that December and January are temporally close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving it a baseline risk signal rooted in past performance rather than just the text of a single complaint.</p>
+<hr>
 </section>
 <section id="python-code---imports-configuration" class="level2">
 <h2 class="anchored" data-anchor-id="python-code---imports-configuration">Python Code - Imports &amp; Configuration</h2>
-<div id="2b92680e" class="cell" data-execution_count="1">
+<div id="7273d417" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show imports</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -355,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python-code---model-performance-visualisation" class="level2">
 <h2 class="anchored" data-anchor-id="python-code---model-performance-visualisation">Python Code - Model Performance Visualisation</h2>
-<div id="57bb6267" class="cell" data-execution_count="2">
+<div id="a416ebfe" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'Precision'</span>, <span class="st">'ROC-AUC'</span>, <span class="st">'Accuracy'</span>, <span class="st">'Recall'</span>]</span>
@@ -397,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python-code---financial-simulation" class="level2">
 <h2 class="anchored" data-anchor-id="python-code---financial-simulation">Python Code - Financial Simulation</h2>
-<div id="41040cd3" class="cell" data-execution_count="3">
+<div id="cd93444d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -486,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container">
 <ul>
 <li>All Personally Identifiable Information (PII) was removed prior to analysis.</li>
-<li>Sensitive demographic variables were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location ).</li>
+<li>Sensitive demographic variables were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location).</li>
 </ul>
 </div>
 </div>

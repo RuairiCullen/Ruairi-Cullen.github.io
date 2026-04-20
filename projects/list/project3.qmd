@@ -5,6 +5,8 @@ author: "Ruairí Cullen"
 date: "2026-01-26"
 image: "../../images/inventory.png"
 categories: [Machine Learning, Demand Forecasting, Consultancy, Python, CRISP-DM]
+toc: true
+toc-location: left
 ---
 
 ## Overview
@@ -184,6 +186,17 @@ plt.show()
 - **Data sources:** Shopify EPOS, Turbo WMS, MINTsoft — SKU-level historical sales
 - **Models under evaluation:** ARIMA, Prophet, XGBoost, LSTM
 - **Evaluation metrics:** MAE, RMSE, MSE across identical train/test splits
+
+---
+
+```{mermaid}
+%%{init: {'theme': 'base', 'themeVariables': {'edgeLabelBackground':'#ffffff', 'lineColor':'#1a3a2a', 'arrowheadColor':'#1a3a2a'}}}%%
+flowchart LR
+  A[Data Collection] --> B[EDA]
+  B --> C[Model Training]
+  C --> D[Evaluation]
+  D --> E[Dashboard]
+```
 
 ---
 

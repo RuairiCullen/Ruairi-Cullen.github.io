@@ -56,6 +56,7 @@ A few of these deserve more explanation. The cyclical sine/cosine encoding of th
 month is there to make sure the model understands that December and January are temporally
 close. The Product_Risk_Rate and State_Risk_Rate features embed historical payout probabilities directly into the model, giving
 it a baseline risk signal rooted in past performance rather than just the text of a single complaint.
+
 ---
 
 ## Python Code - Imports & Configuration
@@ -173,7 +174,7 @@ The deployed Streamlit application serves three user groups:
 
 ::: {.callout-warning appearance="minimal"}
 - All Personally Identifiable Information (PII) was removed prior to analysis. 
-- Sensitive demographic variables  were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location ).
+- Sensitive demographic variables  were excluded to ensure fair, bias-free predictions based solely on complaint content and product metadata (e.g race, gender, and exact location).
 :::
 
 ---
